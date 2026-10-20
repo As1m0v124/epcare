@@ -1,0 +1,21 @@
+# Python 虚拟环境（不进仓库）
+ep38/
+ai312/
+__pycache__/
+*.pyc
+.venv/
+
+# macOS
+.DS_Store
+
+# 组网二维码内含热点加密信息，禁止提交
+ep_sta_qrcode.png
+
+# 模型权重 / 数据集 / 实验输出（体积大，放本地或网盘）
+checkpoints/
+data/
+outputs/
+runs/
+
+# 敏感配置（.env 存密钥，绝不提交）
+.env
