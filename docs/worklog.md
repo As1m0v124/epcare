@@ -5,7 +5,7 @@
 
 ---
 
-## 2026-10-20（周二）｜环境日 + 真机连通日
+## 2026-10-25（周日）｜环境日 + 真机连通日 + 复现启动
 
 **本周目标**：修复 EP 机械臂 → 跑通真机连接 → 搭好双环境 → 启动 F1/F2/F3 复现。
 **今日投入**：约 1 天。
@@ -48,3 +48,19 @@
 2. F1：Depth Anything V2-S 在 NYU-D 654 张测试图上复算 AbsRel / δ1；
 3. 编写 `ep_selfcheck.py` 动作部分（底盘 0.3m、机械爪开合、机械臂小范围），现场安全确认后执行；
 4. 开始每日提交（今日已建仓，从明天起保持「每天至少 1 次有意义提交」）。
+
+### 🌙 10-25 下午追加（复现工程启动）
+
+- 写完三个评测脚本 + `week1.py` 一键汇总 + 训练数据转换/多线程下载工具：
+  - `scripts/eval_depth_nyu.py`（NYU-D Eigen 654 张，MiDaS 口径尺度+偏移对齐，深度方向自动校准）；
+  - `scripts/eval_gdino_coco500.py`（COCO val2017 前 500 张，pycocotools 官方 AP）；
+  - `scripts/eval_tidybot.py`（TidyBot 官方提示词逐字移植；模型改用本地 Qwen2.5-3B-Instruct，替代论文停用的 OpenAI 接口）；
+  - `ep_selfcheck.py`（真机自检：只读项 + `--motion` 动作项含安全确认）；
+  - `week1.py`（一条命令跑完全部指标并输出对照表）。
+- 数据获取踩坑与对策（全部写进 REPRO.md 待补）：
+  - GitHub/COCO/NYU 直连或代理均不稳（502/超时/限速），改为 代理 + hf-mirror + ModelScope 多源并行；
+  - 自写多线程分块下载器 `scripts/fast_download.py`（块内重试+续传，全部完整才合并）；
+  - 模型权重：Depth Anything V2-S（HF 格式）✅，Grounding DINO Swin-T 与 Qwen2.5-3B 下载中；
+  - NYU-D / COCO val 均在后台续传。
+- 文档：`docs/week1_report.md`（进度报告草稿）、REPRO.md 术语表 11 条、`docs/ep_repair.md` 日期修正。
+- 待机器人上线：`ep_selfcheck.py --motion` 与 EP 实拍 10 张图（视频流 macOS 不可用，先试 RTMP）。

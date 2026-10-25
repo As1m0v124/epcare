@@ -22,8 +22,8 @@
 
 ## 当前进度（阶段 1 · 复现，10/18–11/10）
 
-- ✅ 2026-10-20 EP 机械臂「1 号舵机过载」故障修复完毕，真机连接测试通过（详见 [docs/ep_repair.md](docs/ep_repair.md)）
-- ✅ 2026-10-20 Mac (Apple Silicon) 开发环境搭建完成，SDK 的 macOS 适配脚本入库
+- ✅ 2026-10-25 EP 机械臂「1 号舵机过载」故障修复完毕，真机连接测试通过（详见 [docs/ep_repair.md](docs/ep_repair.md)）
+- ✅ 2026-10-25 Mac (Apple Silicon) 开发环境搭建完成，SDK 的 macOS 适配脚本入库
 - ⏳ F1 / F2 / F3 论文复现进行中（NYU-D、COCO、TidyBot 基准）
 - ⏳ 仿真环境（CoppeliaSim 4.10 + robomaster_sim）与网页系统骨架
 
