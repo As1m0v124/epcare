@@ -34,8 +34,11 @@ from transformers import AutoImageProcessor, AutoModelForDepthEstimation
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(HERE, "data", "NYUv2")
 MODEL_ID = "depth-anything/Depth-Anything-V2-Small-hf"
-H, W = 480, 640
+H, W = 480, 640  # 原始方向（mat 中以转置形式存储，读取时还原）
 INPUT = 518
+# Eigen 测试集标准裁剪（原始 480x640 方向）
+CROP_R = slice(45, 471)
+CROP_C = slice(41, 601)
 
 
 def load_nyu_test_indices():
@@ -88,10 +91,10 @@ def main():
 
     def get_pair(i):
         img = images_ds[i]
-        if img.shape[0] == 3 and img.shape[-1] != 3:
-            img = np.transpose(img, (1, 2, 0))
-        gt = depths_ds[i][:]
-        return np.ascontiguousarray(img), gt
+        if img.shape[0] == 3:  # 存储为 (3, 640, 480) 的转置形式：还原成原始方向
+            img = np.transpose(img, (2, 1, 0))  # -> (480, 640, 3)
+        gt = depths_ds[i][:].T  # (640, 480) -> (480, 640)
+        return np.ascontiguousarray(img), np.ascontiguousarray(gt)
 
     def predict(img_arr):
         pil = Image.fromarray(img_arr).resize((INPUT, INPUT), Image.BILINEAR)
@@ -109,7 +112,8 @@ def main():
         img, gt = get_pair(i)
         pred = predict(img)
         for sign in (1, -1):
-            m = metrics(align_scale_shift(pred, gt, sign), gt)
+            gc = gt[CROP_R, CROP_C]
+            m = metrics(align_scale_shift(pred[CROP_R, CROP_C], gc, sign), gc)
             if m:
                 score[sign] += m[0]
     sign = min(score, key=score.get)
@@ -120,7 +124,8 @@ def main():
     for k, i in enumerate(idx):
         img, gt = get_pair(i)
         pred = predict(img)
-        m = metrics(align_scale_shift(pred, gt, sign), gt)
+        gc = gt[CROP_R, CROP_C]
+        m = metrics(align_scale_shift(pred[CROP_R, CROP_C], gc, sign), gc)
         if m is None:
             continue
         abs_rels.append(m[0]); d1s.append(m[1])

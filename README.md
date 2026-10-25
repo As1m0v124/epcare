@@ -24,10 +24,16 @@
 
 - ✅ 2026-10-25 EP 机械臂「1 号舵机过载」故障修复完毕，真机连接测试通过（详见 [docs/ep_repair.md](docs/ep_repair.md)）
 - ✅ 2026-10-25 Mac (Apple Silicon) 开发环境搭建完成，SDK 的 macOS 适配脚本入库
-- ⏳ F1 / F2 / F3 论文复现进行中（NYU-D、COCO、TidyBot 基准）
-- ⏳ 仿真环境（CoppeliaSim 4.10 + robomaster_sim）与网页系统骨架
+- ✅ 2026-10-25 三项复现首轮出数：F1 AbsRel 0.0624 / δ1 0.954（论文 0.053 / 0.973）；F2 AP 43.4（论文 48.4，前 500 张）；F3 46.7% / 63.0%（论文 78.5% / 91.2%，本地小模型）——详见 [docs/week1_report.md](docs/week1_report.md)
+- ⏳ 真机动作自检（`ep_selfcheck.py`）与 EP 实拍照片待机器人上线；仿真环境第 2 周在台式机补
 
-每日进展记录在 [docs/worklog.md](docs/worklog.md)。
+每日进展记录在 [docs/worklog.md](docs/worklog.md)，错例分析见 [docs/f1_error_analysis.md](docs/f1_error_analysis.md)。
+
+## 复算
+
+```bash
+ai312/bin/python week1.py    # 一条命令跑完第 1 周全部指标（详见 REPRO.md）
+```
 
 ## 快速开始（Mac / Apple Silicon）
 

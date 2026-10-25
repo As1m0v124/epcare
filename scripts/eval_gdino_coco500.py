@@ -97,7 +97,7 @@ def main():
             outputs = model(**inputs)
         res = proc.post_process_grounded_object_detection(
             outputs, inputs.input_ids,
-            box_threshold=args.box_thresh, text_threshold=args.text_thresh,
+            threshold=args.box_thresh, text_threshold=args.text_thresh,
             target_sizes=[img.size[::-1]],
         )[0]
         for box, score, label in zip(res["boxes"], res["scores"], res["labels"]):
@@ -130,7 +130,7 @@ def main():
     summary = {
         "feature": "F2", "model": MODEL_ID, "dataset": f"COCO val2017 first {args.limit}",
         "n_images": len(images),
-        "AP": round(float(stats[0]), 2), "AP50": round(float(stats[1]), 2),
+        "AP": round(float(stats[0]) * 100, 1), "AP50": round(float(stats[1]) * 100, 1),
         "paper_AP": 48.4,
         "impl": "HF transformers GroundingDINO (official CUDA ops unavailable on Mac)",
         "box_thresh": args.box_thresh, "text_thresh": args.text_thresh, "device": device,

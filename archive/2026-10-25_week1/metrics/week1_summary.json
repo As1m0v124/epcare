@@ -1,0 +1,47 @@
+{
+  "f1": {
+    "feature": "F1",
+    "model": "depth-anything/Depth-Anything-V2-Small-hf",
+    "dataset": "NYU-D Eigen test",
+    "n": 654,
+    "abs_rel": 0.0624,
+    "delta1": 0.9542,
+    "paper": {
+      "abs_rel": 0.053,
+      "delta1": 0.973
+    },
+    "depth_sign": 1,
+    "device": "mps",
+    "protocol": "MiDaS scale+shift alignment in disparity space; valid GT in (0,10m)",
+    "elapsed_sec": 34.0
+  },
+  "f2": {
+    "feature": "F2",
+    "model": "IDEA-Research/grounding-dino-tiny",
+    "dataset": "COCO val2017 first 500",
+    "n_images": 500,
+    "AP": 43.4,
+    "AP50": 56.2,
+    "paper_AP": 48.4,
+    "impl": "HF transformers GroundingDINO (official CUDA ops unavailable on Mac)",
+    "box_thresh": 0.3,
+    "text_thresh": 0.25,
+    "device": "mps",
+    "n_detections": 5126,
+    "elapsed_sec": 353.3
+  },
+  "f3": {
+    "feature": "F3",
+    "benchmark": "TidyBot preference (first 20 scenarios)",
+    "model": "qwen2.5-3b",
+    "provider": "local transformers (paper used OpenAI Completion)",
+    "examples_only_acc": 46.7,
+    "summarization_acc": 63.0,
+    "paper": {
+      "examples_only": 78.5,
+      "summarization": 91.2
+    },
+    "n_scenarios": 20,
+    "elapsed_sec": 488.2
+  }
+}

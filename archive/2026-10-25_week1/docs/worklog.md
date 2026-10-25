@@ -1,0 +1,112 @@
+# 开发日志（Worklog）
+
+> 规则：每天更新；记录「做了什么 / 指标数字 / 问题与解决 / 明日计划」。
+> 错题本（LESSONS.md）另记出现次数，同一条教训在 3 个不同日子出现升级为硬规则。
+
+---
+
+## 2026-10-25（周日）｜环境日 + 真机连通日 + 复现启动
+
+**本周目标**：修复 EP 机械臂 → 跑通真机连接 → 搭好双环境 → 启动 F1/F2/F3 复现。
+**今日投入**：约 1 天。
+
+### ✅ 完成了什么
+
+1. **EP 机械臂「1 号舵机过载」故障修复完毕**（第 1 周头等任务）。排查与修复记录见 [docs/ep_repair.md](ep_repair.md)。
+2. **GitHub 仓库建立并推送**：[As1m0v124/epcare](https://github.com/As1m0v124/epcare)，今日工作分 4 个逻辑提交入库；git 推送走本地代理（127.0.0.1:7897，直连 GitHub 超时）。
+2. **真机连接测试通过**（修复后首次验证）：
+   - 连接方式：路由器组网（手机热点当路由器），Mac 与 EP 同网，Mac 不断外网；
+   - 固件版本 **01.01.1150**，机器人 SN **3JKCK2R00304Q7**，电量 **84%**；
+   - 连接脚本 `conn_test.py` 入库：支持 STA 扫码首次组网（SDK 自带 ConnectionHelper 生成二维码，机器人相机扫码入网）与 `--skip-qrcode` 快速重连，自动读版本/SN/电量。
+3. **开发环境搭建完成**（Mac mini, Apple M6, 16GB）：
+   - `uv` 建 `ep38`（Python 3.8，机器人控制）/ `ai312`（Python 3.12，AI 模型）双环境；
+   - ai312 已装 PyTorch + Transformers，**MPS 显卡加速验证可用**；
+   - robomaster SDK 官方无 macOS 包 → 写了 `scripts/install_robomaster_mac.sh` 拆包安装并打补丁，一条命令可复现。
+
+### 🔧 解决的问题（3 个，含根因）
+
+| 问题 | 根因 | 解法 |
+|---|---|---|
+| `uv pip install robomaster` 报「无匹配平台的 wheel」 | DJI 官方只发布 Linux/Windows wheel；包内唯一编译模块是 Linux x86_64 视频解码器 libmedia_codec（闭源） | 拆开 manylinux wheel，把纯 Python 部分装进 ep38，对 `media.py` 两处 import 打容错补丁；依赖 4 个纯 Python 包单独装（netifaces 源码编译约 10 分钟） |
+| SDK `initialize()` 直接崩溃，控制全不可用 | 初始化相机模块时**急切创建**视频解码器，而 macOS 上 libmedia_codec 不存在 | 解码器改为按需创建；`start_video_stream/start_audio_stream` 在无解码器时明确报错返回，不再拖垮连接 |
+| 命令行传参连不上机器人（内联脚本却能连） | SDK 用 `is`（对象身份）比较连接类型；从命令行传入的 `'sta'` 与内部常量不是同一字符串对象，三个分支全部落空 | `conn.py` 三处 `is` 改为 `==`（SDK bug，上游可报告） |
+
+另发现：EP 电量为**订阅推送式**接口（非一问一答），需 `sub_battery_info(freq=1, callback=...)` 订阅后延时读取。
+
+### ⚠️ 已知限制与对策
+
+- 官方 SDK 的 `camera.start_video_stream` 在 macOS 永远不可用（解码器闭源无法编译）。对策：① 试验 RTMP 拉流（直连模式 `rtmp://192.168.2.1/live`，待验证）；② 机器人控制服务放 Windows 台式机（SDK 原生支持），与 Mac 后端走 HTTP/WebSocket——符合系统架构设计。
+- 实用技巧：机器人换网后不知道 IP 时，扫局域网 **TCP 40923** 端口即可定位。
+
+### 📊 指标
+
+复现未开始，暂无评测数字。（对照目标：F1 AbsRel 0.053 / δ1 0.973；F2 COCO 零样本 AP 48.4；F3 TidyBot 78.5% / 91.2%）
+
+### 📌 明日计划
+
+1. 百度网盘下载数据与权重（NYU-D、DA-2K、COCO val2017、RefCOCO、模型权重），SHA256 校验；
+2. F1：Depth Anything V2-S 在 NYU-D 654 张测试图上复算 AbsRel / δ1；
+3. 编写 `ep_selfcheck.py` 动作部分（底盘 0.3m、机械爪开合、机械臂小范围），现场安全确认后执行；
+4. 开始每日提交（今日已建仓，从明天起保持「每天至少 1 次有意义提交」）。
+
+### 🌙 10-25 下午追加（复现工程启动）
+
+- 写完三个评测脚本 + `week1.py` 一键汇总 + 训练数据转换/多线程下载工具：
+  - `scripts/eval_depth_nyu.py`（NYU-D Eigen 654 张，MiDaS 口径尺度+偏移对齐，深度方向自动校准）；
+  - `scripts/eval_gdino_coco500.py`（COCO val2017 前 500 张，pycocotools 官方 AP）；
+  - `scripts/eval_tidybot.py`（TidyBot 官方提示词逐字移植；模型改用本地 Qwen2.5-3B-Instruct，替代论文停用的 OpenAI 接口）；
+  - `ep_selfcheck.py`（真机自检：只读项 + `--motion` 动作项含安全确认）；
+  - `week1.py`（一条命令跑完全部指标并输出对照表）。
+- 数据获取踩坑与对策（全部写进 REPRO.md 待补）：
+  - GitHub/COCO/NYU 直连或代理均不稳（502/超时/限速），改为 代理 + hf-mirror + ModelScope 多源并行；
+  - 自写多线程分块下载器 `scripts/fast_download.py`（块内重试+续传，全部完整才合并）；
+  - 模型权重：Depth Anything V2-S（HF 格式）✅，Grounding DINO Swin-T 与 Qwen2.5-3B 下载中；
+  - NYU-D / COCO val 均在后台续传。
+- 文档：`docs/week1_report.md`（进度报告草稿）、REPRO.md 术语表 11 条、`docs/ep_repair.md` 日期修正。
+- 待机器人上线：`ep_selfcheck.py --motion` 与 EP 实拍 10 张图（视频流 macOS 不可用，先试 RTMP）。
+
+### 🔬 10-25 17:28 真机自检首跑（录屏）
+
+- ✅ 连接/版本 01.01.1150/SN 3JKCK2R00304Q7/电量 90% —— 全部正常
+- ✅ 底盘前后左右各 0.3m 正常
+- ❌ 机械爪调用 `open().wait_for_completed()` 报错：**EP 机械爪 open/close 返回 bool（同步指令）**，不是动作对象；已改为调用后 sleep 1.2s 等待动作
+- ❌ 视频流：SDK 解码器 macOS 不可用（预期）；**RTMP 实测 EP 不提供（10.197.63.238:1935 Connection refused，两个候选地址都失败）**
+
+### 🎥 10-25 17:5x 视频流突破：直连 TCP 40921 拿裸 H.264
+
+- 读 SDK 源码发现：视频流只是普通 TCP 流（端口 40921），SDK 先发 `_stream_sdk(1)`/`_video_stream(1)`
+  两条命令开启图传，真正的解码在闭源 libmedia_codec 里；
+- 实测连上 40921 抓 5 秒：**762 个 H.264 起始码**，开头就是 SPS/PPS/IDR —— 就是标准 Annex-B 裸流；
+- 用 PyAV 直接解码成功，`ep_selfcheck.py` 已集成：**保存 10 张 640×360 实拍图**（results/selfcheck_photos/）；
+- 结论：**macOS 原生支持 EP 实时画面与拍照**，驾驶舱实时视频不需要台式机或 Docker。
+  本项从「阻塞」转为「已完成」，REPRO.md 已更新方案说明。
+
+### 📈 10-25 复现结果（第 1 周指标）| 功能 | 指标 | 复算 | 论文 | 说明 |
+|---|---|---|---|---|
+| F1 | NYU-D 654 张 AbsRel / δ1 | **0.0624 / 0.954** | 0.053 / 0.973 | 输入 518、Eigen 裁剪、尺度+偏移对齐；缺口主要来自远处动态范围压缩与镜面场景 |
+| F2 | COCO val2017 前 500 张 AP | **43.4 / AP50 56.2** | 48.4 | HF transformers 实现（官方 CUDA 算子不可用）；box 0.3 / text 0.25；达论文 90% |
+| F3 | TidyBot 20 场景：只看示例 / 先归纳再推断 | **46.7% / 63.0%** | 78.5% / 91.2% | 本地 Qwen2.5-3B 远弱于论文的 text-davinci-003；关键结论「先归纳更好」成立（+16.3pp） |
+
+**最大教训（错题本 #1，Seen 1×）**：论文指标差 2 倍时，先怀疑**数据加载**而不是模型/协议。
+NYU `.mat` 的图像与深度是转置存储（旋转+镜像），还原后 AbsRel 从 0.10+ 回到 0.062。
+**错题本 #2（Seen 1×）**：别用 `cmd | tail` 吞掉长任务的退出码，下载/评测的完整性校验要用文件大小/结果文件核对。
+**错题本 #3（Seen 1×）**：transformers 5.x 的 Grounding DINO 后处理参数由 `box_threshold` 改为 `threshold`；
+`labels` 将改为整数 id（用 `text_labels`）。
+
+### 🔧 10-25 晚：对照文档第 11 节 4–8 条自查并补齐缺口
+
+- **week1.py 补全**：之前只串 F1/F2/F3，未含照片环节 → 已加入「照片演示」步骤，
+  现在 `ai312/bin/python week1.py` 一条命令输出全部指标 + 深度图 + 检测 CSV；
+- **CSV 增加「估计距离(粗估,m)」列**：基于「FOV 120°/相机高 0.25m/地面平面」假设，
+  近处物体可得合理值（~0.6m），接近地平线的框留空（如实反映假设局限）；阶段 2 用 200 张测距图标定替换；
+- **错题本独立成文件**：`LESSONS.md`（7 条，含 Seen 次数，3 天复发升级为硬规则）；
+- **COCO 全量启动**：4952 张（HF 镜像 val 全集，比官方少 48 张）后台评测中；
+- 照片检测数以最终重跑为准（80 个；此前 85 为中间版本，差异来自阈值边界）。
+
+### ✅ 10-25 晚：真机完整自检通过（录屏归档）
+
+- `ep_selfcheck.py --motion` 全项通过：连接/版本 01.01.1150/SN/电量 54%、
+  视频流 TCP 40921 存 10 张图、底盘 0.5m×4、机械爪开合×3、
+  **前后舵机 87→122mm（+35mm）退回 87mm、上下舵机 75→93mm（+18mm）降回 73mm**；
+- 结论：机械臂修复验收通过（两个舵机独立动作与位置反馈正常），写入 `docs/ep_repair.md`；
+- 照片演示用本次最终 10 张图重生成（80 个检测，含估计距离列）。

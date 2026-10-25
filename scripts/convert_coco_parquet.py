@@ -69,7 +69,9 @@ def main():
             images.append({"id": next_img_id, "file_name": file_name,
                            "width": row["width"], "height": row["height"]})
             for bbox, cat in zip(row["objects"]["bbox"], row["objects"]["category"]):
-                cid = NAME2ID.get(cat)
+                # parquet 的 category 是 0-79 的类别索引（COCO 原序），转成官方 category id
+                name = COCO80_NAMES[int(cat)]
+                cid = NAME2ID[name]
                 if cid is None:
                     continue
                 x1, y1, x2, y2 = bbox

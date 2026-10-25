@@ -68,6 +68,16 @@ def main():
     else:
         print("[F3] ⏳ 本地模型未就绪，跳过")
 
+    # 照片演示：EP 实拍 10 张 → 深度图 + 检测 CSV（第 11 节第 7 条最后一项）
+    ph_dir = os.path.join(HERE, "results", "selfcheck_photos")
+    photos = [f for f in os.listdir(ph_dir)] if os.path.isdir(ph_dir) else []
+    photos = [f for f in photos if f.endswith(".jpg")]
+    if photos:
+        summary["photos"] = run_step("照片演示(深度+检测)", ["scripts/week1_photos_demo.py"],
+                                     "photos_demo/photos_demo.json", force)
+    else:
+        print("[照片] ⏳ 无 EP 实拍照片（先跑 ep_selfcheck.py），跳过")
+
     # 汇总对照表
     print("\n" + "=" * 62)
     print("第 1 周指标汇总（对照论文）")
@@ -83,6 +93,9 @@ def main():
     if f3:
         print(f"F3 只看示例     {f3.get('examples_only_acc')}%   论文 78.5%")
         print(f"F3 先归纳再推断 {f3.get('summarization_acc')}%   论文 91.2%")
+    ph = summary.get("photos") or {}
+    if ph:
+        print(f"照片演示       {ph.get('n_photos')} 张, 检测 {ph.get('n_detections')} 个 -> results/photos_demo/")
     print("=" * 62)
 
     json.dump(summary, open(os.path.join(RES, "week1_summary.json"), "w"),

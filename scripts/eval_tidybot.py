@@ -5,8 +5,8 @@
 
 实现说明:
   - 提示词与解析完全沿用 TidyBot 官方 benchmark（third_party/tidybot/benchmark/*.ipynb 移植）；
-  - 论文用已停用的 OpenAI Completion 接口；本机改用 Ollama 本地小模型（零成本、离线，
-    模型名与论文不同，按毕设要求写明该差异）；
+  - 论文用已停用的 OpenAI Completion 接口；本机改用 Qwen2.5-3B-Instruct 本地模型
+    （ModelScope 下载，零成本离线运行；模型与论文不同，按毕设要求写明该差异）；
   - 评分口径同官方 check_placements：未见过物品放对位置的比例。
 
 用法:
@@ -128,10 +128,10 @@ def prompt_placement_with_summary(summary, objects, receptacles):
     )
 
 
-def run_examples_only(scenarios, model):
+def run_examples_only(scenarios, llm):
     accs, rows = [], []
     for i, sc in enumerate(scenarios):
-        out = gen(placements_examples_only(sc, sc.unseen_objects), model)
+        out = llm.gen(placements_examples_only(sc, sc.unseen_objects))
         pred = benchmark.parse_placements(out, sc.unseen_objects)
         _, acc = benchmark.check_placements(pred, sc.unseen_placements)
         accs.append(acc); rows.append([i, round(acc, 2), "|".join(f"{o}->{r}" for o, r in pred)])
@@ -139,11 +139,11 @@ def run_examples_only(scenarios, model):
     return accs, rows
 
 
-def run_summarization(scenarios, model):
+def run_summarization(scenarios, llm):
     accs, rows = [], []
     for i, sc in enumerate(scenarios):
-        summ = benchmark.parse_summary(gen(prompt_summarize(sc), model))
-        out = gen(prompt_placement_with_summary(summ, sc.unseen_objects, sc.receptacles), model)
+        summ = benchmark.parse_summary(llm.gen(prompt_summarize(sc)))
+        out = llm.gen(prompt_placement_with_summary(summ, sc.unseen_objects, sc.receptacles))
         pred = benchmark.parse_placements(out, sc.unseen_objects)
         _, acc = benchmark.check_placements(pred, sc.unseen_placements)
         accs.append(acc); rows.append([i, round(acc, 2), summ, "|".join(f"{o}->{r}" for o, r in pred)])
@@ -154,20 +154,16 @@ def run_summarization(scenarios, model):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--n", type=int, default=20)
-    ap.add_argument("--model", default="qwen2.5:3b-instruct")
+    ap.add_argument("--model-path", default=os.path.join(HERE, "models", "qwen2.5-3b"))
     args = ap.parse_args()
 
-    try:
-        requests.get(f"{OLLAMA}/api/tags", timeout=5).raise_for_status()
-    except Exception:
-        sys.exit("Ollama 未运行：先执行 ollama serve（或打开 Ollama 应用）")
-
     scenarios = benchmark.load_scenarios(os.path.join(BENCH_DIR, "scenarios.yml"))[: args.n]
-    print(f"TidyBot 基准: 前 {len(scenarios)} 个场景, 模型: {args.model}")
+    print(f"TidyBot 基准: 前 {len(scenarios)} 个场景, 本地模型: {args.model_path}")
+    llm = LocalLLM(args.model_path)
 
     t0 = time.time()
-    acc_ex, rows_ex = run_examples_only(scenarios, args.model)
-    acc_sm, rows_sm = run_summarization(scenarios, args.model)
+    acc_ex, rows_ex = run_examples_only(scenarios, llm)
+    acc_sm, rows_sm = run_summarization(scenarios, llm)
     elapsed = time.time() - t0
 
     os.makedirs(os.path.join(HERE, "results"), exist_ok=True)
@@ -178,7 +174,7 @@ def main():
 
     summary = {
         "feature": "F3", "benchmark": "TidyBot preference (first %d scenarios)" % len(scenarios),
-        "model": args.model, "provider": "Ollama local (paper used OpenAI Completion)",
+        "model": os.path.basename(args.model_path), "provider": "local transformers (paper used OpenAI Completion)",
         "examples_only_acc": round(100 * sum(acc_ex) / len(acc_ex), 1),
         "summarization_acc": round(100 * sum(acc_sm) / len(acc_sm), 1),
         "paper": {"examples_only": 78.5, "summarization": 91.2},

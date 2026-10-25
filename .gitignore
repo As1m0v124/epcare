@@ -23,3 +23,15 @@ runs/
 # 下载/运行日志
 logs/
 .modelscope/
+
+# 第三方仓库（按 REPRO.md 的命令另行克隆）
+third_party/
+
+# 模型权重 / HF 缓存（体积大，不入库）
+models/
+cache/
+results/*.png
+
+# 可由脚本再生成的中间 JSON（GT/检测原始输出）
+results/coco*_gt.json
+results/coco*_dets.json

@@ -3,15 +3,18 @@
 > 目标：别人拉下本仓库，按本文档能复算出论文对照数字。持续更新。
 > 毕设要求：本文档开头写「可行性五关」，随后是术语表与本机配置。
 
-## 一、可行性五关（自评，10/20）
+## 一、可行性五关（自评，10/25 更新）
 
 | 关卡 | 自评 | 说明 |
 |---|---|---|
-| 起点 | ✅ 已过 | 系统框架（网页 + CLI + MCP）与最短路规划是熟悉领域；三个 AI 功能按「下载 → 运行 → 对比论文」推进，均有现成代码与公开权重 |
-| 数据 | 🔄 进行中 | 复现数据（NYU-D / DA-2K / COCO / RefCOCO / TidyBot 基准）来自国内网盘，待下载校验；场景数据（200 张测距图、300 张标注图、100 条指令、40 个中文场景）第 2 周起自采 |
-| 硬件 | ✅ 已过 | EP 机械臂「1 号舵机过载」已修复（见 docs/ep_repair.md），真机连接测试通过；仿真环境 CoppeliaSim 4.10 第 2 周补齐 |
-| 算力 | ✅ 已过 | Mac mini M6 跑推理评测（MPS 已验证可用）；大规模微调用 RTX 5070 台式机或 Kaggle 免费 GPU，零花费 |
-| 许可 | 🔄 进行中 | README 已列说明；各数据集/权重许可将在本文件逐个补全（NYU-D 仅限研究；DA-V2 的 B/L 权重 CC BY-NC，仅非商业研究） |
+| 起点 | ✅ 已过 | 系统框架（网页 + CLI + MCP）与最短路规划是熟悉领域；三个 AI 功能已按「下载 → 运行 → 对比论文」跑通首轮 |
+| 数据 | ✅ 已过（本周范围） | NYU-D、COCO 前 500 张、TidyBot 基准全部就位并通过校验；场景数据（EP 居家测距/标注集）第 2 周起自采 |
+| 硬件 | ✅ 已过 | EP 机械臂已修复，真机连接测试通过；`ep_selfcheck.py` 动作项待机器人上线执行（见第五节的阻塞说明）；仿真第 2 周在台式机补 |
+| 算力 | ✅ 已过 | M6 跑通 F1(654 张)/F2(500 张)/F3(20 场景)；大模型微调留待 RTX 5070 或 Kaggle |
+| 许可 | 🔄 进行中 | 已按来源记录；各数据集/权重许可将在交付前逐个补全（NYU-D 仅研究用；DA-V2 ViT-B/L 为非商业） |
+
+**首轮复算结果（10/25）**：F1 AbsRel 0.0624 / δ1 0.954（论文 0.053 / 0.973）；
+F2 AP 43.4（论文 48.4，前 500 张口径）；F3 46.7% / 63.0%（论文 78.5% / 91.2%，本地小模型）。
 
 ## 二、本机配置
 
@@ -28,21 +31,52 @@
 2. `media.py`：解码器改按需创建，无解码器时 `start_video_stream/start_audio_stream` 明确报错（否则 `initialize` 即崩）；
 3. `conn.py`：连接类型比较 `is` → `==`（命令行传入的字符串与内部常量非同一对象，导致 STA 连接三分支落空）。
 
-### 已知平台限制
+### 视频流：macOS 原生方案（10/25 实机验证）
 
-官方 `camera.start_video_stream` 在 macOS 不可用。备选：RTMP 拉流试验（`rtmp://192.168.2.1/live`，未证实）；或将机器人控制服务放 Windows 台式机，与后端以 HTTP/WebSocket 通信（系统架构本就如此设计）。
+官方 `camera.start_video_stream` 依赖 Linux/Windows 专用闭源解码器，macOS 上不可用；
+RTMP 也不可用（`<ip>:1935` 拒绝连接）。**但实测发现 EP 的视频端口直接推送标准 H.264**：
 
-## 三、数据与权重
+1. SDK 连接后发送开流命令：`camera._stream_sdk(1, "360p")` + `camera._video_stream(1, "360p")`
+   （SDK 内部方法，仅用于下发命令）；
+2. **TCP 直连 `<机器人IP>:40921`**，读取到的数据就是标准 H.264 Annex-B
+   （实测含 SPS/PPS/IDR 起始码，762 个起始码/5 秒）；
+3. 用 PyAV（`av.CodecContext.create("h264", "r")`）解码为帧 → OpenCV 存图/推流。
 
-来源：国内网盘（百度网盘，提取码见毕设规划 8.1⑦）；下载后用 `shasum -a 256` 对照 `SHA256SUMS` 校验。清单：
+实测结果：`ep_selfcheck.py` 通过该路径成功保存 10 张 640×360 实拍图；
+`ep38` 环境依赖 `av` + `opencv-python-headless`。该方案**取代**此前「视频流需台式机/Docker」的判断，
+驾驶舱实时画面也可以直接跑在 Mac 上。
 
-| 用途 | 内容 | 状态 |
-|---|---|---|
-| F1 | NYU Depth V2 labeled.mat (~2.8GB) + splits.mat | ☐ 待下载 |
-| F1 | DA-2K.zip (~680MB) | ☐ 待下载 |
-| F1/F2 | Depth Anything V2 ViT-S (~100MB)、Grounding DINO Swin-T (~660MB)、bert-base-uncased (~440MB) | ☐ 待下载 |
-| F2 | COCO val2017 图片+标注 (~1.3GB)、RefCOCO parquet | ☐ 待下载 |
-| F3 | TidyBot 仓库压缩包（benchmark/scenarios.yml，96 场景） | ☐ 待下载 |
+## 三、数据与权重（实际获取记录，2026-10-25）
+
+直连 GitHub / COCO / NYU 官方服务器在本地网络下不可用（超时/502），最终多源并行获取，
+全部脚本化（`scripts/fast_download.py`，多线程分块+断点续传）：
+
+| 用途 | 内容 | 实际来源 | 状态 |
+|---|---|---|---|
+| F1 | NYU Depth V2 `nyu_depth_v2_labeled.mat`（2.97GB）+ `splits.mat`（B64 镜像） | horatio.cs.nyu.edu（https，多线程） | ✅ 已校验大小 |
+| F1 | Depth Anything V2 ViT-S | 官方 `.pth`（hf-mirror，18MB/s）+ HF format 权重（transformers 缓存） | ✅ |
+| F2 | COCO val2017 图片 | `detection-datasets/coco` val parquet（hf-mirror，807MB）→ 转换脚本还原 500 张 | ✅（B64 前 500 张） |
+| F2 | COCO 官方标注 | images.cocodataset.org `annotations_trainval2017.zip`（252MB） | ✅ 已解压校验 |
+| F2 | Grounding DINO Swin-T | `IDEA-Research/grounding-dino-tiny`（hf-mirror，689MB） | ✅ |
+| F3 | TidyBot 基准 | GitHub clone（代理） | ✅ 96 场景 |
+| F3 | 本地 LLM | Qwen2.5-3B-Instruct（ModelScope，6.2GB） | ✅ |
+
+> 注：COCO 改用 HF 数据集镜像的 val 分片（官方 zip 源站不可达），标注由 parquet 内的
+> 0–79 类别索引映射回 COCO 官方 id；与官方 val2017 前 500 张的图片顺序不同（按 parquet
+> 行序取前 500），AP 结果按此子集口径记录。
+
+## 三点五、评测口径（复算必读）
+
+- **F1**：输入 518×518（拉伸缩放）→ 输出上采样回 480×640 → **Eigen 标准裁剪**
+  （rows 45:471, cols 41:601）→ 在反深度空间做**尺度+偏移最小二乘对齐** →
+  有效像素 GT ∈ (0, 10m) → AbsRel / δ1。
+  ⚠️ **数据加载陷阱**：`nyu_depth_v2_labeled.mat` 的图像与深度均为**转置存储**
+  （图像 `(3, 640, 480)`、深度 `(640, 480)`），必须 `transpose(2,1,0)` / `.T` 还原，
+  否则模型看到的是侧翻镜像图，AbsRel 从 0.062 恶化到 0.10+。
+- **F2**：80 类名小写用 " . " 连接作为文字提示；box_threshold 0.3 / text_threshold 0.25；
+  pycocotools bbox 评测（AP@[.5:.95]）。
+- **F3**：提示词与解析逐字移植 TidyBot 官方 notebook；本地 Qwen2.5-3B-Instruct，
+  greedy 解码（可复现）；评分按官方 `check_placements`。
 
 ## 四、术语表
 
@@ -73,4 +107,17 @@
 
 ## 五、复算指引
 
-复现启动后补全：每项功能「一条命令复算」的说明与预期输出。
+在 `~/ep-project` 下（需先按第二节装好 ai312 环境与数据）：
+
+```bash
+# 一条命令跑完第 1 周全部指标（已有结果自动跳过，--force 重跑）
+ai312/bin/python week1.py
+
+# 单独复算
+ai312/bin/python scripts/eval_depth_nyu.py        # F1 → results/nyu_f1.{json,csv}
+ai312/bin/python scripts/eval_gdino_coco500.py --limit 500 --ann results/coco_val_gt.json --img-dir data/coco/val2017
+ai312/bin/python scripts/eval_tidybot.py --n 20   # F3 → results/tidybot_f3.json
+```
+
+**当前阻塞项**：`ep_selfcheck.py --motion`（底盘/机械爪/机械臂动作自检）与 EP 实拍照片需要机器人上电入网；
+macOS 上 SDK 视频流不可用（见第二节），实拍计划先试 RTMP 拉流。

@@ -1,0 +1,13 @@
+{
+  "n_photos": 10,
+  "queries": [
+    "拖鞋",
+    "纸箱",
+    "椅子",
+    "水瓶",
+    "电线"
+  ],
+  "n_detections": 80,
+  "note": "相对深度未换算米制；阶段 2 用 200 张测距图做尺度标定后输出真实距离",
+  "csv": "results/photos_demo/photos_demo.csv"
+}

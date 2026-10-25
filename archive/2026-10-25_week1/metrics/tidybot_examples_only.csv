@@ -1,0 +1,21 @@
+scenario,accuracy,predictions
+0,0.5,orange->coffee table|stuffed animal->storage box|peach->storage box|Barbie doll->coffee table
+1,0.5,sweater->drawer|khakis->drawer|Rubik's cube->drawer|toy hammer->drawer
+2,0.5,napkin->coffee table|paper wad->trash can|textbook->coffee table|science fiction book->trash can
+3,0.0,stone sculpture->right shelf|rock specimen->right shelf|tissue paper->left shelf|scarf->left shelf
+4,0.5,wooden color block->cabinet|toy car->shelf|teddy bear->cabinet|stuffed giraffe->shelf
+5,1.0,plastic box->left storage box|plastic bag->left storage box|galvanized pail->right storage box|knife->right storage box
+6,0.67,stuffed sheep->sofa|toy pickup truck->storage box|The Economist magazine->coffee table|encyclopedia->sofa|toy kazoo->storage box|stuffed unicorn->coffee table
+7,0.67,tennis shoes->rack|blue jeans->sofa|body pillow->sofa|body pillow 2->sofa|hoodie->chair|sandals->chair
+8,0.67,popcorn->bowl|ziplock bag->cardboard box|produce bag->bowl|Monopoly board game->coffee table|graham crackers->bowl|toy robot->cardboard box
+9,0.17,windbreaker->drawer|RC truck->rack|remote control airplane->coffee table|The Denver Post newspaper->drawer|Newsweek magazine->drawer|rain jacket->rack
+10,0.33,floor vase->large storage box|jar->large storage box|grapes->large storage box|pineapple->large storage box|keychain->cabinet|toaster oven->cabinet
+11,0.33,toy drum->large cardboard box|home movie->large cardboard box|workbook->large cardboard box|Toy Story DVD->basket|gardening book->small cardboard box|toy boat->basket
+12,0.25,yoga pants->storage box 2|stroopwafel->storage box 2|Furby->sofa|raincoat->storage box 1|toy truck->storage box 1|graphic tee->coffee table|pudding cup->sofa|long sleeve shirt->storage box 1
+13,0.5,Lego set->coffee table|mint patties->basket|ab wheel->corner|Skittles->console table|jigsaw puzzle->corner|barbell->coffee table|graphic novel->console table|business book->basket
+14,0.0,Batman action figure->ottoman|camera backpack->ottoman|scarf->shelf|makeup bag->shelf|Kleenex box->storage cabinet|tank top->sofa|soup bowl->sofa|serving bowl->sofa
+15,0.5,pumps->coffee table|rain jacket->sofa|ballet flats->mat|painting canvas->box|Bose headphones->coffee table|Sonos speakers->sofa|sketch book->mat|pea coat->box
+16,0.5,volleyball->storage rack|Scotch tape->storage box|hammer->drawer|rollerblades->storage rack|box cutter->storage box|hole punch->drawer|chess set->storage rack|Connect Four->storage box
+17,0.25,snow pants->fireplace|Tamagotchi->fireplace|orchestra trophy->top cabinet|Nerf blaster toy->bottom cabinet|all-purpose cleaner->bottom cabinet|gloves->closet|Mr Clean Magic Eraser->closet|art prize->top cabinet
+18,1.0,Go Fish card game->chest|meringue cookies->side table|North Face jacket->closet|carpet cleaner->cabinet|nuts->side table|Adidas Cloudfoam shoes->rack|biker jacket->closet|disinfectant spray->cabinet|toy golf set->chest|tennis shoes->rack
+19,0.5,wooden horse->left storage box|sweatpants->right storage box|teddy bear->chair|bathrobe->laundry basket|wooden dollhouse->right storage box|stuffed monkey->chair|Rubik's cube->coffee table|CamelBak bottle->laundry basket|Contigo bottle->coffee table|Lego car->right storage box
