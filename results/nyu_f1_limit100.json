@@ -12,6 +12,6 @@
   "depth_sign": 1,
   "device": "mps",
   "protocol": "MiDaS scale+shift alignment in disparity space; valid GT in (0,10m)",
-  "elapsed_sec": 8.8,
+  "elapsed_sec": 5.0,
   "limit": 100
 }
