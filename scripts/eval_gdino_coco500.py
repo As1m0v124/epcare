@@ -136,7 +136,8 @@ def main():
         "box_thresh": args.box_thresh, "text_thresh": args.text_thresh, "device": device,
         "n_detections": len(dets), "elapsed_sec": round(time.time() - t0, 1),
     }
-    json.dump(summary, open(os.path.join(HERE, "results", "coco_f2.json"), "w"),
+    tag = "_full" if args.limit >= 1000 else ""  # 全量与 500 张结果分开保存
+    json.dump(summary, open(os.path.join(HERE, "results", f"coco_f2{tag}.json"), "w"),
               ensure_ascii=False, indent=2)
     print(f"\n===== F2 结果 =====\nAP = {summary['AP']} (论文 48.4)  AP50 = {summary['AP50']}")
 

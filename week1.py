@@ -89,6 +89,11 @@ def main():
     f2 = summary.get("f2") or {}
     if f2:
         print(f"F2 AP       {f2.get('AP')}   论文 48.4（前 {f2.get('n_images')} 张）")
+    f2full_path = os.path.join(RES, "coco_f2_full.json")
+    if os.path.exists(f2full_path):
+        ff = json.load(open(f2full_path))
+        summary["f2_full"] = ff
+        print(f"F2 全量 AP  {ff.get('AP')}   AP50 {ff.get('AP50')}（{ff.get('n_images')} 张）")
     f3 = summary.get("f3") or {}
     if f3:
         print(f"F3 只看示例     {f3.get('examples_only_acc')}%   论文 78.5%")

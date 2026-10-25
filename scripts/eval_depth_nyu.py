@@ -134,7 +134,8 @@ def main():
             print(f"  {k+1}/{len(idx)}  AbsRel={np.mean(abs_rels):.4f}  d1={np.mean(d1s):.4f}  ({time.time()-t0:.0f}s)")
 
     os.makedirs(os.path.join(HERE, "results"), exist_ok=True)
-    csv_path = os.path.join(HERE, "results", "nyu_f1.csv")
+    tag = f"_limit{args.limit}" if args.limit else ""  # 子集演示不覆盖全量结果
+    csv_path = os.path.join(HERE, "results", f"nyu_f1{tag}.csv")
     with open(csv_path, "w", newline="") as f:
         w = csv.writer(f); w.writerow(["mat_index", "abs_rel", "delta1"]); w.writerows(rows)
 
@@ -147,8 +148,9 @@ def main():
         "depth_sign": sign, "device": args.device,
         "protocol": "MiDaS scale+shift alignment in disparity space; valid GT in (0,10m)",
         "elapsed_sec": round(time.time() - t0, 1),
+        "limit": args.limit,
     }
-    with open(os.path.join(HERE, "results", "nyu_f1.json"), "w") as f:
+    with open(os.path.join(HERE, "results", f"nyu_f1{tag}.json"), "w") as f:
         json.dump(summary, f, ensure_ascii=False, indent=2)
     print("\n===== F1 结果 =====")
     print(f"AbsRel = {summary['abs_rel']} (论文 0.053)")

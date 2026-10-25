@@ -1,0 +1,13 @@
+{
+  "feature": "F2",
+  "model": "IDEA-Research/grounding-dino-tiny",
+  "AP": 40.8,
+  "AP50": 53.8,
+  "n_images": 4952,
+  "paper_AP": 48.4,
+  "impl": "HF transformers GroundingDINO (official CUDA ops unavailable on Mac)",
+  "box_thresh": 0.3,
+  "text_thresh": 0.25,
+  "device": "mps",
+  "dataset": "COCO val2017 all 4952 (HF mirror val split)"
+}

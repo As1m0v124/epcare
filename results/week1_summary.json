@@ -18,17 +18,15 @@
   "f2": {
     "feature": "F2",
     "model": "IDEA-Research/grounding-dino-tiny",
-    "dataset": "COCO val2017 first 500",
-    "n_images": 500,
     "AP": 43.4,
     "AP50": 56.2,
+    "n_images": 500,
     "paper_AP": 48.4,
     "impl": "HF transformers GroundingDINO (official CUDA ops unavailable on Mac)",
     "box_thresh": 0.3,
     "text_thresh": 0.25,
     "device": "mps",
-    "n_detections": 5126,
-    "elapsed_sec": 353.3
+    "dataset": "COCO val2017 first 500"
   },
   "f3": {
     "feature": "F3",
@@ -56,5 +54,18 @@
     "n_detections": 80,
     "note": "相对深度未换算米制；阶段 2 用 200 张测距图做尺度标定后输出真实距离",
     "csv": "results/photos_demo/photos_demo.csv"
+  },
+  "f2_full": {
+    "feature": "F2",
+    "model": "IDEA-Research/grounding-dino-tiny",
+    "AP": 40.8,
+    "AP50": 53.8,
+    "n_images": 4952,
+    "paper_AP": 48.4,
+    "impl": "HF transformers GroundingDINO (official CUDA ops unavailable on Mac)",
+    "box_thresh": 0.3,
+    "text_thresh": 0.25,
+    "device": "mps",
+    "dataset": "COCO val2017 all 4952 (HF mirror val split)"
   }
 }
