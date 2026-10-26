@@ -373,7 +373,7 @@ async function loadEval(){
   const f3=ev['F3 TidyBot(20)'];if(f3)rows.push(['F3 收纳归纳','两类准确率(20 场景)',`${f3.examples_only_acc}% / ${f3.summarization_acc}%`,'78.5% / 91.2%']);
   const f396=ev['F3 TidyBot(96)'];if(f396)rows.push(['F3 收纳归纳','两类准确率(96 场景)',`${f396.examples_only_acc}% / ${f396.summarization_acc}%`,'78.5% / 91.2%']);
   const da=ev['F1 DA-2K'];if(da)rows.push(['F1 单目深度','DA-2K 点对准确率',da.accuracy,'95.3%']);
-  const rc=ev['F2 RefCOCO'];if(rc)rows.push(['F2 开放词汇','RefCOCO Top-1',JSON.stringify(rc.accuracy||{}),'50.4/57.2/43.2']);
+  const rc=ev['F2 RefCOCO'];if(rc&&rc.results){Object.entries(rc.results).forEach(([sp,r])=>{rows.push(['F2 指代定位','RefCOCO '+sp+' Top-1',r.accuracy+'%（'+r.n_refs+' 条）','论文 '+r.paper_accuracy+'%']);});}
   $('#evalTable tbody').innerHTML=rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')||'<tr><td colspan="4">暂无结果</td></tr>';
 }
 async function loadDevice(){
