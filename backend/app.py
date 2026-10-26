@@ -445,6 +445,7 @@ def eval_results(request: Request):
         "coco_f2_full.json": "F2 COCO(全量)",
         "tidybot_f3.json": "F3 TidyBot(20)",
         "tidybot_f3_96.json": "F3 TidyBot(96)",
+        "tidybot_f3_40_zh.json": "F3 中文场景(40)",
         "da2k.json": "F1 DA-2K",
         "refcoco.json": "F2 RefCOCO",
     }

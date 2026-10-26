@@ -372,6 +372,7 @@ async function loadEval(){
   const f2f=ev['F2 COCO(全量)'];if(f2f)rows.push(['F2 开放词汇','AP(全量 '+f2f.n_images+' 张)',f2f.AP,'48.4']);
   const f3=ev['F3 TidyBot(20)'];if(f3)rows.push(['F3 收纳归纳','两类准确率(20 场景)',`${f3.examples_only_acc}% / ${f3.summarization_acc}%`,'78.5% / 91.2%']);
   const f396=ev['F3 TidyBot(96)'];if(f396)rows.push(['F3 收纳归纳','两类准确率(96 场景)',`${f396.examples_only_acc}% / ${f396.summarization_acc}%`,'78.5% / 91.2%']);
+  const f3zh=ev['F3 中文场景(40)'];if(f3zh)rows.push(['F3 收纳归纳','两类准确率(中文 40 场景)',`${f3zh.examples_only_acc}% / ${f3zh.summarization_acc}%`,'论文 78.5% / 91.2%（自建场景，偏简单）']);
   const da=ev['F1 DA-2K'];if(da)rows.push(['F1 单目深度','DA-2K 点对准确率',da.accuracy,'95.3%']);
   const rc=ev['F2 RefCOCO'];if(rc&&rc.results){Object.entries(rc.results).forEach(([sp,r])=>{rows.push(['F2 指代定位','RefCOCO '+sp+' Top-1',r.accuracy+'%（'+r.n_refs+' 条）','论文 '+r.paper_accuracy+'%']);});}
   $('#evalTable tbody').innerHTML=rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')||'<tr><td colspan="4">暂无结果</td></tr>';

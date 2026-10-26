@@ -1,0 +1,41 @@
+scenario,accuracy,summary,predictions
+0,1.0,Put medicine on the bedhead cabinet and other items on the coffee table.,血糖仪->床头柜|眼药水->床头柜|空调遥控器->茶几
+1,0.67,"Put slippers and sports shoes in the shoe cabinet, and gloves and scarves on the door hook.",雨靴->鞋柜|皮手套->门口挂架|帽子->鞋柜|雨靴->门口挂架
+2,1.0,Put medicine in the medicine box and shoes in the shoe cabinet.,止痛片->药箱|棉签->药箱|凉鞋->鞋柜
+3,1.0,Put hot drink containers on the kitchen counter and other items on the coffee table.,茶壶->厨房台面|水壶->厨房台面|杂志->茶几
+4,1.0,Put electronic devices on the desk and books on the bookshelf.,充电宝->书桌|电子阅读器->书桌|挂历->书架
+5,1.0,"Put white socks and black socks in the dirty laundry basket, and put the shirt and coat in the closet.",棉袜->脏衣篮|毛衣->衣柜|羽绒服->衣柜
+6,1.0,Put condiments in the cabinet and dishes in the drawer.,胡椒粉->橱柜|醋瓶->橱柜|汤碗->碗柜
+7,1.0,Put toiletries on the bathroom shelf and towels on the towel hook.,肥皂->卫生间架子|沐浴露->卫生间架子|擦手巾->毛巾钩
+8,1.0,Put tools in the tool box and batteries in the drawer.,锤子->工具箱|钳子->工具箱|充电电池->抽屉
+9,1.0,Put snacks in the snack cabinet and fruits in the fridge.,薯片->零食柜|果冻->零食柜|葡萄->冰箱
+10,1.0,Put medicine on the bedhead cabinet and other items in the drawer.,速效救心丸->床头柜|体温计->床头柜|耳勺->抽屉
+11,1.0,Put TV and AC remotes on the tea table and phone and tablet on the desk.,风扇遥控器->茶几|备用手机->书桌|电子书->书桌
+12,1.0,Put hats on the door hook and umbrellas on the umbrella stand.,毛线帽->门口挂架|丝巾->门口挂架|雨衣->伞架
+13,1.0,"Put glass and ceramic cups on the dining cabinet, and vitamins and painkillers in the medicine box.",马克杯->餐边柜|保温杯->餐边柜|感冒冲剂->药箱
+14,1.0,Put books on the bookshelf and writing utensils in the pen holder.,散文集->书架|报纸->书架|马克笔->笔筒
+15,1.0,Put bath towels on the towel hook and other items in the bathroom cabinet.,沙滩巾->毛巾钩|擦手巾->毛巾钩|牙膏->卫生间架子
+16,1.0,"Put slippers in the shoe cabinet, socks, underwear, and pajamas in the drawer.",棉拖鞋->鞋柜|短袜->抽屉|秋衣->抽屉
+17,1.0,Put kitchen tools on the kitchen counter and medicine on the medicine box.,锅铲->厨房台面|漏勺->厨房台面|退烧药->药箱
+18,1.0,Put toys in the toybox and books on the bookshelf.,拼图->玩具箱|毛绒熊->玩具箱|漫画书->书架
+19,1.0,Put cleaning tools on the cabinet and cleaning supplies in the washing machine.,簸箕->阳台柜|抹布->阳台柜|消毒液->洗衣机旁
+20,1.0,"Put ID card and medical insurance card in the drawer, and keys for home and car on the door hook.",银行卡->抽屉|户口本->抽屉|车棚钥匙->门口挂架|家门钥匙->门口挂架
+21,1.0,Put the tea utensils on the tea tray and the alcoholic beverages on the sideboard.,盖碗->茶盘|茶滤->茶盘|黄酒->餐边柜
+22,1.0,Put winter clothes in the storage box and summer clothes in the wardrobe.,棉被->储物箱|围巾->储物箱|T恤->衣柜
+23,1.0,"Put toothbrush and tooth cup in the bathroom shelf, and put bath slippers and plastic slippers on the shoe rack.",牙线->卫生间架子|牙签->卫生间架子|洞洞鞋->鞋架|塑料拖鞋->鞋架
+24,1.0,Put dry ingredients in the storage cabinet and dishes in the cabinet.,面粉->储物柜|小米->储物柜|盘子->碗柜
+25,1.0,Put electronic devices on the tea table and medicine on the medicine box.,备用遥控器->茶几|太阳镜->茶几|硝酸甘油->药箱
+26,1.0,Put toys in the toy box and children's clothes in the wardrobe.,遥控汽车->玩具箱|拼图->玩具箱|儿童毛衣->衣柜
+27,1.0,"Put laundry detergent and laundry liquid in the washing machine, and hangers and clips on the balcony cabinet.",消毒液->洗衣机旁|柔顺剂->洗衣机旁|晾衣杆->阳台柜
+28,0.67,"Put medicine on the bedhead cabinet, calcium tablets on the bedhead cabinet, glasses for old eyes on the bedhead cabinet, and slippers on the shoe cabinet.",安眠药->床头柜|钙片->床头柜|老花镜->床头柜|棉鞋->鞋柜
+29,1.0,Put writing utensils in the pen holder and stationary items on the bookshelf.,荧光笔->笔筒|修正带->笔筒|明信片->书架
+30,1.0,Put cooking appliances on the kitchen counter and utensils in the cabinet.,微波炉->厨房台面|豆浆机->厨房台面|叉子->碗柜
+31,1.0,Put medical supplies in the medicine cabinet and cleaning products in the bathroom shelf.,创可贴->药箱|棉球->药箱|清洁剂->卫生间架子
+32,1.0,Put snacks on the tea table and drinks on the side cabinet.,核桃->茶几|开心果->茶几|花茶->餐边柜
+33,1.0,"Put hangers and rods on the cabinet, and detergent and bleach on the washing machine.",晒衣网->阳台柜|夹子->阳台柜|洗衣皂->洗衣机旁
+34,1.0,"Put shoes in the shoe cabinet, keys at the door, and umbrella on the umbrella stand.",凉鞋->鞋柜|车钥匙->门口挂架|长柄伞->伞架
+35,1.0,Put clean bedding in the wardrobe and dirty laundry in the dirty laundry basket.,枕套->衣柜|毯子->衣柜|脏裤子->脏衣篮
+36,1.0,Put reading materials on the bookshelf and cushions on the sofa.,杂志->书架|画册->书架|毯子->沙发
+37,1.0,"Put tools like a pair of scissors and a small shovel in the cabinet, and put pots and watering cans on the shelf.",修枝剪->阳台柜|手套->阳台柜|陶盆->阳台架子
+38,1.0,Put medicine in the medicine box and medical devices on the bedside table.,胃药->药箱|止痛药->药箱|体温计->床头柜
+39,1.0,Put electronic accessories on the bookshelf and glasses on the coffee table.,无线充电板->书桌|数据线->书桌|太阳镜->茶几

@@ -1,0 +1,14 @@
+{
+  "feature": "F3",
+  "benchmark": "TidyBot preference (first 40 scenarios)",
+  "model": "qwen2.5-3b",
+  "provider": "local transformers (paper used OpenAI Completion)",
+  "examples_only_acc": 88.3,
+  "summarization_acc": 98.3,
+  "paper": {
+    "examples_only": 78.5,
+    "summarization": 91.2
+  },
+  "n_scenarios": 40,
+  "elapsed_sec": 835.6
+}
