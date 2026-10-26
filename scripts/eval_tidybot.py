@@ -167,9 +167,9 @@ def main():
     elapsed = time.time() - t0
 
     os.makedirs(os.path.join(HERE, "results"), exist_ok=True)
-    with open(os.path.join(HERE, "results", "tidybot_examples_only.csv"), "w", newline="") as f:
+    with open(os.path.join(HERE, "results", f"tidybot_examples_only{tag}.csv"), "w", newline="") as f:
         w = csv.writer(f); w.writerow(["scenario", "accuracy", "predictions"]); w.writerows(rows_ex)
-    with open(os.path.join(HERE, "results", "tidybot_summarization.csv"), "w", newline="") as f:
+    with open(os.path.join(HERE, "results", f"tidybot_summarization{tag}.csv"), "w", newline="") as f:
         w = csv.writer(f); w.writerow(["scenario", "accuracy", "summary", "predictions"]); w.writerows(rows_sm)
 
     summary = {
@@ -180,7 +180,8 @@ def main():
         "paper": {"examples_only": 78.5, "summarization": 91.2},
         "n_scenarios": len(scenarios), "elapsed_sec": round(elapsed, 1),
     }
-    json.dump(summary, open(os.path.join(HERE, "results", "tidybot_f3.json"), "w"),
+    tag = "" if args.n == 20 else f"_{args.n}"
+    json.dump(summary, open(os.path.join(HERE, "results", f"tidybot_f3{tag}.json"), "w"),
               ensure_ascii=False, indent=2)
     print(f"\n===== F3 结果（{len(scenarios)} 个场景）=====")
     print(f"只看示例     : {summary['examples_only_acc']}%  (论文 78.5%)")

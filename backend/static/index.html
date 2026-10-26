@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EPCare · 居家地面巡检整理机器人</title>
+<style>
+:root{--bg:#0b1220;--panel:#121c30;--panel2:#182545;--line:#24365c;--text:#e7eefc;--muted:#8ea3c7;--acc:#4da3ff;--ok:#2ecc8f;--warn:#f2b53c;--bad:#ff5c6c}
+*{box-sizing:border-box}
+body{margin:0;font:14px/1.5 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text)}
+#login{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:radial-gradient(1200px 600px at 20% 10%,#12203c,#0b1220 60%)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px}
+#login .card{width:340px}
+h1{font-size:18px;margin:0 0 4px}
+h2{font-size:16px;margin:0 0 10px}
+h3{font-size:14px;margin:14px 0 6px;color:var(--muted);font-weight:600}
+input,textarea,select,button{font:inherit;color:var(--text);background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:8px 10px}
+button{cursor:pointer}button:hover{border-color:var(--acc)}
+.btn-acc{background:#1d4ed8;border-color:#1d4ed8}.btn-acc:hover{background:#2563eb}
+.btn-bad{background:#a3182a;border-color:#a3182a}.btn-bad:hover{background:#c31f36}
+.btn-ok{background:#0f6b4a;border-color:#0f6b4a}
+#app{display:none;min-height:100vh}
+header{display:flex;align-items:center;justify-content:space-between;padding:10px 18px;border-bottom:1px solid var(--line);background:#0e1830;position:sticky;top:0;z-index:5}
+.layout{display:grid;grid-template-columns:190px 1fr 300px;gap:14px;padding:14px}
+nav{display:flex;flex-direction:column;gap:4px}
+nav a{padding:8px 10px;border-radius:8px;color:var(--muted);text-decoration:none;cursor:pointer}
+nav a.on,nav a:hover{background:var(--panel2);color:var(--text)}
+main{min-height:70vh}
+.chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;background:var(--panel2);border:1px solid var(--line);margin:2px 4px 2px 0;color:var(--muted)}
+.chip.ok{color:#9ff0cd;border-color:#145c45}.chip.bad{color:#ffb3bb;border-color:#6b1f2b}.chip.warn{color:#ffe0a3;border-color:#6b5117}
+.grid{display:grid;gap:12px}
+.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px}
+.small{font-size:12px;color:var(--muted)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{text-align:left;padding:6px;border-bottom:1px solid var(--line)}
+th{color:var(--muted);font-weight:600}
+.view{display:none}.view.on{display:block}
+#frameWrap{position:relative;background:#000;border-radius:10px;overflow:hidden;border:1px solid var(--line)}
+#frame{width:100%;display:block;image-rendering:auto}
+#overlay{position:absolute;inset:0;width:100%;height:100%}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:8px 0}
+.big{font-size:22px;font-weight:700}
+.kbd{font:12px monospace;background:#0a1428;border:1px solid var(--line);padding:1px 5px;border-radius:4px}
+#assistLog{height:220px;overflow:auto;background:#0a1428;border:1px solid var(--line);border-radius:8px;padding:8px;margin-bottom:8px}
+.msg{margin:4px 0;padding:6px 8px;border-radius:8px;background:var(--panel2);white-space:pre-wrap}
+.msg.me{background:#16305c}
+#toast{position:fixed;right:16px;bottom:16px;background:#152a4f;border:1px solid var(--line);padding:10px 14px;border-radius:10px;display:none;z-index:20}
+</style>
+</head>
+<body>
+<div id="login"><div class="card">
+  <h1>EPCare 巡检整理机器人</h1>
+  <p class="small">RoboMaster EP · 单目深度 + 开放词汇定位 + 收纳偏好归纳</p>
+  <input id="lu" placeholder="用户名" style="width:100%;margin:6px 0">
+  <input id="lp" type="password" placeholder="密码" style="width:100%;margin:6px 0">
+  <button class="btn-acc" style="width:100%;margin-top:8px" onclick="login()">登录</button>
+  <p class="small" style="margin-top:10px">演示账号：admin/admin123 · caregiver1/care123 · family1/family123</p>
+</div></div>
+
+<div id="app">
+<header>
+  <div><b>EPCare</b> <span class="small">居家地面巡检整理机器人</span></div>
+  <div class="row" style="margin:0">
+    <span id="who" class="chip"></span>
+    <span id="robotChip" class="chip">机器人：未连接</span>
+    <button class="btn-bad" onclick="estop()">⛔ 急停</button>
+    <button onclick="logout()">退出</button>
+  </div>
+</header>
+
+<div class="layout">
+<nav id="nav">
+  <a data-v="dashboard" class="on">📊 数据看板</a>
+  <a data-v="cockpit">🕹 实时驾驶舱</a>
+  <a data-v="patrol">🧭 巡检任务</a>
+  <a data-v="find">🔎 找东西</a>
+  <a data-v="rules">🏠 家庭收纳习惯</a>
+  <a data-v="rooms">📍 房间与地标</a>
+  <a data-v="alerts">🚨 告警中心</a>
+  <a data-v="eval">📈 评测与数据</a>
+  <a data-v="device">🔧 设备与安全</a>
+  <a data-v="audit">🧾 设置 / 审计</a>
+</nav>
+
+<main>
+  <section class="view on" id="v-dashboard">
+    <h2>数据看板</h2>
+    <div class="grid g3" id="dashCards"></div>
+    <div class="panel" style="margin-top:12px"><h3>第一周复现指标</h3><div id="dashMetrics" class="small">加载中…</div></div>
+  </section>
+
+  <section class="view" id="v-cockpit">
+    <h2>实时驾驶舱 <span class="small" id="cockpitMode"></span></h2>
+    <div class="grid g2">
+      <div>
+        <div id="frameWrap">
+          <img id="frame" src="" alt="等待画面">
+          <canvas id="overlay"></canvas>
+        </div>
+        <div class="row">
+          <button onclick="refreshFrame()">刷新画面</button>
+          <button onclick="toggleDepth()" id="depthBtn">显示深度图</button>
+          <button onclick="runDetect(false)">检测当前画面</button>
+        </div>
+        <div class="row">
+          <input id="cq" placeholder="检测：拖鞋 水瓶…" style="flex:1">
+          <button onclick="runDetect(false)">检测</button>
+        </div>
+        <p class="small">手动遥控（护理员/管理员）：<span class="kbd">W/A/S/D</span> 前后左右 0.2m，<span class="kbd">Q/E</span> 转 ±30°</p>
+      </div>
+      <div>
+        <div class="panel"><h3>机器人状态</h3><div id="stateBox" class="small">…</div></div>
+        <div class="panel" style="margin-top:12px"><h3>检测结果</h3><div id="detBox" class="small">还没有检测结果</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="view" id="v-patrol">
+    <h2>巡检任务</h2>
+    <div class="row"><select id="patrolRoom"></select><label class="small"><input type="checkbox" id="patrolRehearse"> replay 演练（仅流程，不动真机）</label><button class="btn-acc" onclick="makePatrol()">生成计划</button></div>
+    <div class="panel" id="patrolResult" class="small">还没有计划</div>
+    <h3>历史任务</h3><div class="panel"><table id="taskTable"><thead><tr><th>ID</th><th>类型</th><th>状态</th><th>创建人</th><th>时间</th></tr></thead><tbody></tbody></table></div>
+  </section>
+
+  <section class="view" id="v-find">
+    <h2>找东西</h2>
+    <div class="row"><input id="findQ" placeholder="例如：蓝色的药盒 / 水瓶" style="flex:1"><button class="btn-acc" onclick="taskFind()">开始寻找</button></div>
+    <div class="grid g2">
+      <div class="panel"><h3>结果</h3><div id="findResult" class="small">还没找过</div></div>
+      <div class="panel"><h3>截图</h3><img id="findShot" style="width:100%;border-radius:8px;display:none"></div>
+    </div>
+  </section>
+
+  <section class="view" id="v-rules">
+    <h2>家庭收纳习惯</h2>
+    <div class="grid g2">
+      <div class="panel"><h3>家属示例（每行一条：物品:位置）</h3>
+        <textarea id="ruleEx" style="width:100%;height:120px">白袜子:脏衣篮
+降压药:床头柜
+遥控器:茶几
+拖鞋:门口</textarea>
+        <div class="row"><input id="ruleHouse" placeholder="家庭名称（可选）" style="flex:1"><button class="btn-acc" onclick="induceRules()">归纳规则</button></div>
+        <div id="ruleResult" class="small">…</div>
+      </div>
+      <div class="panel"><h3>已保存的规则</h3><div id="ruleList" class="small">…</div></div>
+    </div>
+  </section>
+
+  <section class="view" id="v-rooms">
+    <h2>房间与地标</h2>
+    <div class="grid g2">
+      <div class="panel"><h3>添加房间（管理员）</h3>
+        <div class="row"><input id="roomName" placeholder="房间名" style="flex:1"><input id="roomNote" placeholder="备注" style="flex:1"><button onclick="addRoom()">添加</button></div>
+        <h3>添加地标（管理员）</h3>
+        <div class="row"><select id="lmRoom"></select><input id="lmName" placeholder="地标名" style="flex:1"><input id="lmTag" placeholder="EP 视觉标签 ID" style="flex:1"><button onclick="addLandmark()">添加</button></div>
+      </div>
+      <div class="panel"><h3>现有房间与地标</h3><div id="roomList" class="small">…</div></div>
+    </div>
+  </section>
+
+  <section class="view" id="v-alerts">
+    <h2>告警中心</h2>
+    <div class="row">
+      <select id="alertRoom"></select>
+      <select id="alertKind"><option value="cable">电线</option><option value="liquid">水渍</option><option value="big">大件</option><option value="fragile">易碎品</option><option value="other">其他</option></select>
+      <input id="alertDesc" placeholder="说明" style="flex:1"><button class="btn-bad" onclick="addAlert()">拍照告警</button>
+    </div>
+    <div class="panel"><table id="alertTable"><thead><tr><th>ID</th><th>类型</th><th>说明</th><th>状态</th><th>时间</th><th>操作</th></tr></thead><tbody></tbody></table></div>
+  </section>
+
+  <section class="view" id="v-eval">
+    <h2>评测与数据</h2>
+    <div class="panel"><table id="evalTable"><thead><tr><th>功能</th><th>指标</th><th>结果</th><th>论文</th></tr></thead><tbody></tbody></table></div>
+    <p class="small">数据来源：results/*.json（由 week1.py 等脚本生成，非前端写死）。</p>
+  </section>
+
+  <section class="view" id="v-device">
+    <h2>设备与安全</h2>
+    <div class="grid g2">
+      <div class="panel"><h3>连接</h3>
+        <div class="row"><button class="btn-acc" onclick="connectRobot('replay')">回放模式（开发）</button><button onclick="connectRobot('real')">真机（STA）</button><button onclick="disconnectRobot()">断开</button></div>
+        <div id="deviceState" class="small">…</div>
+      </div>
+      <div class="panel"><h3>安全参数（管理员）</h3>
+        <div class="row"><label class="small">限速 m/s <input id="limSpeed" type="number" step="0.1" style="width:80px"></label>
+        <label class="small">单次位移 m <input id="limMove" type="number" step="0.1" style="width:80px"></label>
+        <label class="small">机械臂 mm <input id="limArm" type="number" step="5" style="width:80px"></label>
+        <button onclick="setLimits()">保存</button></div>
+        <p class="small">急停由服务端强制：任何角色都能触发；解除仅管理员。</p>
+      </div>
+    </div>
+    <h3>控制审计（最近）</h3><div class="panel"><div id="ctrlAudit" class="small">…</div></div>
+  </section>
+
+  <section class="view" id="v-audit">
+    <h2>设置 / 审计日志</h2>
+    <div class="panel"><div id="backendAudit" class="small">…</div></div>
+  </section>
+</main>
+
+<aside class="panel" style="height:calc(100vh - 90px);display:flex;flex-direction:column">
+  <h3>侧边栏助手</h3>
+  <div id="assistLog"><div class="msg">你好，我是 EPCare 助手。可以问我：找东西 / 巡检 / 收纳规则 / 机器人状态。</div></div>
+  <div class="row" style="margin:0"><input id="assistQ" placeholder="说点什么…" style="flex:1" onkeydown="if(event.key==='Enter')askAssist()"><button onclick="askAssist()">发送</button></div>
+</aside>
+</div>
+</div>
+<div id="toast"></div>
+
+<script>
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+let ME=null, DEPTH_ON=false, FRAME_TIMER=null, STATE_TIMER=null;
+
+function toast(t){const el=$('#toast');el.textContent=t;el.style.display='block';clearTimeout(el._t);el._t=setTimeout(()=>el.style.display='none',2500)}
+async function api(path,opt={}){
+  const r = await fetch(path,{credentials:'include',headers:{'Content-Type':'application/json'},...opt});
+  if(r.status===401){showLogin();throw new Error('未登录')}
+  if(!r.ok){const t=await r.text();throw new Error(t.slice(0,300))}
+  return r.headers.get('content-type','').includes('json')?r.json():r.blob();
+}
+function showLogin(){$('#app').style.display='none';$('#login').style.display='flex';clearInterval(FRAME_TIMER);clearInterval(STATE_TIMER)}
+async function login(){
+  try{
+    await api('/api/login',{method:'POST',body:JSON.stringify({username:$('#lu').value,password:$('#lp').value})});
+    $('#login').style.display='none';$('#app').style.display='block';
+    ME = await api('/api/me'); $('#who').textContent = ME.username+' · '+ME.role;
+    nav('dashboard'); startTimers();
+  }catch(e){toast('登录失败：'+e.message)}
+}
+async function logout(){try{await api('/api/logout',{method:'POST'})}catch(e){}showLogin()}
+function nav(v){
+  if(v!=='cockpit') clearInterval(FRAME_TIMER);
+  $$('#nav a').forEach(a=>a.classList.toggle('on',a.dataset.v===v));
+  $$('.view').forEach(s=>s.classList.toggle('on',s.id==='v-'+v));
+  ({dashboard:loadDashboard,cockpit:loadCockpit,patrol:loadPatrol,find:()=>{},rules:loadRules,rooms:loadRooms,alerts:loadAlerts,eval:loadEval,device:loadDevice,audit:loadAudit}[v]||(()=>{}))();
+}
+$$('#nav a').forEach(a=>a.onclick=()=>nav(a.dataset.v));
+
+async function startTimers(){
+  clearInterval(STATE_TIMER);STATE_TIMER=setInterval(pollState,2000);pollState();
+  if($('#v-cockpit').classList.contains('on')) startFrames();
+}
+function startFrames(){clearInterval(FRAME_TIMER);FRAME_TIMER=setInterval(refreshFrame,600)}
+async function pollState(){
+  try{
+    const st=await api('/api/control/state');
+    const chip=$('#robotChip');
+    chip.textContent='机器人：'+(st.connected?`已连接(${st.mode})`:'未连接');
+    chip.className='chip '+(st.connected?'ok':'');
+    $('#stateBox').innerHTML = st.connected
+      ? `<div>模式：${st.mode} · 电量：${st.battery??'—'}% · 急停：<b>${st.estop?'开':'关'}</b></div><div>限速：${st.speed_limit} m/s · 单次位移：${st.max_move} m · 机械臂：±${st.arm_limit_mm}mm</div>
+         <div>机械臂位置：${st.arm_pos?JSON.stringify(st.arm_pos):'—'}</div>${st.last_error?`<div class="chip bad">${st.last_error}</div>`:''}`
+      : '未连接。到「设备与安全」页选择回放或真机模式。';
+    $('#cockpitMode').textContent = st.connected?`（${st.mode}）`:'';
+    if($('#v-device').classList.contains('on')) $('#deviceState').innerHTML=JSON.stringify(st,null,1);
+  }catch(e){$('#robotChip').textContent='控制服务不可用';$('#robotChip').className='chip bad'}
+}
+function refreshFrame(){
+  if(DEPTH_ON) return;
+  const img=$('#frame');
+  img.src='/api/control/frame.jpg?t='+Date.now();
+  if(DEPTH_ON){/* 深度图单独按钮查看 */}
+}
+async function toggleDepth(){
+  DEPTH_ON=!DEPTH_ON;
+  if(DEPTH_ON){
+    $('#depthBtn').textContent='返回实拍';
+    try{const b=await api('/api/depth.jpg');$('#frame').src=URL.createObjectURL(b)}catch(e){toast('深度图失败：'+e.message)}
+  }else{$('#depthBtn').textContent='显示深度图';refreshFrame()}
+}
+async function runDetect(){
+  const q=$('#cq').value.trim()||'水瓶'; 
+  try{
+    const r=await api('/api/detect',{method:'POST',body:JSON.stringify({query:q})});
+    $('#detBox').innerHTML = r.items.length
+      ? `<div class="small">提示词：${r.prompt}</div>`+r.items.map(i=>`<div>${i.label} <b>${i.score}</b> ${i.dist_m?`≈${i.dist_m}m`:'距离—'} </div>`).join('')
+      : '<div class="small">没有检测到。换个说法试试。</div>';
+    drawBoxes(r.items); toast('检测到 '+r.count+' 个');
+  }catch(e){toast('检测失败：'+e.message)}
+}
+function drawBoxes(items){
+  const img=$('#frame'), cv=$('#overlay');
+  cv.width=img.clientWidth; cv.height=img.clientHeight;
+  const ctx=cv.getContext('2d'); ctx.clearRect(0,0,cv.width,cv.height);
+  const sx=cv.width/(img.naturalWidth||640), sy=cv.height/(img.naturalHeight||360);
+  ctx.strokeStyle='#3cf07a';ctx.lineWidth=2;ctx.font='12px sans-serif';ctx.fillStyle='#3cf07a';
+  items.forEach(i=>{const[x1,y1,x2,y2]=i.box.map(Number);ctx.strokeRect(x1*sx,y1*sy,(x2-x1)*sx,(y2-y1)*sy);ctx.fillText(i.label+' '+i.score,x1*sx+2,y1*sy+12)});
+}
+async function estop(){
+  try{await api('/api/control/estop',{method:'POST'});toast('已急停')}catch(e){toast('急停失败：'+e.message)}
+  pollState();
+}
+document.addEventListener('keydown',async e=>{
+  if(!$('#v-cockpit').classList.contains('on'))return;
+  if(['w','a','s','d','q','e'].includes(e.key.toLowerCase())){
+    const mv={w:[0.2,0],s:[-0.2,0],a:[0,0.2],d:[0,-0.2],q:[0,0],e:[0,0]}[e.key.toLowerCase()];
+    const body=e.key.toLowerCase()==='q'?{x:0,y:0,z:30}:e.key.toLowerCase()==='e'?{x:0,y:0,z:-30}:{x:mv[0],y:mv[1],z:0};
+    try{await api('/api/control/move',{method:'POST',body:JSON.stringify(body)});toast('已发送移动')}catch(err){toast('移动失败：'+err.message)}
+  }
+});
+
+async function loadDashboard(){
+  try{
+    const d=await api('/api/dashboard');
+    const t=d.tasks||{};
+    $('#dashCards').innerHTML=[
+      ['机器人',d.robot?.connected?`已连接 ${d.robot.mode}`:'未连接'],
+      ['未处理告警',d.alerts_open],['累计告警',d.alerts_total],
+      ['找东西任务',t.found||0],['巡检计划',t.planned||0],['已送达(模拟)',t.finished||0]
+    ].map(([k,v])=>`<div class="panel"><div class="small">${k}</div><div class="big">${v??'—'}</div></div>`).join('');
+    const ev=await api('/api/eval'); const rows=[];
+    const f1=ev['F1 NYU-D'];if(f1)rows.push(['F1 单目深度','AbsRel / δ1',`${f1.abs_rel} / ${f1.delta1}`,'0.053 / 0.973']);
+    const f2=ev['F2 COCO(500)'];if(f2)rows.push(['F2 开放词汇','AP(500 张)',f2.AP,'48.4']);
+    const f3=ev['F3 TidyBot(20)'];if(f3)rows.push(['F3 收纳归纳','两类准确率',`${f3.examples_only_acc}% / ${f3.summarization_acc}%`,'78.5% / 91.2%']);
+    $('#dashMetrics').innerHTML='<table><tr><th>功能</th><th>指标</th><th>结果</th><th>论文</th></tr>'+rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')+'</table>';
+  }catch(e){$('#dashCards').innerHTML='<div class="panel small">加载失败：'+e.message+'</div>'}
+}
+
+async function loadCockpit(){startFrames();refreshFrame();pollState()}
+async function loadPatrol(){
+  const rooms=await api('/api/rooms');
+  const sel=$('#patrolRoom');sel.innerHTML=rooms.map(r=>`<option value="${r.id}">${r.name}</option>`).join('');
+  const tasks=await api('/api/tasks');
+  $('#taskTable tbody').innerHTML=tasks.map(t=>`<tr><td>${t.id}</td><td>${t.kind}</td><td>${t.status}</td><td>${t.created_by}</td><td>${t.created}</td></tr>`).join('');
+}
+async function makePatrol(){
+  try{
+    const room_id=+$('#patrolRoom').value;const rehears=+($('#patrolRehearse').checked);
+    const r=await api('/api/tasks/patrol',{method:'POST',body:JSON.stringify({room_id,rehearse})});
+    $('#patrolResult').innerHTML=`<div>房间：${r.room}</div><div>计划：${r.plan.join(' → ')}</div><div class="chip ${r.status==='finished'?'ok':'warn'}">${r.status}</div><div class="small">${r.note||''}</div>`;
+    loadPatrol();
+  }catch(e){toast('生成失败：'+e.message)}
+}
+async function taskFind(){
+  const q=$('#findQ').value.trim();if(!q)return toast('请输入要找的东西');
+  try{
+    const r=await api('/api/tasks/find',{method:'POST',body:JSON.stringify({query:q})});
+    $('#findResult').innerHTML=`<div>查询：${r.query}（任务 #${r.task_id}）</div>`+(r.items.length?r.items.map(i=>`<div>${i.label} · ${i.score} · ${i.dist_m?i.dist_m+'m':'距离—'}</div>`).join(''):'<div>没有找到</div>');
+    const task=await api('/api/tasks/'+r.task_id); const shot=JSON.parse(task.result).shot;
+    if(shot){$('#findShot').src='/files/'+shot;$('#findShot').style.display='block'}
+    toast(r.count?`找到 ${r.count} 个`:'没有找到');
+  }catch(e){toast('找东西失败：'+e.message)}
+}
+async function loadRules(){
+  try{const rules=await api('/api/rules');$('#ruleList').innerHTML=rules.length?rules.map(r=>`<div class="panel" style="margin-bottom:8px"><div class="small">${r.created} · ${r.household}</div><div>${r.rules_text.replace(/\n/g,'<br>')}</div></div>`).join(''):'还没有规则'}catch(e){}}
+async function induceRules(){
+  const lines=$('#ruleEx').value.split('\n').map(s=>s.trim()).filter(Boolean);
+  try{const r=await api('/api/rules',{method:'POST',body:JSON.stringify({examples:lines,household:$('#ruleHouse').value||undefined})});
+    $('#ruleResult').innerHTML=`<div class="chip">${r.model}</div><div>${r.rules.replace(/\n/g,'<br>')}</div>`;loadRules();
+  }catch(e){toast('归纳失败：'+e.message)}
+}
+async function loadRooms(){
+  const rooms=await api('/api/rooms');
+  $('#roomList').innerHTML=rooms.map(r=>`<div class="panel" style="margin-bottom:8px"><b>${r.name}</b> <span class="small">${r.note||''}</span><div class="small">${r.landmarks.map(l=>`${l.name}（${l.tag_id}）`).join(' · ')||'无地标'}</div></div>`).join('');
+  const opts=rooms.map(r=>`<option value="${r.id}">${r.name}</option>`).join('');
+  $('#lmRoom').innerHTML=opts;$('#alertRoom').innerHTML=opts;
+}
+async function addRoom(){try{await api('/api/rooms',{method:'POST',body:JSON.stringify({name:$('#roomName').value,note:$('#roomNote').value})});loadRooms();toast('已添加')}catch(e){toast('失败：'+e.message)}}
+async function addLandmark(){try{await api(`/api/rooms/${$('#lmRoom').value}/landmarks`,{method:'POST',body:JSON.stringify({name:$('#lmName').value,tag_id:$('#lmTag').value})});loadRooms();toast('已添加')}catch(e){toast('失败：'+e.message)}}
+async function loadAlerts(){
+  const rows=await api('/api/alerts');
+  $('#alertTable tbody').innerHTML=rows.map(a=>`<tr><td>${a.id}</td><td>${a.kind}</td><td>${a.description}</td><td>${a.status}</td><td>${a.created}</td><td>${a.status==='open'?`<button onclick="resolveAlert(${a.id})">标记已处理</button>`:''}</td></tr>`).join('');
+}
+async function addAlert(){try{const r=await api('/api/alerts',{method:'POST',body:JSON.stringify({room_id:+$('#alertRoom').value,kind:$('#alertKind').value,description:$('#alertDesc').value})});toast('已生成告警 #'+r.id);loadAlerts()}catch(e){toast('失败：'+e.message)}}
+async function resolveAlert(id){try{await api(`/api/alerts/${id}/resolve`,{method:'POST'});loadAlerts()}catch(e){toast('失败：'+e.message)}}
+async function loadEval(){
+  const ev=await api('/api/eval');const rows=[];
+  const f1=ev['F1 NYU-D'];if(f1)rows.push(['F1 单目深度','AbsRel / δ1',`${f1.abs_rel} / ${f1.delta1}`,'0.053 / 0.973']);
+  const f2=ev['F2 COCO(500)'];if(f2)rows.push(['F2 开放词汇','AP(前 500 张)',f2.AP,'48.4']);
+  const f2f=ev['F2 COCO(全量)'];if(f2f)rows.push(['F2 开放词汇','AP(全量 '+f2f.n_images+' 张)',f2f.AP,'48.4']);
+  const f3=ev['F3 TidyBot(20)'];if(f3)rows.push(['F3 收纳归纳','两类准确率(20 场景)',`${f3.examples_only_acc}% / ${f3.summarization_acc}%`,'78.5% / 91.2%']);
+  const f396=ev['F3 TidyBot(96)'];if(f396)rows.push(['F3 收纳归纳','两类准确率(96 场景)',`${f396.examples_only_acc}% / ${f396.summarization_acc}%`,'78.5% / 91.2%']);
+  const da=ev['F1 DA-2K'];if(da)rows.push(['F1 单目深度','DA-2K 点对准确率',da.accuracy,'95.3%']);
+  const rc=ev['F2 RefCOCO'];if(rc)rows.push(['F2 开放词汇','RefCOCO Top-1',JSON.stringify(rc.accuracy||{}),'50.4/57.2/43.2']);
+  $('#evalTable tbody').innerHTML=rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')||'<tr><td colspan="4">暂无结果</td></tr>';
+}
+async function loadDevice(){
+  const st=await api('/api/control/state');$('#deviceState').innerHTML=JSON.stringify(st,null,1);
+  $('#limSpeed').value=st.speed_limit;$('#limMove').value=st.max_move;$('#limArm').value=st.arm_limit_mm;
+  const a=await api('/api/audit');
+  $('#ctrlAudit').innerHTML=(a.control||[]).slice(-20).map(e=>`<div>${e.ts||''} · ${e.event} ${JSON.stringify(Object.fromEntries(Object.entries(e).filter(([k])=>!['ts','event'].includes(k))))}</div>`).join('')||'暂无';
+}
+async function connectRobot(mode){try{await api('/api/control/connect',{method:'POST',body:JSON.stringify({mode})});toast('已连接 '+mode);pollState();if($('#v-device').classList.contains('on'))loadDevice()}catch(e){toast('连接失败：'+e.message)}}
+async function disconnectRobot(){try{await api('/api/control/disconnect',{method:'POST'});toast('已断开');pollState()}catch(e){toast('断开失败：'+e.message)}}
+async function setLimits(){try{await api('/api/control/limits',{method:'POST',body:JSON.stringify({speed_limit:+$('#limSpeed').value,max_move:+$('#limMove').value,arm_limit_mm:+$('#limArm').value})});toast('已保存');pollState()}catch(e){toast('失败：'+e.message)}}
+async function loadAudit(){const a=await api('/api/audit');$('#backendAudit').innerHTML=(a.backend||[]).map(r=>`<div>${r.ts} · ${r.user} · ${r.action} ${r.detail||''}</div>`).join('')||'暂无'}
+async function askAssist(){
+  const q=$('#assistQ').value.trim();if(!q)return;
+  const log=$('#assistLog');log.innerHTML+=`<div class="msg me">${q}</div>`;$('#assistQ').value='';
+  try{const r=await api('/api/assistant?q='+encodeURIComponent(q));
+    let extra='';
+    if(r.action==='find'&&r.query){$('#findQ').value=r.query;extra=' <a href="#" onclick="nav(\'find\');taskFind();return false">去执行</a>';}
+    if(r.action==='patrol')extra=' <a href="#" onclick="nav(\'patrol\');return false">去巡检页</a>';
+    if(r.action==='rules')extra=' <a href="#" onclick="nav(\'rules\');return false">去录入示例</a>';
+    log.innerHTML+=`<div class="msg">${r.reply}${extra}</div>`;log.scrollTop=log.scrollHeight;
+  }catch(e){log.innerHTML+=`<div class="msg">出错了：${e.message}</div>`}
+}
+api('/api/me').then(u=>{$('#login').style.display='none';$('#app').style.display='block';ME=u;$('#who').textContent=u.username+' · '+u.role;nav('dashboard');startTimers()}).catch(()=>{});
+</script>
+</body>
+</html>
