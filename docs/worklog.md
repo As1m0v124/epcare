@@ -126,3 +126,11 @@ NYU `.mat` 的图像与深度是转置存储（旋转+镜像），还原后 AbsR
   - 网页：驾驶舱（实时画面/深度/检测/急停/键盘遥控）+ 10 个页面 + 侧边栏助手；CLI `epcare`、MCP server、`start.sh`、冒烟脚本全部通过。
 - 40 个中文居家收纳场景写进 `data/zh_scenarios.yml`（TidyBot 同构，标签覆盖类别/属性/功能/子类/多类合并）；
 - 后台：F3 TidyBot 96 场景评测运行中；DA-2K、RefCOCO 数据集下载中（代理 1.8MB/s）。
+
+### 📊 10-26：DA-2K 复现完成（F1 第二项指标）
+
+- DA-2K 点对相对深度基准：**94.78%**（论文 95.3%，ViT-S），2068 对 / 1033 张图；
+- 分场景：non_real 98.7 / underwater 99.2 / aerial 96.4 / object 96.0 / adverse 94.8 /
+  transparent_reflective 93.9 / indoor 92.1 / outdoor 92.2；
+- 室内场景（indoor 92.1）偏低与 F1 错例分析一致：远景压缩 + 镜面反射；
+- 脚本 `scripts/eval_da2k.py`，结果 `results/da2k.json`，评测页面自动展示。

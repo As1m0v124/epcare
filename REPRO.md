@@ -13,8 +13,10 @@
 | 算力 | ✅ 已过 | M6 跑通 F1(654 张)/F2(500 张)/F3(20 场景)；大模型微调留待 RTX 5070 或 Kaggle |
 | 许可 | 🔄 进行中 | 已按来源记录；各数据集/权重许可将在交付前逐个补全（NYU-D 仅研究用；DA-V2 ViT-B/L 为非商业） |
 
-**首轮复算结果（10/25）**：F1 AbsRel 0.0624 / δ1 0.954（论文 0.053 / 0.973）；
-F2 AP 43.4（论文 48.4，前 500 张口径）；F3 46.7% / 63.0%（论文 78.5% / 91.2%，本地小模型）。
+**复算结果**：F1 NYU-D AbsRel 0.0624 / δ1 0.954（论文 0.053 / 0.973）；
+**F1 DA-2K 点对准确率 94.78%（论文 95.3%）**；
+F2 AP 43.4（前 500 张）/ 40.8（全量 4952 张，论文 48.4）；**F2 RefCOCO Top-1 见 results/refcoco.json**；
+F3 46.7% / 63.0%（20 场景，本地小模型；96 场景全量结果见 results/tidybot_f3_96.json）。
 
 ## 二、本机配置
 
@@ -117,6 +119,8 @@ ai312/bin/python week1.py
 ai312/bin/python scripts/eval_depth_nyu.py        # F1 → results/nyu_f1.{json,csv}
 ai312/bin/python scripts/eval_gdino_coco500.py --limit 500 --ann results/coco_val_gt.json --img-dir data/coco/val2017
 ai312/bin/python scripts/eval_tidybot.py --n 20   # F3 → results/tidybot_f3.json
+ai312/bin/python scripts/eval_da2k.py             # F1 DA-2K → results/da2k.json
+ai312/bin/python scripts/eval_refcoco.py --max-refs 1000   # F2 RefCOCO → results/refcoco.json
 ```
 
 **当前阻塞项**：`ep_selfcheck.py --motion`（底盘/机械爪/机械臂动作自检）与 EP 实拍照片需要机器人上电入网；

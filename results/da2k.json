@@ -1,0 +1,21 @@
+{
+  "feature": "F1",
+  "model": "depth-anything/Depth-Anything-V2-Small-hf",
+  "dataset": "DA-2K",
+  "accuracy": 94.78,
+  "paper_accuracy": 95.3,
+  "n_images": 1033,
+  "n_pairs": 2068,
+  "per_scene": {
+    "adverse_style": 94.82,
+    "aerial": 96.39,
+    "indoor": 92.14,
+    "non_real": 98.68,
+    "object": 95.95,
+    "outdoor": 92.15,
+    "transparent_reflective": 93.93,
+    "underwater": 99.15
+  },
+  "device": "mps",
+  "elapsed_sec": 80.5
+}
