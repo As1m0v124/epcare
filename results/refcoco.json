@@ -12,6 +12,11 @@
       "accuracy": 43.5,
       "n_refs": 1000,
       "paper_accuracy": 43.21
+    },
+    "val": {
+      "accuracy": 52.9,
+      "n_refs": 1000,
+      "paper_accuracy": 50.41
     }
   },
   "device": "mps"

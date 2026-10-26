@@ -140,3 +140,9 @@ NYU `.mat` 的图像与深度是转置存储（旋转+镜像），还原后 AbsR
 - RefCOCO 指代定位 Top-1（IoU≥0.5，每 split 1000 条）：**testA 55.5%（论文 57.24）、testB 43.5%（论文 43.21）**；
 - testB 几乎与论文一致，testA 差 1.7pp——HF 实现 + 未调阈值 + 子集口径，属正常范围；
 - val 评测运行中；结果写 results/refcoco.json（多次运行自动合并）。
+
+### 📊 10-26：RefCOCO 三划分完成
+
+- val 52.9%（论文 50.41）/ testA 55.5%（57.24）/ testB 43.5%（43.21），每划分 1000 条；
+- val 高于论文：公开权重预训练数据含 Cap4M（论文 §F2 已说明该差异，属预期）；
+- 结果 results/refcoco.json（三划分合并保存），评测页按 split 展示。
