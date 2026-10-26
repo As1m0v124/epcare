@@ -155,10 +155,12 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--n", type=int, default=20)
     ap.add_argument("--model-path", default=os.path.join(HERE, "models", "qwen2.5-3b"))
+    ap.add_argument("--scenarios", default=os.path.join(BENCH_DIR, "scenarios.yml"),
+                    help="场景文件（默认 TidyBot；中文场景用 data/zh_scenarios.yml）")
     args = ap.parse_args()
 
-    scenarios = benchmark.load_scenarios(os.path.join(BENCH_DIR, "scenarios.yml"))[: args.n]
-    print(f"TidyBot 基准: 前 {len(scenarios)} 个场景, 本地模型: {args.model_path}")
+    scenarios = benchmark.load_scenarios(args.scenarios)[: args.n]
+    print(f"基准: {os.path.basename(args.scenarios)} 前 {len(scenarios)} 个场景, 本地模型: {args.model_path}")
     llm = LocalLLM(args.model_path)
 
     t0 = time.time()
@@ -180,7 +182,8 @@ def main():
         "paper": {"examples_only": 78.5, "summarization": 91.2},
         "n_scenarios": len(scenarios), "elapsed_sec": round(elapsed, 1),
     }
-    tag = "" if args.n == 20 else f"_{args.n}"
+    is_zh = "zh_scenarios" in args.scenarios
+    tag = ("" if args.n == 20 else f"_{args.n}") + ("_zh" if is_zh else "")
     json.dump(summary, open(os.path.join(HERE, "results", f"tidybot_f3{tag}.json"), "w"),
               ensure_ascii=False, indent=2)
     print(f"\n===== F3 结果（{len(scenarios)} 个场景）=====")
