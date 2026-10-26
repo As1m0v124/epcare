@@ -36,6 +36,23 @@
 ai312/bin/python week1.py    # 一条命令跑完第 1 周全部指标（详见 REPRO.md）
 ```
 
+## 系统（网页 + CLI + MCP）
+
+```bash
+bash start.sh replay     # 回放模式（开发/演示，不动真机）：控制服务:8001 + 后端:8000 + 打开浏览器
+bash start.sh real       # 真机模式（STA 组网；机器人需上电并加入同一 Wi-Fi）
+# 浏览器 http://127.0.0.1:8000  演示账号 admin/admin123 · caregiver1/care123 · family1/family123
+```
+
+页面：数据看板、实时驾驶舱（实时画面/深度图/检测/急停/键盘遥控）、巡检任务、找东西、
+家庭收纳习惯、房间与地标、告警中心、评测与数据、设备与安全、设置/审计、侧边栏助手。
+
+- 安全由控制服务强制：急停后拒绝一切动作（仅管理员可解除）、限速、单次位移与机械臂限幅、
+  低电量拒动、全部动作写 `logs/control_audit.jsonl`；
+- CLI（ai312 环境）：`ai312/bin/python cli/epcare.py status | find "水瓶" | depth --image x.jpg --out d.png | patrol --room 客厅 --dry-run | tidy-rules --household f.txt | eval`；
+- MCP：`ai312/bin/python mcp/epcare_mcp.py`（stdio JSON-RPC，工具：epcare_status/find/depth/patrol_plan/tidy_rules）；
+- 冒烟测试：`bash tests_smoke.sh`（需先 `start.sh replay`）。
+
 ## 快速开始（Mac / Apple Silicon）
 
 ```bash
