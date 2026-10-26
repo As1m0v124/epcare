@@ -1,0 +1,15 @@
+{
+  "feature": "F3",
+  "benchmark": "TidyBot preference (all 96 scenarios)",
+  "model": "qwen2.5-3b",
+  "provider": "local transformers (paper used OpenAI Completion)",
+  "examples_only_acc": 46.9,
+  "summarization_acc": 64.3,
+  "paper": {
+    "examples_only": 78.5,
+    "summarization": 91.2
+  },
+  "n_scenarios": 96,
+  "recovered_from_log": true,
+  "note": "原运行写 CSV 时因 tag 变量 bug 崩溃，准确率从日志逐场景恢复（CSV 明细缺失）"
+}

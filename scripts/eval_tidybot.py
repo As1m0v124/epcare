@@ -169,6 +169,8 @@ def main():
     elapsed = time.time() - t0
 
     os.makedirs(os.path.join(HERE, "results"), exist_ok=True)
+    is_zh = "zh_scenarios" in args.scenarios
+    tag = ("" if args.n == 20 else f"_{args.n}") + ("_zh" if is_zh else "")
     with open(os.path.join(HERE, "results", f"tidybot_examples_only{tag}.csv"), "w", newline="") as f:
         w = csv.writer(f); w.writerow(["scenario", "accuracy", "predictions"]); w.writerows(rows_ex)
     with open(os.path.join(HERE, "results", f"tidybot_summarization{tag}.csv"), "w", newline="") as f:
@@ -182,8 +184,6 @@ def main():
         "paper": {"examples_only": 78.5, "summarization": 91.2},
         "n_scenarios": len(scenarios), "elapsed_sec": round(elapsed, 1),
     }
-    is_zh = "zh_scenarios" in args.scenarios
-    tag = ("" if args.n == 20 else f"_{args.n}") + ("_zh" if is_zh else "")
     json.dump(summary, open(os.path.join(HERE, "results", f"tidybot_f3{tag}.json"), "w"),
               ensure_ascii=False, indent=2)
     print(f"\n===== F3 结果（{len(scenarios)} 个场景）=====")

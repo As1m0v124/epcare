@@ -8,7 +8,7 @@
 | 2 | EP 机械臂修好；自检脚本真机全过；能走到物体前伸臂夹起放下 | ✅ 自检全过（底盘 0.5m×4、爪×3、前后舵机 +35mm、上下舵机 +18mm）；⏳ 抓放动作待接真机验证 | docs/ep_repair.md；results/selfcheck.json |
 | 3 | F1：NYU-D + DA-2K 复算 | ✅ NYU-D AbsRel 0.0624 / δ1 0.954；DA-2K 94.78%（论文 95.3%） | results/nyu_f1.json、results/da2k.json |
 | 4 | F2：COCO 全量 5000 + RefCOCO 三划分 | ✅ COCO 全量 4952 张 AP 40.8；RefCOCO **val 52.9% / testA 55.5% / testB 43.5%**（论文 50.41/57.24/43.21，1000 条/划分） | results/coco_f2_full.json、results/refcoco.json（完成后） |
-| 5 | F3：TidyBot 96 场景复算 | ⏳ 96 场景运行中（20 场景已出 46.7% / 63.0%，论文 78.5% / 91.2%） | results/tidybot_f3_96.json（完成后） |
+| 5 | F3：TidyBot 96 场景复算 | ✅ 96 场景完成：**46.9% / 64.3%**（论文 78.5% / 91.2%，本地 Qwen2.5-3B） | results/tidybot_f3_96.json（完成后） |
 | 6 | 系统：登录 + 驾驶舱真实画面/检测 + 急停 | ✅ 骨架完成并验证：登录/三角色权限、回放画面 640×360、检测（水瓶 0.823 / ≈1.02m）、急停拦截（423）、限速/机械臂限幅、审计；真机画面在 replay→real 切换后即为真实流 | backend/、services/control/、start.sh |
 
 ## 待办（10/27–11/10）
