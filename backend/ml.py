@@ -24,6 +24,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 QWEN_DIR = os.path.join(ROOT, "models", "qwen2.5-3b")
 
 DEVICE = "mps" if torch.backends.mps.is_available() else "cpu"
+GPU_LOCK = threading.Lock()  # MPS 非线程安全：所有推理串行化
 _lock = threading.Lock()
 _cache = {}
 
@@ -59,9 +60,10 @@ def depth_map(jpeg_bytes, colorize=True):
     proc, model = _depth_model()
     img = _pil(jpeg_bytes)
     w, h = img.size
-    inp = proc(images=img, return_tensors="pt").to(DEVICE)
-    with torch.no_grad():
-        out = model(**inp)
+    with GPU_LOCK:
+        inp = proc(images=img, return_tensors="pt").to(DEVICE)
+        with torch.no_grad():
+            out = model(**inp)
     d = torch.nn.functional.interpolate(
         out.predicted_depth[:, None].float(), (h, w), mode="bilinear", align_corners=True
     )[0, 0].cpu().numpy()
@@ -87,13 +89,14 @@ def detect(jpeg_bytes, text, box_threshold=0.3, text_threshold=0.25):
     proc, model = _gdino_model()
     img = _pil(jpeg_bytes)
     w, h = img.size
-    inp = proc(images=img, text=text, return_tensors="pt").to(DEVICE)
-    with torch.no_grad():
-        out = model(**inp)
-    res = proc.post_process_grounded_object_detection(
-        out, inp.input_ids, threshold=box_threshold, text_threshold=text_threshold,
-        target_sizes=[(h, w)],
-    )[0]
+    with GPU_LOCK:
+        inp = proc(images=img, text=text, return_tensors="pt").to(DEVICE)
+        with torch.no_grad():
+            out = model(**inp)
+        res = proc.post_process_grounded_object_detection(
+            out, inp.input_ids, threshold=box_threshold, text_threshold=text_threshold,
+            target_sizes=[(h, w)],
+        )[0]
     _, d = depth_map(jpeg_bytes, colorize=False)
     items = []
     for box, score, label in zip(res["boxes"], res["scores"], res["labels"]):
@@ -144,8 +147,9 @@ def _llm_rules(examples):
     prompt = ("你是家庭收纳助手。根据下面的示例，用一句中文总结这户人家的收纳规律，"
               "只输出一句总结。\n" + "\n".join(f"{o}放{p}" for o, p in examples) + "\n总结：")
     ids = tok(prompt, return_tensors="pt", truncation=True, max_length=512).to(DEVICE)
-    with torch.no_grad():
-        out = model.generate(**ids, max_new_tokens=60, do_sample=False,
-                             pad_token_id=tok.eos_token_id)
+    with GPU_LOCK:
+        with torch.no_grad():
+            out = model.generate(**ids, max_new_tokens=60, do_sample=False,
+                                 pad_token_id=tok.eos_token_id)
     text = tok.decode(out[0][ids["input_ids"].shape[1]:], skip_special_tokens=True).strip()
     return {"rules": text.split("\n")[0], "model": "Qwen2.5-3B-Instruct（本地）"}
