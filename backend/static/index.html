@@ -323,7 +323,7 @@ async function loadPatrol(){
   const rooms=await api('/api/rooms');
   const sel=$('#patrolRoom');sel.innerHTML=rooms.map(r=>`<option value="${r.id}">${r.name}</option>`).join('');
   const tasks=await api('/api/tasks');
-  $('#taskTable tbody').innerHTML=tasks.map(t=>`<tr><td>${t.id}</td><td>${t.kind}</td><td>${t.status}</td><td>${t.created_by}</td><td>${t.created}</td></tr>`).join('');
+  $('#taskTable tbody').innerHTML=tasks.map(t=>`<tr><td>${t.id}</td><td>${t.kind}</td><td>${t.status}</td><td>${t.created_by}</td><td>${t.created}</td><td>${t.kind==='patrol'&&t.status!=='running'?`<button onclick="runTask(${t.id})">执行(replay)</button>`:''}</td></tr>`).join('');
 }
 async function makePatrol(){
   try{
@@ -333,6 +333,20 @@ async function makePatrol(){
     loadPatrol();
   }catch(e){toast('生成失败：'+e.message)}
 }
+async function runTask(id){
+  try{const r=await api(`/api/tasks/${id}/run`,{method:'POST'});
+    toast('执行完成：'+r.steps.length+' 步');
+    $('#patrolResult').innerHTML=`<div>任务 #${r.task_id} 执行：</div>`+r.steps.map(s=>`<div class="small">${s.landmark}：${s.result}</div>`).join('');
+    loadPatrol();
+  }catch(e){toast('执行失败：'+e.message)}
+}
+async function fetchItem(){
+  const q=$('#findQ').value.trim();if(!q)return toast('请输入要找的东西');
+  try{const r=await api('/api/tasks/fetch',{method:'POST',body:JSON.stringify({query:q})});
+    toast('取回序列已执行（replay）');
+    $('#findResult').innerHTML+=`<div class="chip ok">取回任务 #${r.task_id}（replay 演示）</div>`;
+  }catch(e){toast('取回失败：'+e.message)}
+}
 async function taskFind(){
   const q=$('#findQ').value.trim();if(!q)return toast('请输入要找的东西');
   try{
@@ -340,6 +354,7 @@ async function taskFind(){
     $('#findResult').innerHTML=`<div>查询：${r.query}（任务 #${r.task_id}）</div>`+(r.items.length?r.items.map(i=>`<div>${i.label} · ${i.score} · ${i.dist_m?i.dist_m+'m':'距离—'}</div>`).join(''):'<div>没有找到</div>');
     const task=await api('/api/tasks/'+r.task_id); const shot=JSON.parse(task.result).shot;
     if(shot){$('#findShot').src='/files/'+shot;$('#findShot').style.display='block'}
+    if(r.count){$('#findResult').innerHTML+=`<div class="row"><button class="btn-ok" onclick="fetchItem()">取回（replay 演示）</button></div>`;}
     toast(r.count?`找到 ${r.count} 个`:'没有找到');
   }catch(e){toast('找东西失败：'+e.message)}
 }

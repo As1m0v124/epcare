@@ -1,0 +1,270 @@
+{
+  "mode": "replay",
+  "total": 15,
+  "passed": 15,
+  "pass_rate": 100.0,
+  "avg_steps": 1.7,
+  "avg_elapsed_sec": 0.1,
+  "cases": [
+    {
+      "role": "family",
+      "task": "A1 找奶奶的老花镜",
+      "ok": true,
+      "steps": 2,
+      "elapsed": 0.8,
+      "detail": [
+        {
+          "step": "找东西接口",
+          "ok": true,
+          "note": "3 个"
+        },
+        {
+          "step": "返回截图",
+          "ok": true,
+          "note": ""
+        }
+      ]
+    },
+    {
+      "role": "family",
+      "task": "A2 查看今日巡检统计",
+      "ok": true,
+      "steps": 2,
+      "elapsed": 0.0,
+      "detail": [
+        {
+          "step": "打开看板",
+          "ok": true,
+          "note": "HTTP 200"
+        },
+        {
+          "step": "包含任务统计",
+          "ok": true,
+          "note": "{'finished': 9, 'found': 6, 'planned': 1}"
+        }
+      ]
+    },
+    {
+      "role": "family",
+      "task": "A3 录入示例并归纳",
+      "ok": true,
+      "steps": 2,
+      "elapsed": 0.0,
+      "detail": [
+        {
+          "step": "归纳规则",
+          "ok": true,
+          "note": "规则回退"
+        },
+        {
+          "step": "规则非空",
+          "ok": true,
+          "note": ""
+        }
+      ]
+    },
+    {
+      "role": "family",
+      "task": "A4 纠正归纳结果",
+      "ok": true,
+      "steps": 2,
+      "elapsed": 0.0,
+      "detail": [
+        {
+          "step": "两次归纳",
+          "ok": true,
+          "note": ""
+        },
+        {
+          "step": "纠正后变化",
+          "ok": true,
+          "note": ""
+        }
+      ]
+    },
+    {
+      "role": "family",
+      "task": "A5 助手转找东西",
+      "ok": true,
+      "steps": 2,
+      "elapsed": 0.0,
+      "detail": [
+        {
+          "step": "助手路由",
+          "ok": true,
+          "note": "find"
+        },
+        {
+          "step": "识别为找东西",
+          "ok": true,
+          "note": "去卧室找一下遥控器，先别捡，拍张照"
+        }
+      ]
+    },
+    {
+      "role": "caregiver",
+      "task": "B1 三个房间排巡检",
+      "ok": true,
+      "steps": 1,
+      "elapsed": 0.0,
+      "detail": [
+        {
+          "step": "3 个房间生成计划",
+          "ok": true,
+          "note": "3/3 个成功"
+        }
+      ]
+    },
+    {
+      "role": "caregiver",
+      "task": "B2 处理电线告警",
+      "ok": true,
+      "steps": 2,
+      "elapsed": 0.0,
+      "detail": [
+        {
+          "step": "生成告警",
+          "ok": true,
+          "note": "#3"
+        },
+        {
+          "step": "标记已处理",
+          "ok": true,
+          "note": ""
+        }
+      ]
+    },
+    {
+      "role": "caregiver",
+      "task": "B3 查看历史任务",
+      "ok": true,
+      "steps": 1,
+      "elapsed": 0.0,
+      "detail": [
+        {
+          "step": "任务列表",
+          "ok": true,
+          "note": "19 条"
+        }
+      ]
+    },
+    {
+      "role": "caregiver",
+      "task": "B4 易碎品转告警",
+      "ok": true,
+      "steps": 1,
+      "elapsed": 0.0,
+      "detail": [
+        {
+          "step": "易碎品告警",
+          "ok": true,
+          "note": "results/alerts/alert_1793058717.jpg"
+        }
+      ]
+    },
+    {
+      "role": "caregiver",
+      "task": "B5 急停可用",
+      "ok": true,
+      "steps": 2,
+      "elapsed": 0.0,
+      "detail": [
+        {
+          "step": "护理员急停",
+          "ok": true,
+          "note": ""
+        },
+        {
+          "step": "移动被拒",
+          "ok": true,
+          "note": "HTTP 423"
+        }
+      ]
+    },
+    {
+      "role": "admin",
+      "task": "C1 新增房间与地标",
+      "ok": true,
+      "steps": 2,
+      "elapsed": 0.0,
+      "detail": [
+        {
+          "step": "新增房间",
+          "ok": true,
+          "note": "HTTP 400"
+        },
+        {
+          "step": "新增地标",
+          "ok": true,
+          "note": ""
+        }
+      ]
+    },
+    {
+      "role": "admin",
+      "task": "C2 修改限速与限幅",
+      "ok": true,
+      "steps": 2,
+      "elapsed": 0.0,
+      "detail": [
+        {
+          "step": "修改参数",
+          "ok": true,
+          "note": "{\"ok\": true, \"speed_limit\": 0.5, \"max_move\": 0.8, \"arm_limit_mm\": 50}"
+        },
+        {
+          "step": "参数生效",
+          "ok": true,
+          "note": ""
+        }
+      ]
+    },
+    {
+      "role": "admin",
+      "task": "C3 连接并查看状态",
+      "ok": true,
+      "steps": 2,
+      "elapsed": 0.0,
+      "detail": [
+        {
+          "step": "连接回放",
+          "ok": true,
+          "note": ""
+        },
+        {
+          "step": "状态正确",
+          "ok": true,
+          "note": "replay"
+        }
+      ]
+    },
+    {
+      "role": "admin",
+      "task": "C4 查看审计日志",
+      "ok": true,
+      "steps": 1,
+      "elapsed": 0.0,
+      "detail": [
+        {
+          "step": "审计可读",
+          "ok": true,
+          "note": "98 条"
+        }
+      ]
+    },
+    {
+      "role": "admin",
+      "task": "C5 触发并解除急停",
+      "ok": true,
+      "steps": 1,
+      "elapsed": 0.0,
+      "detail": [
+        {
+          "step": "急停并解除",
+          "ok": true,
+          "note": ""
+        }
+      ]
+    }
+  ]
+}

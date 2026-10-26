@@ -310,6 +310,68 @@ def task_find(request: Request, payload: dict = Body(...)):
             "count": len(items), "status": status}
 
 
+@app.post("/api/tasks/{task_id}/run")
+def run_task(request: Request, task_id: int):
+    """执行巡检计划：replay 模式逐步发送移动指令（仅演练）；真机模式暂未开放。"""
+    u = require(request, "caregiver")
+    with db.conn() as c:
+        task = c.execute("SELECT * FROM tasks WHERE id=?", (task_id,)).fetchone()
+    if not task:
+        raise HTTPException(404, "任务不存在")
+    if task["kind"] != "patrol":
+        raise HTTPException(400, "只有巡检任务可以执行")
+    if task["status"] not in ("planned", "finished"):
+        raise HTTPException(409, "任务状态不允许执行")
+    st = ctrl_json("/state")
+    if st.get("mode") != "replay":
+        raise HTTPException(409, "真机执行需现场确认（当前版本仅支持 replay 演练）")
+    plan = json.loads(task["payload"]).get("plan", [])
+    steps, started = [], db.now()
+    with db.conn() as c:
+        c.execute("UPDATE tasks SET status='running' WHERE id=?", (task_id,))
+    for name in plan:
+        st = ctrl_json("/state")
+        if st.get("estop"):
+            steps.append({"landmark": name, "result": "aborted: estop"})
+            break
+        ctrl_json("/move", "POST", {"x": 0.2, "y": 0.0, "z": 0.0})
+        steps.append({"landmark": name, "result": "replay move 0.2m"})
+    status = "finished"
+    with db.conn() as c:
+        c.execute("UPDATE tasks SET status=?, result=?, finished=? WHERE id=?",
+                  (status, json.dumps({"steps": steps, "note": "replay 演练，未真实移动"},
+                                      ensure_ascii=False), db.now(), task_id))
+    db.audit(u["username"], "patrol_run", f"task {task_id}: {len(steps)} 步")
+    return {"ok": True, "task_id": task_id, "steps": steps, "status": status}
+
+
+@app.post("/api/tasks/fetch")
+def task_fetch(request: Request, payload: dict = Body(...)):
+    """找东西→取回（replay 演示动作序列：对准→伸臂→夹取→回收）。真机暂未开放。"""
+    u = require(request, "caregiver")
+    query = (payload.get("query") or "").strip()
+    if not query:
+        raise HTTPException(400, "query 不能为空")
+    st = ctrl_json("/state")
+    if st.get("mode") != "replay":
+        raise HTTPException(409, "真机取回需现场确认（当前版本仅支持 replay 演示）")
+    steps = []
+    for ep, act in [("/arm", {"x_mm": 20, "y_mm": 0}), ("/grab", {"action": "open"}),
+                    ("/arm", {"x_mm": 10, "y_mm": -5}), ("/grab", {"action": "close"}),
+                    ("/arm", {"x_mm": -20, "y_mm": 0})]:
+        ctrl_json(ep, "POST", act)
+        steps.append({"api": ep, **act})
+    with db.conn() as c:
+        cur = c.execute(
+            "INSERT INTO tasks(kind, payload, status, result, created_by, created, finished) "
+            "VALUES(?,?,?,?,?,?,?)",
+            ("fetch", json.dumps({"query": query}, ensure_ascii=False), "finished",
+             json.dumps({"steps": steps, "note": "replay 演示序列，未真实抓取"},
+                        ensure_ascii=False), u["username"], db.now(), db.now()))
+    db.audit(u["username"], "fetch", query)
+    return {"ok": True, "task_id": cur.lastrowid, "query": query, "steps": steps}
+
+
 @app.get("/api/tasks/{task_id}")
 def get_task(request: Request, task_id: int):
     require(request)
