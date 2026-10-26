@@ -22,12 +22,13 @@
 
 ## 当前进度（阶段 1 · 复现，10/18–11/10）
 
-- ✅ 2026-10-25 EP 机械臂「1 号舵机过载」故障修复完毕，真机连接测试通过（详见 [docs/ep_repair.md](docs/ep_repair.md)）
-- ✅ 2026-10-25 Mac (Apple Silicon) 开发环境搭建完成，SDK 的 macOS 适配脚本入库
-- ✅ 2026-10-25 三项复现首轮出数：F1 AbsRel 0.0624 / δ1 0.954（论文 0.053 / 0.973）；F2 AP 43.4（论文 48.4，前 500 张）；F3 46.7% / 63.0%（论文 78.5% / 91.2%，本地小模型）——详见 [docs/week1_report.md](docs/week1_report.md)
-- ⏳ 真机动作自检（`ep_selfcheck.py`）与 EP 实拍照片待机器人上线；仿真环境第 2 周在台式机补
+- ✅ 2026-10-25 EP 机械臂「1 号舵机过载」修复完毕，**真机完整自检通过**：底盘前后左右各 0.5m、机械爪开合×3、前后舵机 +35mm（87→122）、上下舵机 +18mm（75→93）（详见 [docs/ep_repair.md](docs/ep_repair.md)）
+- ✅ 2026-10-25 Mac (Apple Silicon) 开发环境搭建完成；SDK macOS 适配脚本入库，**视频流用 TCP 40921 直连 H.264 + PyAV 解码解决**（官方解码器仅 Linux/Windows）
+- ✅ 2026-10-25 三项复现首轮出数：F1 AbsRel **0.0624** / δ1 **0.954**（论文 0.053 / 0.973）；F2 AP **43.4**（前 500 张）/ **40.8**（全量 4952 张，论文 48.4）；F3 **46.7% / 63.0%**（论文 78.5% / 91.2%，本地小模型）——详见 [docs/week1_report.md](docs/week1_report.md)
+- ✅ 2026-10-25 EP 实拍 10 张实验室照片：深度图 + 5 句中文描述的开放词汇检测（80 个框）+ CSV（见 `results/photos_demo/` 与 `archive/`）
+- ⏳ 下一步：仿真环境（第 2 周在台式机）、系统骨架（控制服务 + 后端 + 实时驾驶舱）
 
-每日进展记录在 [docs/worklog.md](docs/worklog.md)，错例分析见 [docs/f1_error_analysis.md](docs/f1_error_analysis.md)。
+每日进展记录在 [docs/worklog.md](docs/worklog.md)，错例分析见 [docs/f1_error_analysis.md](docs/f1_error_analysis.md)，错题本见 [LESSONS.md](LESSONS.md)。
 
 ## 复算
 
@@ -53,18 +54,29 @@ ep38/bin/python conn_test.py sta --skip-qrcode
 ## 仓库结构
 
 ```
-conn_test.py                  真机连接测试（STA 扫码组网 / 重连，读版本 SN 电量）
+conn_test.py                    真机连接测试（STA 扫码组网 / 重连，读版本 SN 电量）
+ep_selfcheck.py                 真机自检（连接/电量/视频流存图/底盘/机械爪/机械臂逐舵机）
+week1.py                        一条命令跑完第 1 周全部指标与照片演示
 scripts/install_robomaster_mac.sh   robomaster SDK 的 Apple Silicon 安装脚本（拆包+补丁）
-docs/ep_repair.md             EP 机械臂故障排查与修复记录
-docs/worklog.md               开发日志（每天更新）
-REPRO.md                      复现说明：环境、可行性、术语表
+scripts/eval_depth_nyu.py       F1 评测（NYU-D 654 张，AbsRel/δ1）
+scripts/eval_gdino_coco500.py   F2 评测（COCO 前 500 张 / 全量，零样本 AP）
+scripts/eval_tidybot.py         F3 评测（TidyBot 基准，两种提示方法）
+scripts/week1_photos_demo.py    EP 实拍 10 张：深度图 + 检测 + CSV
+docs/ep_repair.md               机械臂故障排查与修复/自检记录
+docs/worklog.md                 开发日志（每天更新）
+docs/f1_error_analysis.md       F1 十个错例分析
+LESSONS.md                      错题本（Seen 计数，3 天复发升级为硬规则）
+REPRO.md                        复现说明：环境、数据来源、评测口径、术语表
+results/                        指标结果（json/csv）与照片演示输出
+archive/2026-10-25_week1/       第 1 周交付物本地归档（照片、深度图、检测 CSV、校验清单）
+submission/2026-10-27/          首次对齐提交材料（进度报告、提纲、清单）
 ```
 
 ## 环境与硬件
 
 - 机器人：RoboMaster EP（底盘 + 机械臂 + 机械爪 + 摄像头），官方 Python SDK 只支持 Python 3.6–3.8
 - 开发机：Mac mini (Apple M6, 16GB)，控制服务用 `ep38`（Python 3.8），AI 模型用 `ai312`（Python 3.12 + PyTorch MPS）
-- 已知限制：官方 SDK 的视频流解码器仅发布 Linux/Windows 二进制，macOS 上 `camera.start_video_stream` 不可用；视频流将改走 RTMP 拉流试验，或由 Windows 台式机承担机器人控制服务（与后端以 HTTP/WebSocket 通信，符合系统架构设计）
+- 已知限制：官方 SDK 的视频解码器仅发布 Linux/Windows 二进制。**本项目已绕过**：SDK 只负责发开流命令，视频数据从 **TCP 40921 直连读取标准 H.264（Annex-B）**，用 PyAV 在 macOS 原生解码（见 REPRO.md「视频流：macOS 原生方案」）。
 
 ## 许可说明
 
