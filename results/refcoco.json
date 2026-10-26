@@ -1,0 +1,18 @@
+{
+  "feature": "F2",
+  "dataset": "RefCOCO",
+  "max_refs_per_split": 1000,
+  "results": {
+    "testA": {
+      "accuracy": 55.5,
+      "n_refs": 1000,
+      "paper_accuracy": 57.24
+    },
+    "testB": {
+      "accuracy": 43.5,
+      "n_refs": 1000,
+      "paper_accuracy": 43.21
+    }
+  },
+  "device": "mps"
+}

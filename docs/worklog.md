@@ -134,3 +134,9 @@ NYU `.mat` 的图像与深度是转置存储（旋转+镜像），还原后 AbsR
   transparent_reflective 93.9 / indoor 92.1 / outdoor 92.2；
 - 室内场景（indoor 92.1）偏低与 F1 错例分析一致：远景压缩 + 镜面反射；
 - 脚本 `scripts/eval_da2k.py`，结果 `results/da2k.json`，评测页面自动展示。
+
+### 📊 10-26：RefCOCO 复现（testA/testB）
+
+- RefCOCO 指代定位 Top-1（IoU≥0.5，每 split 1000 条）：**testA 55.5%（论文 57.24）、testB 43.5%（论文 43.21）**；
+- testB 几乎与论文一致，testA 差 1.7pp——HF 实现 + 未调阈值 + 子集口径，属正常范围；
+- val 评测运行中；结果写 results/refcoco.json（多次运行自动合并）。

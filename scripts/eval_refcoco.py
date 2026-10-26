@@ -97,11 +97,18 @@ def main():
             results[split] = {"accuracy": round(100 * correct / total, 2),
                               "n_refs": total, "paper_accuracy": PAPER[split]}
 
+    out_path = os.path.join(HERE, "results", "refcoco.json")
+    merged = {}
+    if os.path.exists(out_path):
+        try:
+            merged = json.load(open(out_path)).get("results", {})
+        except Exception:
+            merged = {}
+    merged.update(results)
     out = {"feature": "F2", "dataset": "RefCOCO", "max_refs_per_split": args.max_refs,
-           "results": results, "device": DEVICE}
+           "results": merged, "device": DEVICE}
     os.makedirs(os.path.join(HERE, "results"), exist_ok=True)
-    json.dump(out, open(os.path.join(HERE, "results", "refcoco.json"), "w"),
-              ensure_ascii=False, indent=2)
+    json.dump(out, open(out_path, "w"), ensure_ascii=False, indent=2)
     print("\n===== RefCOCO 结果 =====")
     for s, r in results.items():
         print(f"{s:6s} {r['accuracy']}%  ({r['n_refs']} 条, 论文 {r['paper_accuracy']}%)")
