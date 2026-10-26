@@ -1,0 +1,1281 @@
+- annotator_notes: 药品放床头柜，眼镜和遥控器放茶几。
+  receptacles:
+  - 床头柜
+  - 茶几
+  room: 卧室
+  seen_objects:
+  - 降压药
+  - 感冒药
+  - 老花镜
+  - 电视遥控器
+  seen_placements:
+  - - 降压药
+    - 床头柜
+  - - 感冒药
+    - 床头柜
+  - - 老花镜
+    - 茶几
+  - - 电视遥控器
+    - 茶几
+  tags:
+  - category
+  unseen_objects:
+  - 血糖仪
+  - 眼药水
+  - 空调遥控器
+  unseen_placements:
+  - - 血糖仪
+    - 床头柜
+  - - 眼药水
+    - 床头柜
+  - - 空调遥控器
+    - 茶几
+- annotator_notes: 鞋放鞋柜，手套和围巾挂门口。
+  receptacles:
+  - 鞋柜
+  - 门口挂架
+  room: 玄关
+  seen_objects:
+  - 拖鞋
+  - 运动鞋
+  - 毛线手套
+  - 围巾
+  seen_placements:
+  - - 拖鞋
+    - 鞋柜
+  - - 运动鞋
+    - 鞋柜
+  - - 毛线手套
+    - 门口挂架
+  - - 围巾
+    - 门口挂架
+  tags:
+  - category
+  unseen_objects:
+  - 雨靴
+  - 皮手套
+  - 帽子
+  unseen_placements:
+  - - 雨靴
+    - 鞋柜
+  - - 皮手套
+    - 门口挂架
+  - - 帽子
+    - 门口挂架
+- annotator_notes: 药都放药箱，鞋都放鞋柜。
+  receptacles:
+  - 药箱
+  - 鞋柜
+  room: 客厅
+  seen_objects:
+  - 降压药
+  - 创可贴
+  - 拖鞋
+  - 布鞋
+  seen_placements:
+  - - 降压药
+    - 药箱
+  - - 创可贴
+    - 药箱
+  - - 拖鞋
+    - 鞋柜
+  - - 布鞋
+    - 鞋柜
+  tags:
+  - attribute
+  unseen_objects:
+  - 止痛片
+  - 棉签
+  - 凉鞋
+  unseen_placements:
+  - - 止痛片
+    - 药箱
+  - - 棉签
+    - 药箱
+  - - 凉鞋
+    - 鞋柜
+- annotator_notes: 喝水用的放厨房台面，看的东西放茶几。
+  receptacles:
+  - 厨房台面
+  - 茶几
+  room: 客厅
+  seen_objects:
+  - 保温杯
+  - 玻璃杯
+  - 报纸
+  - 相册
+  seen_placements:
+  - - 保温杯
+    - 厨房台面
+  - - 玻璃杯
+    - 厨房台面
+  - - 报纸
+    - 茶几
+  - - 相册
+    - 茶几
+  tags:
+  - function
+  unseen_objects:
+  - 茶壶
+  - 水壶
+  - 杂志
+  unseen_placements:
+  - - 茶壶
+    - 厨房台面
+  - - 水壶
+    - 厨房台面
+  - - 杂志
+    - 茶几
+- annotator_notes: 电子设备放书桌，纸质的东西放书架。
+  receptacles:
+  - 书桌
+  - 书架
+  room: 书房
+  seen_objects:
+  - 平板电脑
+  - 手机
+  - 笔记本
+  - 词典
+  seen_placements:
+  - - 平板电脑
+    - 书桌
+  - - 手机
+    - 书桌
+  - - 笔记本
+    - 书架
+  - - 词典
+    - 书架
+  tags:
+  - attribute
+  unseen_objects:
+  - 充电宝
+  - 电子阅读器
+  - 挂历
+  unseen_placements:
+  - - 充电宝
+    - 书桌
+  - - 电子阅读器
+    - 书桌
+  - - 挂历
+    - 书架
+- annotator_notes: 袜子放脏衣篮，衣服挂衣柜。
+  receptacles:
+  - 脏衣篮
+  - 衣柜
+  room: 卧室
+  seen_objects:
+  - 白袜子
+  - 黑袜子
+  - 衬衫
+  - 外套
+  seen_placements:
+  - - 白袜子
+    - 脏衣篮
+  - - 黑袜子
+    - 脏衣篮
+  - - 衬衫
+    - 衣柜
+  - - 外套
+    - 衣柜
+  tags:
+  - subclass
+  unseen_objects:
+  - 棉袜
+  - 毛衣
+  - 羽绒服
+  unseen_placements:
+  - - 棉袜
+    - 脏衣篮
+  - - 毛衣
+    - 衣柜
+  - - 羽绒服
+    - 衣柜
+- annotator_notes: 调料放橱柜，碗碟放碗柜。
+  receptacles:
+  - 橱柜
+  - 碗柜
+  room: 厨房
+  seen_objects:
+  - 盐罐
+  - 酱油瓶
+  - 饭碗
+  - 盘子
+  seen_placements:
+  - - 盐罐
+    - 橱柜
+  - - 酱油瓶
+    - 橱柜
+  - - 饭碗
+    - 碗柜
+  - - 盘子
+    - 碗柜
+  tags:
+  - category
+  unseen_objects:
+  - 胡椒粉
+  - 醋瓶
+  - 汤碗
+  unseen_placements:
+  - - 胡椒粉
+    - 橱柜
+  - - 醋瓶
+    - 橱柜
+  - - 汤碗
+    - 碗柜
+- annotator_notes: 清洁用品放卫生间架子，毛巾挂毛巾钩。
+  receptacles:
+  - 卫生间架子
+  - 毛巾钩
+  room: 卫生间
+  seen_objects:
+  - 牙膏
+  - 洗发水
+  - 浴巾
+  - 洗脸巾
+  seen_placements:
+  - - 牙膏
+    - 卫生间架子
+  - - 洗发水
+    - 卫生间架子
+  - - 浴巾
+    - 毛巾钩
+  - - 洗脸巾
+    - 毛巾钩
+  tags:
+  - function
+  unseen_objects:
+  - 肥皂
+  - 沐浴露
+  - 擦手巾
+  unseen_placements:
+  - - 肥皂
+    - 卫生间架子
+  - - 沐浴露
+    - 卫生间架子
+  - - 擦手巾
+    - 毛巾钩
+- annotator_notes: 工具放工具箱，电池放抽屉。
+  receptacles:
+  - 工具箱
+  - 抽屉
+  room: 阳台
+  seen_objects:
+  - 螺丝刀
+  - 扳手
+  - 五号电池
+  - 七号电池
+  seen_placements:
+  - - 螺丝刀
+    - 工具箱
+  - - 扳手
+    - 工具箱
+  - - 五号电池
+    - 抽屉
+  - - 七号电池
+    - 抽屉
+  tags:
+  - category
+  unseen_objects:
+  - 锤子
+  - 钳子
+  - 充电电池
+  unseen_placements:
+  - - 锤子
+    - 工具箱
+  - - 钳子
+    - 工具箱
+  - - 充电电池
+    - 抽屉
+- annotator_notes: 零食放零食柜，水果放冰箱。
+  receptacles:
+  - 零食柜
+  - 冰箱
+  room: 客厅
+  seen_objects:
+  - 饼干
+  - 瓜子
+  - 苹果
+  - 香蕉
+  seen_placements:
+  - - 饼干
+    - 零食柜
+  - - 瓜子
+    - 零食柜
+  - - 苹果
+    - 冰箱
+  - - 香蕉
+    - 冰箱
+  tags:
+  - category
+  unseen_objects:
+  - 薯片
+  - 果冻
+  - 葡萄
+  unseen_placements:
+  - - 薯片
+    - 零食柜
+  - - 果冻
+    - 零食柜
+  - - 葡萄
+    - 冰箱
+- annotator_notes: 药放床头柜，量血压的东西也放床头柜，杂物放抽屉。
+  receptacles:
+  - 床头柜
+  - 抽屉
+  room: 卧室
+  seen_objects:
+  - 降压药
+  - 血压计
+  - 指甲刀
+  - 梳子
+  seen_placements:
+  - - 降压药
+    - 床头柜
+  - - 血压计
+    - 床头柜
+  - - 指甲刀
+    - 抽屉
+  - - 梳子
+    - 抽屉
+  tags:
+  - category
+  unseen_objects:
+  - 速效救心丸
+  - 体温计
+  - 耳勺
+  unseen_placements:
+  - - 速效救心丸
+    - 床头柜
+  - - 体温计
+    - 床头柜
+  - - 耳勺
+    - 抽屉
+- annotator_notes: 遥控器放茶几，手机和平板放书桌。
+  receptacles:
+  - 茶几
+  - 书桌
+  room: 客厅
+  seen_objects:
+  - 电视遥控器
+  - 空调遥控器
+  - 手机
+  - 平板电脑
+  seen_placements:
+  - - 电视遥控器
+    - 茶几
+  - - 空调遥控器
+    - 茶几
+  - - 手机
+    - 书桌
+  - - 平板电脑
+    - 书桌
+  tags:
+  - subclass
+  unseen_objects:
+  - 风扇遥控器
+  - 备用手机
+  - 电子书
+  unseen_placements:
+  - - 风扇遥控器
+    - 茶几
+  - - 备用手机
+    - 书桌
+  - - 电子书
+    - 书桌
+- annotator_notes: 帽子围巾挂门口，雨伞放伞架。
+  receptacles:
+  - 门口挂架
+  - 伞架
+  room: 玄关
+  seen_objects:
+  - 棒球帽
+  - 围巾
+  - 折叠伞
+  - 长柄伞
+  seen_placements:
+  - - 棒球帽
+    - 门口挂架
+  - - 围巾
+    - 门口挂架
+  - - 折叠伞
+    - 伞架
+  - - 长柄伞
+    - 伞架
+  tags:
+  - function
+  unseen_objects:
+  - 毛线帽
+  - 丝巾
+  - 雨衣
+  unseen_placements:
+  - - 毛线帽
+    - 门口挂架
+  - - 丝巾
+    - 门口挂架
+  - - 雨衣
+    - 伞架
+- annotator_notes: 杯子放餐边柜，药放药箱。
+  receptacles:
+  - 餐边柜
+  - 药箱
+  room: 餐厅
+  seen_objects:
+  - 玻璃杯
+  - 陶瓷杯
+  - 维生素片
+  - 止痛片
+  seen_placements:
+  - - 玻璃杯
+    - 餐边柜
+  - - 陶瓷杯
+    - 餐边柜
+  - - 维生素片
+    - 药箱
+  - - 止痛片
+    - 药箱
+  tags:
+  - category
+  unseen_objects:
+  - 马克杯
+  - 保温杯
+  - 感冒冲剂
+  unseen_placements:
+  - - 马克杯
+    - 餐边柜
+  - - 保温杯
+    - 餐边柜
+  - - 感冒冲剂
+    - 药箱
+- annotator_notes: 读的东西放书架，笔放笔筒。
+  receptacles:
+  - 书架
+  - 笔筒
+  room: 书房
+  seen_objects:
+  - 小说
+  - 杂志
+  - 铅笔
+  - 圆珠笔
+  seen_placements:
+  - - 小说
+    - 书架
+  - - 杂志
+    - 书架
+  - - 铅笔
+    - 笔筒
+  - - 圆珠笔
+    - 笔筒
+  tags:
+  - attribute
+  unseen_objects:
+  - 散文集
+  - 报纸
+  - 马克笔
+  unseen_placements:
+  - - 散文集
+    - 书架
+  - - 报纸
+    - 书架
+  - - 马克笔
+    - 笔筒
+- annotator_notes: 毛巾挂毛巾钩，洗漱用品放卫生间架子。
+  receptacles:
+  - 毛巾钩
+  - 卫生间架子
+  room: 卫生间
+  seen_objects:
+  - 浴巾
+  - 毛巾
+  - 牙刷
+  - 漱口杯
+  seen_placements:
+  - - 浴巾
+    - 毛巾钩
+  - - 毛巾
+    - 毛巾钩
+  - - 牙刷
+    - 卫生间架子
+  - - 漱口杯
+    - 卫生间架子
+  tags:
+  - subclass
+  unseen_objects:
+  - 沙滩巾
+  - 擦手巾
+  - 牙膏
+  unseen_placements:
+  - - 沙滩巾
+    - 毛巾钩
+  - - 擦手巾
+    - 毛巾钩
+  - - 牙膏
+    - 卫生间架子
+- annotator_notes: 拖鞋放鞋柜，袜子和内衣放抽屉。
+  receptacles:
+  - 鞋柜
+  - 抽屉
+  room: 卧室
+  seen_objects:
+  - 拖鞋
+  - 袜子
+  - 内衣
+  - 睡衣
+  seen_placements:
+  - - 拖鞋
+    - 鞋柜
+  - - 袜子
+    - 抽屉
+  - - 内衣
+    - 抽屉
+  - - 睡衣
+    - 抽屉
+  tags:
+  - mixed
+  unseen_objects:
+  - 棉拖鞋
+  - 短袜
+  - 秋衣
+  unseen_placements:
+  - - 棉拖鞋
+    - 鞋柜
+  - - 短袜
+    - 抽屉
+  - - 秋衣
+    - 抽屉
+- annotator_notes: 做饭用的放厨房台面，吃的药放客厅药箱。
+  receptacles:
+  - 厨房台面
+  - 药箱
+  room: 厨房
+  seen_objects:
+  - 菜刀
+  - 菜板
+  - 降压药
+  - 胃药
+  seen_placements:
+  - - 菜刀
+    - 厨房台面
+  - - 菜板
+    - 厨房台面
+  - - 降压药
+    - 药箱
+  - - 胃药
+    - 药箱
+  tags:
+  - function
+  unseen_objects:
+  - 锅铲
+  - 漏勺
+  - 退烧药
+  unseen_placements:
+  - - 锅铲
+    - 厨房台面
+  - - 漏勺
+    - 厨房台面
+  - - 退烧药
+    - 药箱
+- annotator_notes: 玩具放玩具箱，绘本放书架下层。
+  receptacles:
+  - 玩具箱
+  - 书架
+  room: 儿童房
+  seen_objects:
+  - 积木
+  - 小汽车
+  - 绘本
+  - 涂色本
+  seen_placements:
+  - - 积木
+    - 玩具箱
+  - - 小汽车
+    - 玩具箱
+  - - 绘本
+    - 书架
+  - - 涂色本
+    - 书架
+  tags:
+  - category
+  unseen_objects:
+  - 拼图
+  - 毛绒熊
+  - 漫画书
+  unseen_placements:
+  - - 拼图
+    - 玩具箱
+  - - 毛绒熊
+    - 玩具箱
+  - - 漫画书
+    - 书架
+- annotator_notes: 清洁工具放阳台柜，洗衣液放洗衣机旁。
+  receptacles:
+  - 阳台柜
+  - 洗衣机旁
+  room: 阳台
+  seen_objects:
+  - 拖把
+  - 扫帚
+  - 洗衣液
+  - 柔顺剂
+  seen_placements:
+  - - 拖把
+    - 阳台柜
+  - - 扫帚
+    - 阳台柜
+  - - 洗衣液
+    - 洗衣机旁
+  - - 柔顺剂
+    - 洗衣机旁
+  tags:
+  - subclass
+  unseen_objects:
+  - 簸箕
+  - 抹布
+  - 消毒液
+  unseen_placements:
+  - - 簸箕
+    - 阳台柜
+  - - 抹布
+    - 阳台柜
+  - - 消毒液
+    - 洗衣机旁
+- annotator_notes: 证件和票据放抽屉，钥匙挂门口。
+  receptacles:
+  - 抽屉
+  - 门口挂架
+  room: 玄关
+  seen_objects:
+  - 身份证
+  - 医保卡
+  - 家门钥匙
+  - 汽车钥匙
+  seen_placements:
+  - - 身份证
+    - 抽屉
+  - - 医保卡
+    - 抽屉
+  - - 家门钥匙
+    - 门口挂架
+  - - 汽车钥匙
+    - 门口挂架
+  tags:
+  - attribute
+  unseen_objects:
+  - 银行卡
+  - 户口本
+  - 车棚钥匙
+  unseen_placements:
+  - - 银行卡
+    - 抽屉
+  - - 户口本
+    - 抽屉
+  - - 车棚钥匙
+    - 门口挂架
+- annotator_notes: 茶具放茶盘，酒放餐边柜。
+  receptacles:
+  - 茶盘
+  - 餐边柜
+  room: 客厅
+  seen_objects:
+  - 茶壶
+  - 茶杯
+  - 白酒
+  - 红酒
+  seen_placements:
+  - - 茶壶
+    - 茶盘
+  - - 茶杯
+    - 茶盘
+  - - 白酒
+    - 餐边柜
+  - - 红酒
+    - 餐边柜
+  tags:
+  - category
+  unseen_objects:
+  - 盖碗
+  - 茶滤
+  - 黄酒
+  unseen_placements:
+  - - 盖碗
+    - 茶盘
+  - - 茶滤
+    - 茶盘
+  - - 黄酒
+    - 餐边柜
+- annotator_notes: 换季衣物放储物箱，当季挂衣柜。
+  receptacles:
+  - 储物箱
+  - 衣柜
+  room: 卧室
+  seen_objects:
+  - 羽绒服
+  - 毛衣
+  - 夏装
+  - 短裤
+  seen_placements:
+  - - 羽绒服
+    - 储物箱
+  - - 毛衣
+    - 储物箱
+  - - 夏装
+    - 衣柜
+  - - 短裤
+    - 衣柜
+  tags:
+  - attribute
+  unseen_objects:
+  - 棉被
+  - 围巾
+  - T恤
+  unseen_placements:
+  - - 棉被
+    - 储物箱
+  - - 围巾
+    - 储物箱
+  - - T恤
+    - 衣柜
+- annotator_notes: 洗漱用品放卫生间架子，拖鞋放卫生间门口。
+  receptacles:
+  - 卫生间架子
+  - 鞋架
+  room: 卫生间
+  seen_objects:
+  - 牙刷
+  - 牙杯
+  - 浴室拖鞋
+  - 塑料拖鞋
+  seen_placements:
+  - - 牙刷
+    - 卫生间架子
+  - - 牙杯
+    - 卫生间架子
+  - - 浴室拖鞋
+    - 鞋架
+  - - 塑料拖鞋
+    - 鞋架
+  tags:
+  - function
+  unseen_objects:
+  - 牙线
+  - 牙签
+  - 洞洞鞋
+  unseen_placements:
+  - - 牙线
+    - 卫生间架子
+  - - 牙签
+    - 卫生间架子
+  - - 洞洞鞋
+    - 鞋架
+- annotator_notes: 面条米放储物柜，碗放碗柜。
+  receptacles:
+  - 储物柜
+  - 碗柜
+  room: 厨房
+  seen_objects:
+  - 挂面
+  - 大米
+  - 饭碗
+  - 汤碗
+  seen_placements:
+  - - 挂面
+    - 储物柜
+  - - 大米
+    - 储物柜
+  - - 饭碗
+    - 碗柜
+  - - 汤碗
+    - 碗柜
+  tags:
+  - function
+  unseen_objects:
+  - 面粉
+  - 小米
+  - 盘子
+  unseen_placements:
+  - - 面粉
+    - 储物柜
+  - - 小米
+    - 储物柜
+  - - 盘子
+    - 碗柜
+- annotator_notes: 遥控器和眼镜放茶几，药放药箱。
+  receptacles:
+  - 茶几
+  - 药箱
+  room: 客厅
+  seen_objects:
+  - 电视遥控器
+  - 老花镜
+  - 降压药
+  - 速效救心丸
+  seen_placements:
+  - - 电视遥控器
+    - 茶几
+  - - 老花镜
+    - 茶几
+  - - 降压药
+    - 药箱
+  - - 速效救心丸
+    - 药箱
+  tags:
+  - mixed
+  unseen_objects:
+  - 备用遥控器
+  - 太阳镜
+  - 硝酸甘油
+  unseen_placements:
+  - - 备用遥控器
+    - 茶几
+  - - 太阳镜
+    - 茶几
+  - - 硝酸甘油
+    - 药箱
+- annotator_notes: 儿童玩具放玩具箱，儿童衣服放衣柜下层。
+  receptacles:
+  - 玩具箱
+  - 衣柜
+  room: 儿童房
+  seen_objects:
+  - 积木
+  - 玩偶
+  - 儿童外套
+  - 儿童裤子
+  seen_placements:
+  - - 积木
+    - 玩具箱
+  - - 玩偶
+    - 玩具箱
+  - - 儿童外套
+    - 衣柜
+  - - 儿童裤子
+    - 衣柜
+  tags:
+  - attribute
+  unseen_objects:
+  - 遥控汽车
+  - 拼图
+  - 儿童毛衣
+  unseen_placements:
+  - - 遥控汽车
+    - 玩具箱
+  - - 拼图
+    - 玩具箱
+  - - 儿童毛衣
+    - 衣柜
+- annotator_notes: 洗衣相关放洗衣机旁，晾衣相关放阳台柜。
+  receptacles:
+  - 洗衣机旁
+  - 阳台柜
+  room: 阳台
+  seen_objects:
+  - 洗衣粉
+  - 洗衣液
+  - 衣架
+  - 夹子
+  seen_placements:
+  - - 洗衣粉
+    - 洗衣机旁
+  - - 洗衣液
+    - 洗衣机旁
+  - - 衣架
+    - 阳台柜
+  - - 夹子
+    - 阳台柜
+  tags:
+  - function
+  unseen_objects:
+  - 消毒液
+  - 柔顺剂
+  - 晾衣杆
+  unseen_placements:
+  - - 消毒液
+    - 洗衣机旁
+  - - 柔顺剂
+    - 洗衣机旁
+  - - 晾衣杆
+    - 阳台柜
+- annotator_notes: 药放床头柜，老花镜放床头柜，鞋放门口鞋柜。
+  receptacles:
+  - 床头柜
+  - 鞋柜
+  room: 卧室
+  seen_objects:
+  - 降压药
+  - 钙片
+  - 老花镜
+  - 拖鞋
+  seen_placements:
+  - - 降压药
+    - 床头柜
+  - - 钙片
+    - 床头柜
+  - - 老花镜
+    - 床头柜
+  - - 拖鞋
+    - 鞋柜
+  tags:
+  - mixed
+  unseen_objects:
+  - 安眠药
+  - 放大镜
+  - 棉鞋
+  unseen_placements:
+  - - 安眠药
+    - 床头柜
+  - - 放大镜
+    - 床头柜
+  - - 棉鞋
+    - 鞋柜
+- annotator_notes: 书写工具放笔筒，纸类放书架。
+  receptacles:
+  - 笔筒
+  - 书架
+  room: 书房
+  seen_objects:
+  - 钢笔
+  - 橡皮
+  - 信纸
+  - 信封
+  seen_placements:
+  - - 钢笔
+    - 笔筒
+  - - 橡皮
+    - 笔筒
+  - - 信纸
+    - 书架
+  - - 信封
+    - 书架
+  tags:
+  - attribute
+  unseen_objects:
+  - 荧光笔
+  - 修正带
+  - 明信片
+  unseen_placements:
+  - - 荧光笔
+    - 笔筒
+  - - 修正带
+    - 笔筒
+  - - 明信片
+    - 书架
+- annotator_notes: 厨房小家电放厨房台面，餐具放碗柜。
+  receptacles:
+  - 厨房台面
+  - 碗柜
+  room: 厨房
+  seen_objects:
+  - 电饭煲
+  - 烧水壶
+  - 筷子
+  - 勺子
+  seen_placements:
+  - - 电饭煲
+    - 厨房台面
+  - - 烧水壶
+    - 厨房台面
+  - - 筷子
+    - 碗柜
+  - - 勺子
+    - 碗柜
+  tags:
+  - function
+  unseen_objects:
+  - 微波炉
+  - 豆浆机
+  - 叉子
+  unseen_placements:
+  - - 微波炉
+    - 厨房台面
+  - - 豆浆机
+    - 厨房台面
+  - - 叉子
+    - 碗柜
+- annotator_notes: 药品放药箱，清洁用品放卫生间架子。
+  receptacles:
+  - 药箱
+  - 卫生间架子
+  room: 卫生间
+  seen_objects:
+  - 碘伏
+  - 纱布
+  - 洁厕灵
+  - 刷子
+  seen_placements:
+  - - 碘伏
+    - 药箱
+  - - 纱布
+    - 药箱
+  - - 洁厕灵
+    - 卫生间架子
+  - - 刷子
+    - 卫生间架子
+  tags:
+  - function
+  unseen_objects:
+  - 创可贴
+  - 棉球
+  - 清洁剂
+  unseen_placements:
+  - - 创可贴
+    - 药箱
+  - - 棉球
+    - 药箱
+  - - 清洁剂
+    - 卫生间架子
+- annotator_notes: 零食放茶几，茶叶放餐边柜。
+  receptacles:
+  - 茶几
+  - 餐边柜
+  room: 客厅
+  seen_objects:
+  - 瓜子
+  - 花生
+  - 绿茶
+  - 红茶
+  seen_placements:
+  - - 瓜子
+    - 茶几
+  - - 花生
+    - 茶几
+  - - 绿茶
+    - 餐边柜
+  - - 红茶
+    - 餐边柜
+  tags:
+  - category
+  unseen_objects:
+  - 核桃
+  - 开心果
+  - 花茶
+  unseen_placements:
+  - - 核桃
+    - 茶几
+  - - 开心果
+    - 茶几
+  - - 花茶
+    - 餐边柜
+- annotator_notes: 晾晒的用阳台柜，洗护的放洗衣机旁。
+  receptacles:
+  - 阳台柜
+  - 洗衣机旁
+  room: 阳台
+  seen_objects:
+  - 晾衣夹
+  - 晾衣杆
+  - 洗衣凝珠
+  - 增白剂
+  seen_placements:
+  - - 晾衣夹
+    - 阳台柜
+  - - 晾衣杆
+    - 阳台柜
+  - - 洗衣凝珠
+    - 洗衣机旁
+  - - 增白剂
+    - 洗衣机旁
+  tags:
+  - function
+  unseen_objects:
+  - 晒衣网
+  - 夹子
+  - 洗衣皂
+  unseen_placements:
+  - - 晒衣网
+    - 阳台柜
+  - - 夹子
+    - 阳台柜
+  - - 洗衣皂
+    - 洗衣机旁
+- annotator_notes: 鞋放鞋柜，钥匙放门口，雨伞放伞架。
+  receptacles:
+  - 鞋柜
+  - 门口挂架
+  - 伞架
+  room: 玄关
+  seen_objects:
+  - 拖鞋
+  - 皮鞋
+  - 门钥匙
+  - 折叠伞
+  seen_placements:
+  - - 拖鞋
+    - 鞋柜
+  - - 皮鞋
+    - 鞋柜
+  - - 门钥匙
+    - 门口挂架
+  - - 折叠伞
+    - 伞架
+  tags:
+  - category
+  unseen_objects:
+  - 凉鞋
+  - 车钥匙
+  - 长柄伞
+  unseen_placements:
+  - - 凉鞋
+    - 鞋柜
+  - - 车钥匙
+    - 门口挂架
+  - - 长柄伞
+    - 伞架
+- annotator_notes: 床上用品放衣柜，脏衣物放脏衣篮。
+  receptacles:
+  - 衣柜
+  - 脏衣篮
+  room: 卧室
+  seen_objects:
+  - 床单
+  - 被套
+  - 脏袜子
+  - 脏衬衫
+  seen_placements:
+  - - 床单
+    - 衣柜
+  - - 被套
+    - 衣柜
+  - - 脏袜子
+    - 脏衣篮
+  - - 脏衬衫
+    - 脏衣篮
+  tags:
+  - attribute
+  unseen_objects:
+  - 枕套
+  - 毯子
+  - 脏裤子
+  unseen_placements:
+  - - 枕套
+    - 衣柜
+  - - 毯子
+    - 衣柜
+  - - 脏裤子
+    - 脏衣篮
+- annotator_notes: 看的东西放书架，坐的靠垫放沙发。
+  receptacles:
+  - 书架
+  - 沙发
+  room: 客厅
+  seen_objects:
+  - 报纸
+  - 小说
+  - 抱枕
+  - 靠垫
+  seen_placements:
+  - - 报纸
+    - 书架
+  - - 小说
+    - 书架
+  - - 抱枕
+    - 沙发
+  - - 靠垫
+    - 沙发
+  tags:
+  - function
+  unseen_objects:
+  - 杂志
+  - 画册
+  - 毯子
+  unseen_placements:
+  - - 杂志
+    - 书架
+  - - 画册
+    - 书架
+  - - 毯子
+    - 沙发
+- annotator_notes: 园艺工具放阳台柜，花盆放阳台架子。
+  receptacles:
+  - 阳台柜
+  - 阳台架子
+  room: 阳台
+  seen_objects:
+  - 剪刀
+  - 小铲
+  - 花盆
+  - 浇水壶
+  seen_placements:
+  - - 剪刀
+    - 阳台柜
+  - - 小铲
+    - 阳台柜
+  - - 花盆
+    - 阳台架子
+  - - 浇水壶
+    - 阳台架子
+  tags:
+  - category
+  unseen_objects:
+  - 修枝剪
+  - 手套
+  - 陶盆
+  unseen_placements:
+  - - 修枝剪
+    - 阳台柜
+  - - 手套
+    - 阳台柜
+  - - 陶盆
+    - 阳台架子
+- annotator_notes: 药放药箱，量血压和测血糖放床头柜。
+  receptacles:
+  - 药箱
+  - 床头柜
+  room: 卧室
+  seen_objects:
+  - 降压药
+  - 感冒药
+  - 血压计
+  - 血糖仪
+  seen_placements:
+  - - 降压药
+    - 药箱
+  - - 感冒药
+    - 药箱
+  - - 血压计
+    - 床头柜
+  - - 血糖仪
+    - 床头柜
+  tags:
+  - subclass
+  unseen_objects:
+  - 胃药
+  - 止痛药
+  - 体温计
+  unseen_placements:
+  - - 胃药
+    - 药箱
+  - - 止痛药
+    - 药箱
+  - - 体温计
+    - 床头柜
+- annotator_notes: 手机充电的东西放书桌，眼镜放茶几。
+  receptacles:
+  - 书桌
+  - 茶几
+  room: 客厅
+  seen_objects:
+  - 充电器
+  - 充电线
+  - 老花镜
+  - 近视镜
+  seen_placements:
+  - - 充电器
+    - 书桌
+  - - 充电线
+    - 书桌
+  - - 老花镜
+    - 茶几
+  - - 近视镜
+    - 茶几
+  tags:
+  - function
+  unseen_objects:
+  - 无线充电板
+  - 数据线
+  - 太阳镜
+  unseen_placements:
+  - - 无线充电板
+    - 书桌
+  - - 数据线
+    - 书桌
+  - - 太阳镜
+    - 茶几

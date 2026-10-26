@@ -13,7 +13,9 @@ ep_sta_qrcode.png
 
 # 模型权重 / 数据集 / 实验输出（体积大，放本地或网盘）
 checkpoints/
-data/
+data/*
+!data/zh_scenarios.yml
+!data/zh_find_instructions.csv
 outputs/
 runs/
 
