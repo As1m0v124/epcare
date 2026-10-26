@@ -119,6 +119,7 @@ ai312/bin/python week1.py
 ai312/bin/python scripts/eval_depth_nyu.py        # F1 → results/nyu_f1.{json,csv}
 ai312/bin/python scripts/eval_gdino_coco500.py --limit 500 --ann results/coco_val_gt.json --img-dir data/coco/val2017
 ai312/bin/python scripts/eval_tidybot.py --n 20   # F3 → results/tidybot_f3.json
+ai312/bin/python scripts/eval_tidybot.py --n 40 --scenarios data/zh_scenarios.yml  # F3 中文场景
 ai312/bin/python scripts/eval_da2k.py             # F1 DA-2K → results/da2k.json
 ai312/bin/python scripts/eval_refcoco.py --max-refs 1000   # F2 RefCOCO → results/refcoco.json
 ```
