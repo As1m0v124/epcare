@@ -372,17 +372,15 @@ async function armPos(){
 async function armStep(a){
   const p0=await armPos();
   await armSend(a);
-  for(let i=0;i<8;i++){
-    await new Promise(r=>setTimeout(r,120));
+  for(let i=0;i<20;i++){
+    await new Promise(r=>setTimeout(r,150));
     const p1=await armPos();
     if(p0&&p1){
       const d=Math.abs(p1[0]-p0[0])+Math.abs(p1[1]-p0[1]);
-      if(d>=5) return true;
+      if(d>=3) return 'moved';
     }
   }
-  const ks=document.querySelector('#keyState');
-  if(ks) ks.textContent='机械臂已到限位（'+JSON.stringify(await armPos())+'），换方向试试';
-  return false;
+  return 'stuck';
 }
 async function grabAct(action){
   try{await api('/api/control/grab',{method:'POST',body:JSON.stringify({action})});toast('爪子：'+(action==='open'?'张开':'闭合'));}
@@ -390,9 +388,20 @@ async function grabAct(action){
 }
 const armActive={};
 async function armLoop(a){
+  let fails=0;
   while(armActive[a]){
-    const ok = await armStep(a);
-    if(!ok){ armActive[a]=false; break; }
+    const r = await armStep(a);
+    if(r==='stuck'){
+      fails++;
+      if(fails>=2){
+        const ks=document.querySelector('#keyState');
+        if(ks) ks.textContent='机械臂已到限位（'+JSON.stringify(await armPos())+'），换方向试试';
+        armActive[a]=false;
+        break;
+      }
+    }else{
+      fails=0;
+    }
     await new Promise(r=>setTimeout(r,60));
   }
 }
