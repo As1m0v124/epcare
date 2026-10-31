@@ -29,6 +29,8 @@ BATTERY_FLOOR = int(os.environ.get("BATTERY_FLOOR", "15"))   # %
 
 app = FastAPI(title="EPCare Control Service")
 
+_arm_busy = __import__("threading").Lock()  # 机械臂指令串行化，忙则拒绝（429）
+
 _state = {"driver": None, "estop": False, "speed_limit": SPEED_LIMIT,
           "max_move": MAX_MOVE, "arm_limit_mm": ARM_LIMIT_MM, "events": 0}
 
@@ -212,7 +214,12 @@ def arm(req: ArmReq):
     guard_motion(d)
     if abs(req.x_mm) > _state["arm_limit_mm"] or abs(req.y_mm) > _state["arm_limit_mm"]:
         raise HTTPException(400, f"机械臂单次位移超限（>{_state['arm_limit_mm']}mm）")
-    d.arm_move(req.x_mm, req.y_mm, wait=req.wait)
+    if not _arm_busy.acquire(blocking=False):
+        raise HTTPException(429, "机械臂忙（上一条指令未完成）")
+    try:
+        d.arm_move(req.x_mm, req.y_mm, wait=req.wait)
+    finally:
+        _arm_busy.release()
     return {"ok": True}
 
 

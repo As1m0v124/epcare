@@ -364,7 +364,8 @@ async function armSend(a){
   if(ks) ks.textContent='机械臂：'+names[a]+'（按住中）';
   const body = a==='xp'?{x_mm:10,y_mm:0}:a==='xm'?{x_mm:-10,y_mm:0}
              : a==='yp'?{x_mm:0,y_mm:10}:{x_mm:0,y_mm:-10};
-  await api('/api/control/arm',{method:'POST',body:JSON.stringify(body)}).catch(e=>toast('机械臂失败：'+e.message));
+  try{ await api('/api/control/arm',{method:'POST',body:JSON.stringify(body)}); }
+  catch(e){ if(!(''+e.message).includes('忙')) toast('机械臂失败：'+e.message); }
 }
 async function armPos(){
   try{const st=await api('/api/control/state');return st.arm_pos;}catch(e){return null;}
