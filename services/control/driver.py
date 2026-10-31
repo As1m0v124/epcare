@@ -146,8 +146,11 @@ class RealEPDriver(BaseDriver):
 
     # ---------- 连接 ----------
     def connect(self):
-        from robomaster import robot
+        from robomaster import config, robot
 
+        ep_ip = os.environ.get("EP_IP", "").strip()
+        if ep_ip:
+            config.ROBOT_IP_STR = ep_ip  # 跳过自动扫描，直接连指定 IP
         self.ep = robot.Robot()
         try:
             self.ep.initialize(conn_type=os.environ.get("EP_CONN", "sta"))
