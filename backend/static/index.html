@@ -108,7 +108,8 @@ th{color:var(--muted);font-weight:600}
           <input id="cq" placeholder="检测：拖鞋 水瓶…" style="flex:1">
           <button onclick="runDetect(false)">检测</button>
         </div>
-        <p class="small">手动遥控（护理员/管理员）：<b>按住</b> <span class="kbd">W/A/S/D</span> 前后左右（松手停），<span class="kbd">Q/E</span> 左右转</p>
+        <p class="small">键盘遥控（护理员/管理员）：按住 <span class="kbd">W/A/S/D</span> 前后左右（松手停）、<span class="kbd">Q/E</span> 转向；
+机械臂 <span class="kbd">PgUp/PgDn</span> 前后、<span class="kbd">小键盘 8/2</span> 上下；爪子 <span class="kbd">Enter</span> 闭合、<span class="kbd">Backspace</span> 张开</p>
         <div class="row" id="dpad">
           <button data-dir="q">↺ 左转</button><button data-dir="w">▲ 前进</button><button data-dir="e">右转 ↻</button>
           <button data-dir="a">◀ 左移</button><button data-dir="s">▼ 后退</button><button data-dir="d">右移 ▶</button>
@@ -354,26 +355,48 @@ function bindDpad(){
   });
 }
 bindDpad();
+async function armSend(a){
+  const body = a==='xp'?{x_mm:8,y_mm:0}:a==='xm'?{x_mm:-8,y_mm:0}:a==='yp'?{x_mm:0,y_mm:6}:{x_mm:0,y_mm:-6};
+  await api('/api/control/arm',{method:'POST',body:JSON.stringify(body)}).catch(e=>toast('机械臂失败：'+e.message));
+}
+async function grabAct(action){
+  try{await api('/api/control/grab',{method:'POST',body:JSON.stringify({action})});toast('爪子：'+(action==='open'?'张开':'闭合'));}
+  catch(e){toast('爪子失败：'+e.message)}
+}
+const armTimers={};
+function armStart(a){ if(armTimers[a]) return; armSend(a); armTimers[a]=setInterval(()=>armSend(a),450); }
+function armStop(a){ if(armTimers[a]){clearInterval(armTimers[a]);delete armTimers[a];} }
 function bindArm(){
-  const send=async(a)=>{
-    const body = a==='xp'?{x_mm:8,y_mm:0}:a==='xm'?{x_mm:-8,y_mm:0}:a==='yp'?{x_mm:0,y_mm:6}:{x_mm:0,y_mm:-6};
-    await api('/api/control/arm',{method:'POST',body:JSON.stringify(body)}).catch(e=>toast('机械臂失败：'+e.message));
-  };
   $$('#armpad button[data-arm]').forEach(b=>{
-    let t=null;
-    const on=ev=>{ev.preventDefault(); if(t) return; send(b.dataset.arm); t=setInterval(()=>send(b.dataset.arm), 450);};
-    const off=ev=>{if(t){clearInterval(t);t=null;}};
-    b.addEventListener('pointerdown',on); b.addEventListener('pointerup',off);
-    b.addEventListener('pointerleave',off); b.addEventListener('pointercancel',off);
+    b.addEventListener('pointerdown',ev=>{ev.preventDefault(); armStart(b.dataset.arm);});
+    b.addEventListener('pointerup',()=>armStop(b.dataset.arm));
+    b.addEventListener('pointerleave',()=>armStop(b.dataset.arm));
+    b.addEventListener('pointercancel',()=>armStop(b.dataset.arm));
   });
   $$('#armpad button[data-grab]').forEach(b=>{
-    b.addEventListener('click',async()=>{
-      try{await api('/api/control/grab',{method:'POST',body:JSON.stringify({action:b.dataset.grab})});toast('爪子：'+(b.dataset.grab==='open'?'张开':'闭合'));}
-      catch(e){toast('爪子失败：'+e.message)}
-    });
+    b.addEventListener('click',()=>grabAct(b.dataset.grab));
   });
 }
 bindArm();
+function armKeyAction(e){
+  if(e.key==='PageUp') return 'xp';
+  if(e.key==='PageDown') return 'xm';
+  if(e.code==='Numpad8') return 'yp';
+  if(e.code==='Numpad2') return 'ym';
+  return null;
+}
+document.addEventListener('keydown',e=>{
+  if(!$('#v-cockpit').classList.contains('on'))return;
+  if(['INPUT','TEXTAREA','SELECT'].includes(e.target.tagName)) return;
+  const a=armKeyAction(e);
+  if(a){ e.preventDefault(); if(!e.repeat) armStart(a); return; }
+  if(e.key==='Enter'){ e.preventDefault(); grabAct('close'); }
+  else if(e.key==='Backspace'){ e.preventDefault(); grabAct('open'); }
+});
+document.addEventListener('keyup',e=>{
+  const a=armKeyAction(e);
+  if(a){ e.preventDefault(); armStop(a); }
+});
 
 async function loadDashboard(){
   try{
