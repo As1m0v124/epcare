@@ -142,6 +142,7 @@ class RealEPDriver(BaseDriver):
         self._drive_running = False
         self._drive_thread = None
         self._drive_deadline = 0.0
+        self._last_frame_ts = 0.0
 
     # ---------- 连接 ----------
     def connect(self):
@@ -191,25 +192,28 @@ class RealEPDriver(BaseDriver):
                 s.settimeout(5)
                 s.connect((ip, port))
                 ctx = av.CodecContext.create("h264", "r")
-                raw = b""
                 while self._running:
                     chunk = s.recv(65536)
                     if not chunk:
                         raise ConnectionError("stream closed")
-                    raw += chunk
-                    if len(raw) > 120_000:
-                        try:
-                            for pkt in ctx.parse(raw):
-                                for frame in ctx.decode(pkt):
-                                    img = frame.to_ndarray(format="bgr24")
-                                    self._frame = img
-                                    self.last_error = ""
-                        except Exception:
-                            ctx = av.CodecContext.create("h264", "r")  # 解码器状态坏了就重建
-                        raw = b""
+                    try:
+                        for pkt in ctx.parse(chunk):
+                            for frame in ctx.decode(pkt):
+                                img = frame.to_ndarray(format="bgr24")
+                                self._frame = img
+                                self._last_frame_ts = time.time()
+                                self.last_error = ""
+                    except Exception:
+                        ctx = av.CodecContext.create("h264", "r")  # 解码器状态坏了就重建
             except Exception as e:
                 self.last_error = f"video loop: {e!r}"
                 time.sleep(1)
+            if time.time() - self._last_frame_ts > 5:
+                try:
+                    self.ep.camera._video_stream(1, "360p")
+                except Exception:
+                    pass
+                time.sleep(0.5)
 
     def _sub_arm(self):
         try:
@@ -318,8 +322,10 @@ class RealEPDriver(BaseDriver):
         time.sleep(1.0)
         return True
 
-    def arm_move(self, x_mm, y_mm):
-        audit("arm", mode="real", x=x_mm, y=y_mm)
+    def arm_move(self, x_mm, y_mm, wait=True):
+        audit("arm", mode="real", x=x_mm, y=y_mm, wait=wait)
         with self._lock:
-            self.ep.robotic_arm.move(x=x_mm, y=y_mm).wait_for_completed(timeout=15)
+            action = self.ep.robotic_arm.move(x=x_mm, y=y_mm)
+            if wait:
+                action.wait_for_completed(timeout=15)
         return True

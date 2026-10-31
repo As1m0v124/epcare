@@ -79,6 +79,7 @@ class GrabReq(BaseModel):
 class ArmReq(BaseModel):
     x_mm: float = 0.0
     y_mm: float = 0.0
+    wait: bool = True
 
 
 class LimitsReq(BaseModel):
@@ -211,7 +212,7 @@ def arm(req: ArmReq):
     guard_motion(d)
     if abs(req.x_mm) > _state["arm_limit_mm"] or abs(req.y_mm) > _state["arm_limit_mm"]:
         raise HTTPException(400, f"机械臂单次位移超限（>{_state['arm_limit_mm']}mm）")
-    d.arm_move(req.x_mm, req.y_mm)
+    d.arm_move(req.x_mm, req.y_mm, wait=req.wait)
     return {"ok": True}
 
 

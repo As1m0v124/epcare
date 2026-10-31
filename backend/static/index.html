@@ -356,16 +356,20 @@ function bindDpad(){
 }
 bindDpad();
 async function armSend(a){
-  const body = a==='xp'?{x_mm:8,y_mm:0}:a==='xm'?{x_mm:-8,y_mm:0}:a==='yp'?{x_mm:0,y_mm:6}:{x_mm:0,y_mm:-6};
+  const body = a==='xp'?{x_mm:6,y_mm:0}:a==='xm'?{x_mm:-6,y_mm:0}
+             : a==='yp'?{x_mm:0,y_mm:4}:{x_mm:0,y_mm:-4};
   await api('/api/control/arm',{method:'POST',body:JSON.stringify(body)}).catch(e=>toast('机械臂失败：'+e.message));
 }
 async function grabAct(action){
   try{await api('/api/control/grab',{method:'POST',body:JSON.stringify({action})});toast('爪子：'+(action==='open'?'张开':'闭合'));}
   catch(e){toast('爪子失败：'+e.message)}
 }
-const armTimers={};
-function armStart(a){ if(armTimers[a]) return; armSend(a); armTimers[a]=setInterval(()=>armSend(a),450); }
-function armStop(a){ if(armTimers[a]){clearInterval(armTimers[a]);delete armTimers[a];} }
+const armActive={};
+async function armLoop(a){
+  while(armActive[a]){ await armSend(a); await new Promise(r=>setTimeout(r,20)); }
+}
+function armStart(a){ if(armActive[a]) return; armActive[a]=true; armLoop(a); }
+function armStop(a){ armActive[a]=false; }
 function bindArm(){
   $$('#armpad button[data-arm]').forEach(b=>{
     b.addEventListener('pointerdown',ev=>{ev.preventDefault(); armStart(b.dataset.arm);});
