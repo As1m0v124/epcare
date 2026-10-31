@@ -128,8 +128,8 @@ class RealEPDriver(BaseDriver):
         self._video_thread = None
         self._running = False
         self._battery = None
-        self._battery_ts = 0
-        self.arm_pos = None
+        self._arm_pos = None
+        self._lock = threading.Lock()
 
     # ---------- 连接 ----------
     def connect(self):
@@ -141,6 +141,7 @@ class RealEPDriver(BaseDriver):
         audit("connect", mode="real", version=self.ep.get_version(), sn=self.ep.get_sn())
         self._start_video()
         self._sub_battery()
+        self._sub_arm()
         return True
 
     def _start_video(self):
@@ -180,6 +181,13 @@ class RealEPDriver(BaseDriver):
                 self.last_error = f"video loop: {e!r}"
                 time.sleep(1)
 
+    def _sub_arm(self):
+        try:
+            self.ep.robotic_arm.sub_position(
+                freq=5, callback=lambda pos: setattr(self, "_arm_pos", pos))
+        except Exception:
+            pass
+
     def _sub_battery(self):
         try:
             self.ep.battery.sub_battery_info(
@@ -207,18 +215,8 @@ class RealEPDriver(BaseDriver):
 
     # ---------- 状态 ----------
     def state(self):
-        pos = None
-        try:
-            box = {}
-            self.ep.robotic_arm.sub_position(freq=10, callback=lambda p: box.update(pos=p))
-            time.sleep(0.5)
-            self.ep.robotic_arm.unsub_position()
-            pos = box.get("pos")
-            self.arm_pos = pos
-        except Exception:
-            pass
         return {"mode": "real", "connected": self.connected, "battery": self.battery(),
-                "arm_pos": pos, "last_error": self.last_error}
+                "arm_pos": self._arm_pos, "last_error": self.last_error}
 
     def frame_jpeg(self):
         if self._frame is None:
@@ -229,7 +227,8 @@ class RealEPDriver(BaseDriver):
     # ---------- 动作 ----------
     def move(self, x, y, z):
         audit("move", mode="real", x=x, y=y, z=z)
-        self.ep.chassis.move(x=x, y=y, z=z, xy_speed=0.5).wait_for_completed(timeout=30)
+        with self._lock:
+            self.ep.chassis.move(x=x, y=y, z=z, xy_speed=0.5).wait_for_completed(timeout=30)
         return True
 
     def stop(self):
@@ -241,14 +240,16 @@ class RealEPDriver(BaseDriver):
 
     def grab(self, action):
         audit("grab", mode="real", action=action)
-        if action == "open":
-            self.ep.gripper.open(power=50)
-        else:
-            self.ep.gripper.close(power=50)
+        with self._lock:
+            if action == "open":
+                self.ep.gripper.open(power=50)
+            else:
+                self.ep.gripper.close(power=50)
         time.sleep(1.0)
         return True
 
     def arm_move(self, x_mm, y_mm):
         audit("arm", mode="real", x=x_mm, y=y_mm)
-        self.ep.robotic_arm.move(x=x_mm, y=y_mm).wait_for_completed(timeout=15)
+        with self._lock:
+            self.ep.robotic_arm.move(x=x_mm, y=y_mm).wait_for_completed(timeout=15)
         return True
