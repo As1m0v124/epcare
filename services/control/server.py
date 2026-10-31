@@ -14,7 +14,10 @@ import os
 
 from typing import Optional
 
+import time
+
 from fastapi import FastAPI, HTTPException, Response
+from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 
 from .driver import ReplayDriver, RealEPDriver, audit
@@ -60,6 +63,7 @@ class MoveReq(BaseModel):
     x: float = 0.0
     y: float = 0.0
     z: float = 0.0
+    wait: bool = True
 
 
 class GrabReq(BaseModel):
@@ -149,7 +153,7 @@ def move(req: MoveReq):
     if abs(req.z) > 180:
         raise HTTPException(400, "单次旋转超限（>180°）")
     try:
-        d.move(req.x, req.y, req.z)
+        d.move(req.x, req.y, req.z, wait=req.wait)
     except Exception as e:
         audit("move_error", error=repr(e))
         raise HTTPException(500, f"动作失败: {e!r}")
@@ -195,6 +199,24 @@ def set_limits(req: LimitsReq):
         _state["arm_limit_mm"] = max(10, min(150, req.arm_limit_mm))
     audit("set_limits", **{k: v for k, v in _state.items() if k != "driver"})
     return {"ok": True, **{k: _state[k] for k in ("speed_limit", "max_move", "arm_limit_mm")}}
+
+
+@app.get("/stream.mjpg")
+def stream_mjpg():
+    """低延迟 MJPEG 流（约 12 帧/秒），浏览器 <img> 直接播放。"""
+    d = driver()
+    if d is None:
+        raise HTTPException(409, "未连接")
+
+    def gen():
+        boundary = b"--frame\r\nContent-Type: image/jpeg\r\nContent-Length: "
+        while True:
+            jpg = d.frame_jpeg()
+            if jpg:
+                yield boundary + str(len(jpg)).encode() + b"\r\n\r\n" + jpg + b"\r\n"
+            time.sleep(1 / 12)
+
+    return StreamingResponse(gen(), media_type="multipart/x-mixed-replace; boundary=frame")
 
 
 @app.get("/frame.jpg")

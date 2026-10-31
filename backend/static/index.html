@@ -242,7 +242,13 @@ async function startTimers(){
   clearInterval(STATE_TIMER);STATE_TIMER=setInterval(pollState,2000);pollState();
   if($('#v-cockpit').classList.contains('on')) startFrames();
 }
-function startFrames(){clearInterval(FRAME_TIMER);FRAME_TIMER=setInterval(refreshFrame,600)}
+function startFrames(){
+  clearInterval(FRAME_TIMER);FRAME_TIMER=null;
+  const img=$('#frame');
+  const play=()=>{ img.src='http://127.0.0.1:8001/stream.mjpg?t='+Date.now(); };
+  img.onerror=()=>setTimeout(play,2000);
+  play();
+}
 async function pollState(){
   try{
     const st=await api('/api/control/state');
@@ -260,8 +266,7 @@ async function pollState(){
 function refreshFrame(){
   if(DEPTH_ON) return;
   const img=$('#frame');
-  img.src='/api/control/frame.jpg?t='+Date.now();
-  if(DEPTH_ON){/* 深度图单独按钮查看 */}
+  if(!img.src.includes('stream.mjpg')){ img.src='http://127.0.0.1:8001/stream.mjpg?t='+Date.now(); }
 }
 async function toggleDepth(){
   DEPTH_ON=!DEPTH_ON;
@@ -295,9 +300,9 @@ async function estop(){
 document.addEventListener('keydown',async e=>{
   if(!$('#v-cockpit').classList.contains('on'))return;
   if(['w','a','s','d','q','e'].includes(e.key.toLowerCase())){
-    const mv={w:[0.2,0],s:[-0.2,0],a:[0,0.2],d:[0,-0.2],q:[0,0],e:[0,0]}[e.key.toLowerCase()];
+    const mv={w:[0.2,0],s:[-0.2,0],a:[0,-0.2],d:[0,0.2],q:[0,0],e:[0,0]}[e.key.toLowerCase()];
     const body=e.key.toLowerCase()==='q'?{x:0,y:0,z:30}:e.key.toLowerCase()==='e'?{x:0,y:0,z:-30}:{x:mv[0],y:mv[1],z:0};
-    try{await api('/api/control/move',{method:'POST',body:JSON.stringify(body)});toast('已发送移动')}catch(err){toast('移动失败：'+err.message)}
+    try{await api('/api/control/move',{method:'POST',body:JSON.stringify({...body,wait:false})});toast('已发送移动')}catch(err){toast('移动失败：'+err.message)}
   }
 });
 

@@ -136,7 +136,13 @@ class RealEPDriver(BaseDriver):
         from robomaster import robot
 
         self.ep = robot.Robot()
-        self.ep.initialize(conn_type=os.environ.get("EP_CONN", "sta"))
+        try:
+            self.ep.initialize(conn_type=os.environ.get("EP_CONN", "sta"))
+        except Exception as e:
+            self.ep = None
+            self.connected = False
+            self.last_error = f"未发现机器人（请确认已开机、路由器模式、同一 Wi-Fi）: {e!r}"
+            raise RuntimeError(self.last_error) from e
         self.connected = True
         audit("connect", mode="real", version=self.ep.get_version(), sn=self.ep.get_sn())
         self._start_video()
@@ -176,6 +182,7 @@ class RealEPDriver(BaseDriver):
                             for frame in ctx.decode(pkt):
                                 img = frame.to_ndarray(format="bgr24")
                                 self._frame = img
+                                self.last_error = ""
                         raw = b""
             except Exception as e:
                 self.last_error = f"video loop: {e!r}"
@@ -225,10 +232,12 @@ class RealEPDriver(BaseDriver):
         return buf.tobytes() if ok else None
 
     # ---------- 动作 ----------
-    def move(self, x, y, z):
-        audit("move", mode="real", x=x, y=y, z=z)
+    def move(self, x, y, z, wait=True):
+        audit("move", mode="real", x=x, y=y, z=z, wait=wait)
         with self._lock:
-            self.ep.chassis.move(x=x, y=y, z=z, xy_speed=0.5).wait_for_completed(timeout=30)
+            action = self.ep.chassis.move(x=x, y=y, z=z, xy_speed=0.5)
+            if wait:
+                action.wait_for_completed(timeout=30)
         return True
 
     def stop(self):

@@ -48,3 +48,9 @@ push 前 `git rev-list origin/main..HEAD --objects | cat-file --batch-check` 估
 `post_process_grounded_object_detection(box_threshold=...)` 在 5.x 改为 `threshold=`；
 `labels` 将变为整数 id（应使用 `text_labels`）。
 **做法**：升级/换库先用 `inspect.signature` 看参数名；报错信息里没提示就查模块签名。
+
+## L8 · 交互延迟来自架构选择，不是网络
+**Seen 1×（10-31）**
+网页"卡"的根因是 HTTP 轮询抓图（1 帧/秒）和同步等待动作完成（数秒），不是 Wi-Fi。
+**做法**：实时画面用 MJPEG/WebSocket 推流；控制指令默认非阻塞，完成状态靠状态轮询/事件回传。
+**检查**：任何"卡顿"先量两端延迟（抓图周期 vs 指令响应），再决定改架构还是改网络。
