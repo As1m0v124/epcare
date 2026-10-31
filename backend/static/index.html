@@ -107,7 +107,11 @@ th{color:var(--muted);font-weight:600}
           <input id="cq" placeholder="检测：拖鞋 水瓶…" style="flex:1">
           <button onclick="runDetect(false)">检测</button>
         </div>
-        <p class="small">手动遥控（护理员/管理员）：<span class="kbd">W/A/S/D</span> 前后左右 0.2m，<span class="kbd">Q/E</span> 转 ±30°</p>
+        <p class="small">手动遥控（护理员/管理员）：<b>按住</b> <span class="kbd">W/A/S/D</span> 前后左右（松手停），<span class="kbd">Q/E</span> 左右转</p>
+        <div class="row" id="dpad">
+          <button data-dir="q">↺ 左转</button><button data-dir="w">▲ 前进</button><button data-dir="e">右转 ↻</button>
+          <button data-dir="a">◀ 左移</button><button data-dir="s">▼ 后退</button><button data-dir="d">右移 ▶</button>
+        </div>
       </div>
       <div>
         <div class="panel"><h3>机器人状态</h3><div id="stateBox" class="small">…</div></div>
@@ -297,14 +301,44 @@ async function estop(){
   try{await api('/api/control/estop',{method:'POST'});toast('已急停')}catch(e){toast('急停失败：'+e.message)}
   pollState();
 }
-document.addEventListener('keydown',async e=>{
+const pressed=new Set();
+let lastDrive='';
+function driveBody(){
+  return {
+    x:(pressed.has('w')?0.3:0)-(pressed.has('s')?0.3:0),
+    y:(pressed.has('d')?0.3:0)-(pressed.has('a')?0.3:0),
+    z:(pressed.has('q')?30:0)-(pressed.has('e')?30:0),
+  };
+}
+async function sendDrive(){
+  const b=driveBody(); const key=JSON.stringify(b);
+  if(key===lastDrive) return; lastDrive=key;
+  try{
+    if(b.x||b.y||b.z) await api('/api/control/drive_hold',{method:'POST',body:JSON.stringify(b)});
+    else await api('/api/control/stop_drive',{method:'POST'});
+  }catch(err){toast('遥控失败：'+err.message)}
+}
+function stopAll(){ pressed.clear(); lastDrive=''; api('/api/control/stop_drive',{method:'POST'}).catch(()=>{}); }
+document.addEventListener('keydown',e=>{
   if(!$('#v-cockpit').classList.contains('on'))return;
-  if(['w','a','s','d','q','e'].includes(e.key.toLowerCase())){
-    const mv={w:[0.2,0],s:[-0.2,0],a:[0,-0.2],d:[0,0.2],q:[0,0],e:[0,0]}[e.key.toLowerCase()];
-    const body=e.key.toLowerCase()==='q'?{x:0,y:0,z:30}:e.key.toLowerCase()==='e'?{x:0,y:0,z:-30}:{x:mv[0],y:mv[1],z:0};
-    try{await api('/api/control/move',{method:'POST',body:JSON.stringify({...body,wait:false})});toast('已发送移动')}catch(err){toast('移动失败：'+err.message)}
-  }
+  const k=e.key.toLowerCase();
+  if(['w','a','s','d','q','e'].includes(k)){ e.preventDefault(); if(!pressed.has(k)){pressed.add(k);sendDrive();} }
 });
+document.addEventListener('keyup',e=>{ const k=e.key.toLowerCase(); if(pressed.delete(k)) sendDrive(); });
+window.addEventListener('blur',stopAll);
+document.addEventListener('visibilitychange',()=>{ if(document.hidden) stopAll(); });
+function bindDpad(){
+  $$('#dpad button').forEach(b=>{
+    const k=b.dataset.dir;
+    const on=ev=>{ev.preventDefault(); pressed.add(k); sendDrive();};
+    const off=ev=>{pressed.delete(k); sendDrive();};
+    b.addEventListener('pointerdown',on);
+    b.addEventListener('pointerup',off);
+    b.addEventListener('pointerleave',off);
+    b.addEventListener('pointercancel',off);
+  });
+}
+bindDpad();
 
 async function loadDashboard(){
   try{

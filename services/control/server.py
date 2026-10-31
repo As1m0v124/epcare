@@ -66,6 +66,12 @@ class MoveReq(BaseModel):
     wait: bool = True
 
 
+class DriveReq(BaseModel):
+    x: float = 0.0
+    y: float = 0.0
+    z: float = 0.0
+
+
 class GrabReq(BaseModel):
     action: str = "open"
 
@@ -160,6 +166,26 @@ def move(req: MoveReq):
     return {"ok": True}
 
 
+@app.post("/drive_hold")
+def drive_hold(req: DriveReq):
+    d = require_driver()
+    guard_motion(d)
+    if abs(req.x) > _state["speed_limit"] or abs(req.y) > _state["speed_limit"]:
+        raise HTTPException(400, "速度超限")
+    if abs(req.z) > 90:
+        raise HTTPException(400, "转向速度超限")
+    d.drive_hold(req.x, req.y, req.z)
+    return {"ok": True}
+
+
+@app.post("/stop_drive")
+def stop_drive():
+    d = driver()
+    if d and d.connected:
+        d.stop_drive()
+    return {"ok": True}
+
+
 @app.post("/stop")
 def stop():
     d = driver()
@@ -214,7 +240,7 @@ def stream_mjpg():
             jpg = d.frame_jpeg()
             if jpg:
                 yield boundary + str(len(jpg)).encode() + b"\r\n\r\n" + jpg + b"\r\n"
-            time.sleep(1 / 12)
+            time.sleep(1 / 15)
 
     return StreamingResponse(gen(), media_type="multipart/x-mixed-replace; boundary=frame")
 

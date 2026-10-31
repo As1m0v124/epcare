@@ -169,6 +169,19 @@ def control_stop(request: Request):
     return ctrl_json("/stop", "POST")
 
 
+@app.post("/api/control/drive_hold")
+def control_drive(request: Request, payload: dict = Body(...)):
+    u = require(request, "caregiver")
+    db.audit(u["username"], "drive_hold", json.dumps(payload))
+    return ctrl_json("/drive_hold", "POST", payload)
+
+
+@app.post("/api/control/stop_drive")
+def control_stop_drive(request: Request):
+    require(request)
+    return ctrl_json("/stop_drive", "POST")
+
+
 @app.post("/api/control/grab")
 def control_grab(request: Request, payload: dict = Body(...)):
     u = require(request, "caregiver")

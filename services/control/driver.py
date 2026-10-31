@@ -100,6 +100,14 @@ class ReplayDriver(BaseDriver):
         audit("move", mode="replay", x=x, y=y, z=z)
         return True
 
+    def drive_hold(self, x, y, z):
+        self.last_cmd = {"drive_hold": [x, y, z], "ts": time.time()}
+        audit("drive_hold", mode="replay", x=x, y=y, z=z)
+
+    def stop_drive(self):
+        self.last_cmd = {"stop_drive": True, "ts": time.time()}
+        audit("stop_drive", mode="replay")
+
     def stop(self):
         self.last_cmd = {"stop": True, "ts": time.time()}
         audit("stop", mode="replay")
@@ -130,6 +138,9 @@ class RealEPDriver(BaseDriver):
         self._battery = None
         self._arm_pos = None
         self._lock = threading.Lock()
+        self._drive = (0.0, 0.0, 0.0)
+        self._drive_running = False
+        self._drive_thread = None
 
     # ---------- 连接 ----------
     def connect(self):
@@ -167,22 +178,31 @@ class RealEPDriver(BaseDriver):
 
         while self._running:
             try:
+                # 每次（重）连接前都重新发一次开流命令，确保机器人恢复推流
+                try:
+                    self.ep.camera._stream_sdk(1, "360p")
+                    self.ep.camera._video_stream(1, "360p")
+                except Exception:
+                    pass
                 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-                s.settimeout(3)
+                s.settimeout(5)
                 s.connect((ip, port))
                 ctx = av.CodecContext.create("h264", "r")
                 raw = b""
                 while self._running:
                     chunk = s.recv(65536)
                     if not chunk:
-                        break
+                        raise ConnectionError("stream closed")
                     raw += chunk
-                    if len(raw) > 200_000:
-                        for pkt in ctx.parse(raw):
-                            for frame in ctx.decode(pkt):
-                                img = frame.to_ndarray(format="bgr24")
-                                self._frame = img
-                                self.last_error = ""
+                    if len(raw) > 120_000:
+                        try:
+                            for pkt in ctx.parse(raw):
+                                for frame in ctx.decode(pkt):
+                                    img = frame.to_ndarray(format="bgr24")
+                                    self._frame = img
+                                    self.last_error = ""
+                        except Exception:
+                            ctx = av.CodecContext.create("h264", "r")  # 解码器状态坏了就重建
                         raw = b""
             except Exception as e:
                 self.last_error = f"video loop: {e!r}"
@@ -240,8 +260,38 @@ class RealEPDriver(BaseDriver):
                 action.wait_for_completed(timeout=30)
         return True
 
+    def drive_hold(self, x, y, z):
+        """按住走：后台 10Hz 重发速度指令，直到 stop_drive。"""
+        self._drive = (x, y, z)
+        if self._drive_thread is None or not self._drive_thread.is_alive():
+            self._drive_running = True
+            self._drive_thread = threading.Thread(target=self._drive_loop, daemon=True)
+            self._drive_thread.start()
+        audit("drive_hold", mode="real", x=x, y=y, z=z)
+
+    def _drive_loop(self):
+        while self._drive_running:
+            dx, dy, dz = self._drive
+            with self._lock:
+                try:
+                    self.ep.chassis.drive_speed(x=dx, y=dy, z=dz)
+                except Exception:
+                    pass
+            time.sleep(0.1)
+
+    def stop_drive(self):
+        self._drive_running = False
+        self._drive = (0.0, 0.0, 0.0)
+        audit("stop_drive", mode="real")
+        try:
+            self.ep.chassis.stop()
+        except Exception:
+            pass
+
     def stop(self):
         audit("stop", mode="real")
+        self._drive_running = False
+        self._drive = (0.0, 0.0, 0.0)
         try:
             self.ep.chassis.stop()
         except Exception:
