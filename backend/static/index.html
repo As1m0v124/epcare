@@ -109,7 +109,7 @@ th{color:var(--muted);font-weight:600}
           <button onclick="runDetect(false)">检测</button>
         </div>
         <p class="small">键盘遥控（护理员/管理员）：按住 <span class="kbd">W/A/S/D</span> 前后左右（松手停）、<span class="kbd">Q/E</span> 转向；
-机械臂 <span class="kbd">PgUp/PgDn</span> 前后、<span class="kbd">小键盘 8/2</span> 上下；爪子 <span class="kbd">Enter</span> 闭合、<span class="kbd">Backspace</span> 张开</p>
+机械臂 <span class="kbd">PgUp/PgDn</span> 前后、<span class="kbd">↑/↓</span> 上下（小键盘 8/2 亦可）；爪子 <span class="kbd">Enter</span> 闭合、<span class="kbd">Backspace</span> 张开</p>
         <div class="row" id="dpad">
           <button data-dir="q">↺ 左转</button><button data-dir="w">▲ 前进</button><button data-dir="e">右转 ↻</button>
           <button data-dir="a">◀ 左移</button><button data-dir="s">▼ 后退</button><button data-dir="d">右移 ▶</button>
@@ -381,8 +381,8 @@ bindArm();
 function armKeyAction(e){
   if(e.key==='PageUp') return 'xp';
   if(e.key==='PageDown') return 'xm';
-  if(e.code==='Numpad8') return 'yp';
-  if(e.code==='Numpad2') return 'ym';
+  if(e.code==='Numpad8'||e.key==='ArrowUp') return 'yp';
+  if(e.code==='Numpad2'||e.key==='ArrowDown') return 'ym';
   return null;
 }
 document.addEventListener('keydown',e=>{
