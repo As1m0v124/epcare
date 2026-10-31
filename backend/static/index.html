@@ -356,9 +356,24 @@ function bindDpad(){
 }
 bindDpad();
 async function armSend(a){
-  const body = a==='xp'?{x_mm:6,y_mm:0}:a==='xm'?{x_mm:-6,y_mm:0}
-             : a==='yp'?{x_mm:0,y_mm:4}:{x_mm:0,y_mm:-4};
+  const body = a==='xp'?{x_mm:10,y_mm:0}:a==='xm'?{x_mm:-10,y_mm:0}
+             : a==='yp'?{x_mm:0,y_mm:6}:{x_mm:0,y_mm:-6};
   await api('/api/control/arm',{method:'POST',body:JSON.stringify(body)}).catch(e=>toast('机械臂失败：'+e.message));
+}
+async function armPos(){
+  try{const st=await api('/api/control/state');return st.arm_pos;}catch(e){return null;}
+}
+async function armStep(a){
+  const p0=await armPos();
+  await armSend(a);
+  for(let i=0;i<8;i++){
+    await new Promise(r=>setTimeout(r,120));
+    const p1=await armPos();
+    if(p0&&p1){
+      const d=Math.abs(p1[0]-p0[0])+Math.abs(p1[1]-p0[1]);
+      if(d>=5) return;
+    }
+  }
 }
 async function grabAct(action){
   try{await api('/api/control/grab',{method:'POST',body:JSON.stringify({action})});toast('爪子：'+(action==='open'?'张开':'闭合'));}
@@ -366,7 +381,7 @@ async function grabAct(action){
 }
 const armActive={};
 async function armLoop(a){
-  while(armActive[a]){ await armSend(a); await new Promise(r=>setTimeout(r,20)); }
+  while(armActive[a]){ await armStep(a); await new Promise(r=>setTimeout(r,60)); }
 }
 function armStart(a){ if(armActive[a]) return; armActive[a]=true; armLoop(a); }
 function armStop(a){ armActive[a]=false; }
