@@ -1,0 +1,1528 @@
+{"ts": "2026-10-26T22:36:49", "event": "connect", "mode": "replay", "frames": 10}
+{"ts": "2026-10-26T22:36:49", "event": "connect_ok", "mode": "replay"}
+{"ts": "2026-10-26T22:37:04", "event": "stop", "mode": "replay"}
+{"ts": "2026-10-26T22:37:04", "event": "estop"}
+{"ts": "2026-10-26T22:37:04", "event": "reject", "reason": "estop"}
+{"ts": "2026-10-26T22:37:04", "event": "clear_estop"}
+{"ts": "2026-10-26T22:37:38", "event": "connect", "mode": "replay", "frames": 10}
+{"ts": "2026-10-26T22:37:38", "event": "connect_ok", "mode": "replay"}
+{"ts": "2026-10-26T22:49:50", "event": "stop", "mode": "replay"}
+{"ts": "2026-10-26T22:49:50", "event": "estop"}
+{"ts": "2026-10-26T22:49:50", "event": "clear_estop"}
+{"ts": "2026-10-26T23:43:27", "event": "connect", "mode": "replay", "frames": 10}
+{"ts": "2026-10-26T23:43:27", "event": "connect_ok", "mode": "replay"}
+{"ts": "2026-10-27T00:31:03", "event": "connect", "mode": "replay", "frames": 10}
+{"ts": "2026-10-27T00:31:03", "event": "connect_ok", "mode": "replay"}
+{"ts": "2026-10-27T07:51:32", "event": "move", "mode": "replay", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-27T07:51:32", "event": "move", "mode": "replay", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-27T07:51:32", "event": "move", "mode": "replay", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-27T07:51:32", "event": "arm", "mode": "replay", "x": 20.0, "y": 0.0}
+{"ts": "2026-10-27T07:51:32", "event": "grab", "mode": "replay", "action": "open"}
+{"ts": "2026-10-27T07:51:32", "event": "arm", "mode": "replay", "x": 10.0, "y": -5.0}
+{"ts": "2026-10-27T07:51:32", "event": "grab", "mode": "replay", "action": "close"}
+{"ts": "2026-10-27T07:51:32", "event": "arm", "mode": "replay", "x": -20.0, "y": 0.0}
+{"ts": "2026-10-27T07:51:51", "event": "stop", "mode": "replay"}
+{"ts": "2026-10-27T07:51:51", "event": "estop"}
+{"ts": "2026-10-27T07:51:51", "event": "reject", "reason": "estop"}
+{"ts": "2026-10-27T07:51:51", "event": "clear_estop"}
+{"ts": "2026-10-27T07:51:51", "event": "set_limits", "estop": false, "speed_limit": 0.5, "max_move": 0.8, "arm_limit_mm": 50, "events": 0}
+{"ts": "2026-10-27T07:51:51", "event": "set_limits", "estop": false, "speed_limit": 0.6, "max_move": 1.0, "arm_limit_mm": 60, "events": 0}
+{"ts": "2026-10-27T07:51:51", "event": "connect", "mode": "replay", "frames": 10}
+{"ts": "2026-10-27T07:51:51", "event": "connect_ok", "mode": "replay"}
+{"ts": "2026-10-27T07:51:51", "event": "stop", "mode": "replay"}
+{"ts": "2026-10-27T07:51:51", "event": "estop"}
+{"ts": "2026-10-27T07:51:51", "event": "clear_estop"}
+{"ts": "2026-10-27T07:51:57", "event": "stop", "mode": "replay"}
+{"ts": "2026-10-27T07:51:57", "event": "estop"}
+{"ts": "2026-10-27T07:51:57", "event": "reject", "reason": "estop"}
+{"ts": "2026-10-27T07:51:57", "event": "clear_estop"}
+{"ts": "2026-10-27T07:51:57", "event": "set_limits", "estop": false, "speed_limit": 0.5, "max_move": 0.8, "arm_limit_mm": 50, "events": 0}
+{"ts": "2026-10-27T07:51:57", "event": "set_limits", "estop": false, "speed_limit": 0.6, "max_move": 1.0, "arm_limit_mm": 60, "events": 0}
+{"ts": "2026-10-27T07:51:57", "event": "connect", "mode": "replay", "frames": 10}
+{"ts": "2026-10-27T07:51:57", "event": "connect_ok", "mode": "replay"}
+{"ts": "2026-10-27T07:51:57", "event": "stop", "mode": "replay"}
+{"ts": "2026-10-27T07:51:57", "event": "estop"}
+{"ts": "2026-10-27T07:51:57", "event": "clear_estop"}
+{"ts": "2026-10-31T14:05:55", "event": "connect", "mode": "real", "version": "01.01.1150", "sn": "3JKCK2R00304Q7"}
+{"ts": "2026-10-31T14:05:55", "event": "connect_ok", "mode": "real"}
+{"ts": "2026-10-31T14:06:13", "event": "move", "mode": "real", "x": 0.1, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:06:17", "event": "move", "mode": "real", "x": -0.1, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:06:23", "event": "arm", "mode": "real", "x": 20.0, "y": 0.0}
+{"ts": "2026-10-31T14:06:24", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T14:06:25", "event": "arm", "mode": "real", "x": 10.0, "y": -5.0}
+{"ts": "2026-10-31T14:06:27", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T14:06:28", "event": "arm", "mode": "real", "x": -20.0, "y": 0.0}
+{"ts": "2026-10-31T14:06:46", "event": "stop", "mode": "real"}
+{"ts": "2026-10-31T14:06:46", "event": "estop"}
+{"ts": "2026-10-31T14:06:46", "event": "reject", "reason": "estop"}
+{"ts": "2026-10-31T14:06:46", "event": "clear_estop"}
+{"ts": "2026-10-31T14:10:19", "event": "connect", "mode": "real", "version": "01.01.1150", "sn": "3JKCK2R00304Q7"}
+{"ts": "2026-10-31T14:10:22", "event": "connect_ok", "mode": "real"}
+{"ts": "2026-10-31T14:12:46", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:12:47", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:12:47", "event": "move_error", "error": "Exception('Robot is already performing 1 action(s) action_id:3, state:action_running, percent:47, x:-0.2, y:0.0, z:0.0, xy_speed:0.5, z_speed:30')"}
+{"ts": "2026-10-31T14:12:59", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:13:00", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:13:01", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:13:01", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:13:03", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:13:06", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:13:19", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:13:20", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:13:21", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:13:21", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:13:23", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:13:26", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:13:39", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:13:40", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:13:41", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:13:43", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:13:45", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:13:46", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:13:59", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:14:00", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:14:01", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:14:03", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:14:05", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:14:06", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:14:19", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:14:20", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:14:21", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:14:23", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:14:25", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:14:26", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:14:39", "event": "move", "mode": "real", "x": 0.0, "y": 0.2, "z": 0.0}
+{"ts": "2026-10-31T14:14:40", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:14:41", "event": "move", "mode": "real", "x": 0.0, "y": -0.2, "z": 0.0}
+{"ts": "2026-10-31T14:14:41", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:14:41", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:14:41", "event": "move", "mode": "real", "x": 0.0, "y": -0.2, "z": 0.0}
+{"ts": "2026-10-31T14:14:43", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:14:44", "event": "move", "mode": "real", "x": 0.0, "y": 0.2, "z": 0.0}
+{"ts": "2026-10-31T14:16:05", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:21:04", "event": "connect", "mode": "real", "version": "01.01.1150", "sn": "3JKCK2R00304Q7"}
+{"ts": "2026-10-31T14:21:04", "event": "connect_ok", "mode": "real"}
+{"ts": "2026-10-31T14:22:31", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:22:31", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:22:31", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:22:41", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:22:41", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:22:46", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:23:07", "event": "move", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0}
+{"ts": "2026-10-31T14:23:09", "event": "move", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0}
+{"ts": "2026-10-31T14:23:11", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:23:11", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:23:12", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:23:12", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:23:13", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:23:13", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:23:14", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:23:16", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T14:23:30", "event": "stop", "mode": "real"}
+{"ts": "2026-10-31T14:23:30", "event": "estop"}
+{"ts": "2026-10-31T14:23:42", "event": "reject", "reason": "estop"}
+{"ts": "2026-10-31T14:23:45", "event": "reject", "reason": "estop"}
+{"ts": "2026-10-31T14:24:52", "event": "clear_estop"}
+{"ts": "2026-10-31T15:30:29", "event": "move", "mode": "real", "x": 0.0, "y": -0.2, "z": 0.0}
+{"ts": "2026-10-31T15:30:31", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:30:35", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:33:30", "event": "connect", "mode": "real", "version": "01.01.1150", "sn": "3JKCK2R00304Q7"}
+{"ts": "2026-10-31T15:33:30", "event": "connect_ok", "mode": "real"}
+{"ts": "2026-10-31T15:33:46", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:33:48", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:33:48", "event": "move", "mode": "real", "x": 0.0, "y": -0.2, "z": 0.0}
+{"ts": "2026-10-31T15:33:50", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:33:56", "event": "move", "mode": "real", "x": 0.0, "y": -0.2, "z": 0.0}
+{"ts": "2026-10-31T15:33:58", "event": "move", "mode": "real", "x": 0.0, "y": 0.2, "z": 0.0}
+{"ts": "2026-10-31T15:34:02", "event": "move", "mode": "real", "x": 0.0, "y": 0.2, "z": 0.0}
+{"ts": "2026-10-31T15:34:05", "event": "move", "mode": "real", "x": 0.0, "y": 0.2, "z": 0.0}
+{"ts": "2026-10-31T15:34:11", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:34:39", "event": "move", "mode": "real", "x": 0.0, "y": -0.2, "z": 0.0}
+{"ts": "2026-10-31T15:34:53", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:34:53", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:34:54", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:34:54", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:34:54", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:34:54", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:34:55", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:34:57", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:34:58", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:35:01", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:35:03", "event": "move", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0}
+{"ts": "2026-10-31T15:35:04", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:35:06", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:35:08", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:35:10", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:35:28", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:35:28", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:35:49", "event": "move", "mode": "real", "x": 0.0, "y": -0.2, "z": 0.0}
+{"ts": "2026-10-31T15:35:50", "event": "move", "mode": "real", "x": 0.0, "y": 0.2, "z": 0.0}
+{"ts": "2026-10-31T15:35:54", "event": "move", "mode": "real", "x": 0.0, "y": 0.2, "z": 0.0}
+{"ts": "2026-10-31T15:35:56", "event": "move", "mode": "real", "x": 0.0, "y": 0.2, "z": 0.0}
+{"ts": "2026-10-31T15:35:58", "event": "move", "mode": "real", "x": 0.0, "y": 0.2, "z": 0.0}
+{"ts": "2026-10-31T15:35:59", "event": "move", "mode": "real", "x": 0.0, "y": 0.2, "z": 0.0}
+{"ts": "2026-10-31T15:35:59", "event": "move", "mode": "real", "x": 0.0, "y": 0.2, "z": 0.0}
+{"ts": "2026-10-31T15:36:00", "event": "move", "mode": "real", "x": 0.0, "y": 0.2, "z": 0.0}
+{"ts": "2026-10-31T15:36:01", "event": "move", "mode": "real", "x": 0.0, "y": 0.2, "z": 0.0}
+{"ts": "2026-10-31T15:36:05", "event": "move", "mode": "real", "x": 0.0, "y": 0.2, "z": 0.0}
+{"ts": "2026-10-31T15:36:09", "event": "move", "mode": "real", "x": 0.0, "y": 0.2, "z": 0.0}
+{"ts": "2026-10-31T15:36:12", "event": "move", "mode": "real", "x": 0.0, "y": 0.2, "z": 0.0}
+{"ts": "2026-10-31T15:36:14", "event": "move", "mode": "real", "x": 0.0, "y": 0.2, "z": 0.0}
+{"ts": "2026-10-31T15:36:20", "event": "move", "mode": "real", "x": 0.0, "y": 0.2, "z": 0.0}
+{"ts": "2026-10-31T15:36:21", "event": "move", "mode": "real", "x": 0.0, "y": 0.2, "z": 0.0}
+{"ts": "2026-10-31T15:36:25", "event": "move", "mode": "real", "x": 0.0, "y": 0.2, "z": 0.0}
+{"ts": "2026-10-31T15:36:29", "event": "move", "mode": "real", "x": 0.0, "y": 0.2, "z": 0.0}
+{"ts": "2026-10-31T15:36:32", "event": "move", "mode": "real", "x": 0.0, "y": 0.2, "z": 0.0}
+{"ts": "2026-10-31T15:36:34", "event": "move", "mode": "real", "x": 0.0, "y": 0.2, "z": 0.0}
+{"ts": "2026-10-31T15:36:40", "event": "move", "mode": "real", "x": 0.0, "y": 0.2, "z": 0.0}
+{"ts": "2026-10-31T15:36:41", "event": "move", "mode": "real", "x": 0.0, "y": 0.2, "z": 0.0}
+{"ts": "2026-10-31T15:36:45", "event": "move", "mode": "real", "x": 0.0, "y": 0.2, "z": 0.0}
+{"ts": "2026-10-31T15:36:49", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:36:52", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:36:54", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:37:00", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:37:01", "event": "move", "mode": "real", "x": 0.0, "y": 0.2, "z": 0.0}
+{"ts": "2026-10-31T15:37:05", "event": "move", "mode": "real", "x": 0.0, "y": 0.2, "z": 0.0}
+{"ts": "2026-10-31T15:37:09", "event": "move", "mode": "real", "x": 0.0, "y": 0.2, "z": 0.0}
+{"ts": "2026-10-31T15:37:12", "event": "move", "mode": "real", "x": 0.0, "y": 0.2, "z": 0.0}
+{"ts": "2026-10-31T15:37:14", "event": "move", "mode": "real", "x": 0.0, "y": 0.2, "z": 0.0}
+{"ts": "2026-10-31T15:37:20", "event": "move", "mode": "real", "x": 0.0, "y": 0.2, "z": 0.0}
+{"ts": "2026-10-31T15:37:21", "event": "move", "mode": "real", "x": 0.0, "y": 0.2, "z": 0.0}
+{"ts": "2026-10-31T15:37:25", "event": "move", "mode": "real", "x": 0.0, "y": 0.2, "z": 0.0}
+{"ts": "2026-10-31T15:37:29", "event": "move", "mode": "real", "x": 0.0, "y": 0.2, "z": 0.0}
+{"ts": "2026-10-31T15:37:32", "event": "move", "mode": "real", "x": 0.0, "y": 0.2, "z": 0.0}
+{"ts": "2026-10-31T15:37:34", "event": "move", "mode": "real", "x": 0.0, "y": 0.2, "z": 0.0}
+{"ts": "2026-10-31T15:37:40", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:37:41", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:37:45", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:37:49", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:37:52", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:37:54", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:38:00", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:38:01", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:38:14", "event": "connect", "mode": "real", "version": "01.01.1150", "sn": "3JKCK2R00304Q7"}
+{"ts": "2026-10-31T15:38:14", "event": "connect_ok", "mode": "real"}
+{"ts": "2026-10-31T15:38:19", "event": "move", "mode": "real", "x": 0.1, "y": 0.0, "z": 0.0, "wait": false}
+{"ts": "2026-10-31T15:38:43", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0, "wait": false}
+{"ts": "2026-10-31T15:38:46", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0, "wait": false}
+{"ts": "2026-10-31T15:38:49", "event": "move", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0, "wait": false}
+{"ts": "2026-10-31T15:38:50", "event": "move", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0, "wait": false}
+{"ts": "2026-10-31T15:38:50", "event": "move_error", "error": "Exception('Robot is already performing 1 action(s) action_id:4, state:action_running, percent:36, x:0.0, y:0.0, z:-30.0, xy_speed:0.5, z_speed:30')"}
+{"ts": "2026-10-31T15:38:50", "event": "move", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0, "wait": false}
+{"ts": "2026-10-31T15:38:50", "event": "move", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0, "wait": false}
+{"ts": "2026-10-31T15:38:50", "event": "move", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0, "wait": false}
+{"ts": "2026-10-31T15:38:50", "event": "move", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0, "wait": false}
+{"ts": "2026-10-31T15:38:50", "event": "move", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0, "wait": false}
+{"ts": "2026-10-31T15:38:50", "event": "move", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0, "wait": false}
+{"ts": "2026-10-31T15:39:10", "event": "move", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0, "wait": false}
+{"ts": "2026-10-31T15:39:10", "event": "move", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0, "wait": false}
+{"ts": "2026-10-31T15:39:10", "event": "move", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0, "wait": false}
+{"ts": "2026-10-31T15:39:10", "event": "move", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0, "wait": false}
+{"ts": "2026-10-31T15:39:10", "event": "move", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0, "wait": false}
+{"ts": "2026-10-31T15:39:10", "event": "move", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0, "wait": false}
+{"ts": "2026-10-31T15:39:30", "event": "move", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0, "wait": false}
+{"ts": "2026-10-31T15:39:30", "event": "move", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0, "wait": false}
+{"ts": "2026-10-31T15:39:30", "event": "move", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0, "wait": false}
+{"ts": "2026-10-31T15:39:30", "event": "move", "mode": "real", "x": 0.0, "y": 0.0, "z": 30.0, "wait": false}
+{"ts": "2026-10-31T15:39:30", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0, "wait": false}
+{"ts": "2026-10-31T15:39:30", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0, "wait": false}
+{"ts": "2026-10-31T15:39:50", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0, "wait": false}
+{"ts": "2026-10-31T15:39:50", "event": "move", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0, "wait": false}
+{"ts": "2026-10-31T15:39:50", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0, "wait": false}
+{"ts": "2026-10-31T15:39:50", "event": "move", "mode": "real", "x": 0.0, "y": 0.2, "z": 0.0, "wait": false}
+{"ts": "2026-10-31T15:39:50", "event": "move", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0, "wait": false}
+{"ts": "2026-10-31T15:39:50", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0, "wait": false}
+{"ts": "2026-10-31T15:40:28", "event": "connect", "mode": "real", "version": "01.01.1150", "sn": "3JKCK2R00304Q7"}
+{"ts": "2026-10-31T15:40:28", "event": "connect_ok", "mode": "real"}
+{"ts": "2026-10-31T15:40:31", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:40:32", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T15:40:54", "event": "connect", "mode": "real", "version": "01.01.1150", "sn": "3JKCK2R00304Q7"}
+{"ts": "2026-10-31T15:40:54", "event": "connect_ok", "mode": "real"}
+{"ts": "2026-10-31T15:41:03", "event": "drive_hold", "mode": "real", "x": 0.25, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:41:04", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T15:41:46", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:41:46", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T15:41:47", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:41:47", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T15:41:48", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:41:48", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T15:41:48", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:41:49", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T15:41:50", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:41:50", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T15:41:51", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T15:41:51", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T15:41:55", "event": "drive_hold", "mode": "real", "x": 0.0, "y": -0.3, "z": 0.0}
+{"ts": "2026-10-31T15:41:55", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T15:41:59", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:41:59", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T15:42:00", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:42:00", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T15:42:00", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": 30.0}
+{"ts": "2026-10-31T15:42:01", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T15:42:10", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T15:42:45", "event": "stop", "mode": "real"}
+{"ts": "2026-10-31T15:42:45", "event": "estop"}
+{"ts": "2026-10-31T15:42:46", "event": "clear_estop"}
+{"ts": "2026-10-31T15:42:53", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T15:42:53", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T15:43:15", "event": "connect", "mode": "real", "version": "01.01.1150", "sn": "3JKCK2R00304Q7"}
+{"ts": "2026-10-31T15:43:15", "event": "connect_ok", "mode": "real"}
+{"ts": "2026-10-31T15:43:18", "event": "drive_hold", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:43:19", "event": "drive_ttl_stop", "mode": "real"}
+{"ts": "2026-10-31T15:43:48", "event": "connect", "mode": "real", "version": "01.01.1150", "sn": "3JKCK2R00304Q7"}
+{"ts": "2026-10-31T15:43:48", "event": "connect_ok", "mode": "real"}
+{"ts": "2026-10-31T15:44:14", "event": "connect", "mode": "real", "version": "01.01.1150", "sn": "3JKCK2R00304Q7"}
+{"ts": "2026-10-31T15:44:14", "event": "connect_ok", "mode": "real"}
+{"ts": "2026-10-31T15:45:06", "event": "connect", "mode": "real", "version": "01.01.1150", "sn": "3JKCK2R00304Q7"}
+{"ts": "2026-10-31T15:45:06", "event": "connect_ok", "mode": "real"}
+{"ts": "2026-10-31T15:45:15", "event": "drive_hold", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:45:16", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T15:48:09", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T15:48:12", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:48:13", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T15:48:14", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T15:48:14", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T15:48:14", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T15:48:15", "event": "drive_hold", "mode": "real", "x": 0.0, "y": -0.3, "z": 0.0}
+{"ts": "2026-10-31T15:48:15", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T15:48:15", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:48:16", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T15:48:16", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T15:48:16", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0}
+{"ts": "2026-10-31T15:48:17", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0}
+{"ts": "2026-10-31T15:48:17", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T15:48:17", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": 30.0}
+{"ts": "2026-10-31T15:48:18", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": 30.0}
+{"ts": "2026-10-31T15:48:18", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": 30.0}
+{"ts": "2026-10-31T15:48:18", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": 30.0}
+{"ts": "2026-10-31T15:48:19", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T15:48:36", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T15:49:20", "event": "arm", "mode": "real", "x": 8.0, "y": 0.0}
+{"ts": "2026-10-31T15:49:21", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T15:49:23", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T15:51:09", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T15:51:13", "event": "arm", "mode": "real", "x": 8.0, "y": 0.0}
+{"ts": "2026-10-31T15:51:13", "event": "arm", "mode": "real", "x": 8.0, "y": 0.0}
+{"ts": "2026-10-31T15:51:14", "event": "arm", "mode": "real", "x": 8.0, "y": 0.0}
+{"ts": "2026-10-31T15:51:14", "event": "arm", "mode": "real", "x": 8.0, "y": 0.0}
+{"ts": "2026-10-31T15:51:14", "event": "arm", "mode": "real", "x": 8.0, "y": 0.0}
+{"ts": "2026-10-31T15:51:15", "event": "arm", "mode": "real", "x": 8.0, "y": 0.0}
+{"ts": "2026-10-31T15:51:15", "event": "arm", "mode": "real", "x": 8.0, "y": 0.0}
+{"ts": "2026-10-31T15:51:16", "event": "arm", "mode": "real", "x": 8.0, "y": 0.0}
+{"ts": "2026-10-31T15:51:16", "event": "arm", "mode": "real", "x": 8.0, "y": 0.0}
+{"ts": "2026-10-31T15:51:17", "event": "arm", "mode": "real", "x": 8.0, "y": 0.0}
+{"ts": "2026-10-31T15:51:17", "event": "arm", "mode": "real", "x": 8.0, "y": 0.0}
+{"ts": "2026-10-31T15:51:19", "event": "arm", "mode": "real", "x": 8.0, "y": 0.0}
+{"ts": "2026-10-31T15:51:37", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0}
+{"ts": "2026-10-31T15:51:38", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0}
+{"ts": "2026-10-31T15:51:38", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T15:51:38", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": 30.0}
+{"ts": "2026-10-31T15:51:39", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": 30.0}
+{"ts": "2026-10-31T15:51:39", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T15:51:45", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T15:51:52", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T15:53:20", "event": "arm", "mode": "real", "x": -8.0, "y": 0.0}
+{"ts": "2026-10-31T15:53:21", "event": "arm", "mode": "real", "x": -8.0, "y": 0.0}
+{"ts": "2026-10-31T15:53:55", "event": "arm", "mode": "real", "x": 0.0, "y": 6.0}
+{"ts": "2026-10-31T15:53:56", "event": "arm", "mode": "real", "x": 0.0, "y": 6.0}
+{"ts": "2026-10-31T15:53:56", "event": "arm", "mode": "real", "x": 0.0, "y": 6.0}
+{"ts": "2026-10-31T15:53:57", "event": "arm", "mode": "real", "x": 0.0, "y": 6.0}
+{"ts": "2026-10-31T15:53:57", "event": "arm", "mode": "real", "x": 0.0, "y": 6.0}
+{"ts": "2026-10-31T15:53:57", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0}
+{"ts": "2026-10-31T15:53:58", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0}
+{"ts": "2026-10-31T15:53:58", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0}
+{"ts": "2026-10-31T15:53:59", "event": "arm", "mode": "real", "x": 0.0, "y": 6.0}
+{"ts": "2026-10-31T15:54:01", "event": "arm", "mode": "real", "x": 0.0, "y": 6.0}
+{"ts": "2026-10-31T15:54:04", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0}
+{"ts": "2026-10-31T15:54:04", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0}
+{"ts": "2026-10-31T15:54:04", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T15:54:04", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T15:54:05", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T15:54:05", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T15:54:08", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T15:54:08", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T15:54:08", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T15:54:08", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T15:54:08", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T15:54:09", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T15:54:09", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T15:54:09", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T15:54:09", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T15:54:09", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T15:54:09", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T15:54:10", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T15:54:10", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T15:54:10", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T15:54:10", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T15:54:10", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T15:54:11", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T15:54:11", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T15:54:11", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T15:54:11", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T15:54:11", "event": "arm", "mode": "real", "x": 8.0, "y": 0.0}
+{"ts": "2026-10-31T15:54:12", "event": "arm", "mode": "real", "x": 8.0, "y": 0.0}
+{"ts": "2026-10-31T15:54:12", "event": "arm", "mode": "real", "x": 8.0, "y": 0.0}
+{"ts": "2026-10-31T15:54:12", "event": "arm", "mode": "real", "x": 8.0, "y": 0.0}
+{"ts": "2026-10-31T15:54:13", "event": "arm", "mode": "real", "x": 8.0, "y": 0.0}
+{"ts": "2026-10-31T15:54:13", "event": "arm", "mode": "real", "x": 8.0, "y": 0.0}
+{"ts": "2026-10-31T15:54:13", "event": "arm", "mode": "real", "x": 8.0, "y": 0.0}
+{"ts": "2026-10-31T15:54:14", "event": "arm", "mode": "real", "x": 8.0, "y": 0.0}
+{"ts": "2026-10-31T15:54:14", "event": "arm", "mode": "real", "x": 8.0, "y": 0.0}
+{"ts": "2026-10-31T15:54:15", "event": "arm", "mode": "real", "x": 8.0, "y": 0.0}
+{"ts": "2026-10-31T15:54:15", "event": "arm", "mode": "real", "x": 8.0, "y": 0.0}
+{"ts": "2026-10-31T15:54:16", "event": "arm", "mode": "real", "x": 8.0, "y": 0.0}
+{"ts": "2026-10-31T15:54:16", "event": "arm", "mode": "real", "x": 8.0, "y": 0.0}
+{"ts": "2026-10-31T15:54:17", "event": "arm", "mode": "real", "x": 8.0, "y": 0.0}
+{"ts": "2026-10-31T15:54:17", "event": "arm", "mode": "real", "x": 8.0, "y": 0.0}
+{"ts": "2026-10-31T15:54:18", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0}
+{"ts": "2026-10-31T15:54:19", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0}
+{"ts": "2026-10-31T15:54:19", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0}
+{"ts": "2026-10-31T15:54:19", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0}
+{"ts": "2026-10-31T15:54:20", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0}
+{"ts": "2026-10-31T15:54:20", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0}
+{"ts": "2026-10-31T15:54:20", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0}
+{"ts": "2026-10-31T15:54:20", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0}
+{"ts": "2026-10-31T15:54:21", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0}
+{"ts": "2026-10-31T15:54:22", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0}
+{"ts": "2026-10-31T15:54:24", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0}
+{"ts": "2026-10-31T15:54:25", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0}
+{"ts": "2026-10-31T15:54:27", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0}
+{"ts": "2026-10-31T15:54:27", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0}
+{"ts": "2026-10-31T15:54:29", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0}
+{"ts": "2026-10-31T15:54:32", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T15:55:33", "event": "connect", "mode": "real", "version": "01.01.1150", "sn": "3JKCK2R00304Q7"}
+{"ts": "2026-10-31T15:55:33", "event": "connect_ok", "mode": "real"}
+{"ts": "2026-10-31T15:55:36", "event": "arm", "mode": "real", "x": 4.0, "y": 0.0, "wait": false}
+{"ts": "2026-10-31T15:55:36", "event": "arm", "mode": "real", "x": 4.0, "y": 0.0, "wait": false}
+{"ts": "2026-10-31T15:55:36", "event": "arm", "mode": "real", "x": 4.0, "y": 0.0, "wait": false}
+{"ts": "2026-10-31T15:55:36", "event": "arm", "mode": "real", "x": 4.0, "y": 0.0, "wait": false}
+{"ts": "2026-10-31T15:55:36", "event": "arm", "mode": "real", "x": 4.0, "y": 0.0, "wait": false}
+{"ts": "2026-10-31T15:55:37", "event": "arm", "mode": "real", "x": 4.0, "y": 0.0, "wait": false}
+{"ts": "2026-10-31T15:55:37", "event": "arm", "mode": "real", "x": 4.0, "y": 0.0, "wait": false}
+{"ts": "2026-10-31T15:55:37", "event": "arm", "mode": "real", "x": 4.0, "y": 0.0, "wait": false}
+{"ts": "2026-10-31T15:55:37", "event": "arm", "mode": "real", "x": 4.0, "y": 0.0, "wait": false}
+{"ts": "2026-10-31T15:55:37", "event": "arm", "mode": "real", "x": 4.0, "y": 0.0, "wait": false}
+{"ts": "2026-10-31T15:55:58", "event": "connect", "mode": "real", "version": "01.01.1150", "sn": "3JKCK2R00304Q7"}
+{"ts": "2026-10-31T15:55:58", "event": "connect_ok", "mode": "real"}
+{"ts": "2026-10-31T15:56:05", "event": "arm", "mode": "real", "x": -4.0, "y": 0.0, "wait": false}
+{"ts": "2026-10-31T15:56:05", "event": "arm", "mode": "real", "x": -4.0, "y": 0.0, "wait": false}
+{"ts": "2026-10-31T15:56:05", "event": "arm", "mode": "real", "x": -4.0, "y": 0.0, "wait": false}
+{"ts": "2026-10-31T15:56:06", "event": "arm", "mode": "real", "x": -4.0, "y": 0.0, "wait": false}
+{"ts": "2026-10-31T15:56:06", "event": "arm", "mode": "real", "x": -4.0, "y": 0.0, "wait": false}
+{"ts": "2026-10-31T15:56:06", "event": "arm", "mode": "real", "x": -4.0, "y": 0.0, "wait": false}
+{"ts": "2026-10-31T15:56:06", "event": "arm", "mode": "real", "x": -4.0, "y": 0.0, "wait": false}
+{"ts": "2026-10-31T15:56:06", "event": "arm", "mode": "real", "x": -4.0, "y": 0.0, "wait": false}
+{"ts": "2026-10-31T15:56:06", "event": "arm", "mode": "real", "x": -4.0, "y": 0.0, "wait": false}
+{"ts": "2026-10-31T15:56:06", "event": "arm", "mode": "real", "x": -4.0, "y": 0.0, "wait": false}
+{"ts": "2026-10-31T15:56:27", "event": "arm", "mode": "real", "x": -6.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T15:56:42", "event": "arm", "mode": "real", "x": -6.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T15:56:57", "event": "arm", "mode": "real", "x": -6.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T15:57:12", "event": "arm", "mode": "real", "x": -6.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T15:57:27", "event": "arm", "mode": "real", "x": -6.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T15:57:37", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T15:57:42", "event": "arm", "mode": "real", "x": -6.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T15:57:57", "event": "arm", "mode": "real", "x": -6.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T15:58:12", "event": "arm", "mode": "real", "x": -6.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T15:58:27", "event": "arm", "mode": "real", "x": -6.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T15:58:42", "event": "arm", "mode": "real", "x": -6.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T15:59:40", "event": "connect", "mode": "real", "version": "01.01.1150", "sn": "3JKCK2R00304Q7"}
+{"ts": "2026-10-31T15:59:41", "event": "connect_ok", "mode": "real"}
+{"ts": "2026-10-31T15:59:44", "event": "arm", "mode": "real", "x": -6.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T15:59:46", "event": "arm", "mode": "real", "x": -6.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T15:59:49", "event": "arm", "mode": "real", "x": -6.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T15:59:51", "event": "arm", "mode": "real", "x": -6.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T15:59:54", "event": "arm", "mode": "real", "x": -6.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:00:39", "event": "connect", "mode": "real", "version": "01.01.1150", "sn": "3JKCK2R00304Q7"}
+{"ts": "2026-10-31T16:00:39", "event": "connect_ok", "mode": "real"}
+{"ts": "2026-10-31T16:00:40", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:00:42", "event": "arm", "mode": "real", "x": -20.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:00:43", "event": "arm", "mode": "real", "x": -6.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:00:46", "event": "arm", "mode": "real", "x": -6.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:00:49", "event": "arm", "mode": "real", "x": -6.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:00:52", "event": "arm", "mode": "real", "x": -6.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:00:55", "event": "arm", "mode": "real", "x": -6.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:01:03", "event": "arm", "mode": "real", "x": -8.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:01:04", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:01:05", "event": "arm", "mode": "real", "x": -12.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:01:06", "event": "arm", "mode": "real", "x": -15.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:01:14", "event": "arm", "mode": "real", "x": -8.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:01:14", "event": "arm", "mode": "real", "x": -8.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:01:15", "event": "arm", "mode": "real", "x": -8.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:01:15", "event": "arm", "mode": "real", "x": -8.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:01:15", "event": "arm", "mode": "real", "x": -8.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:02:52", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:03:07", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:03:22", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:03:37", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:03:53", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:04:26", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:04:38", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:04:43", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:04:44", "event": "arm", "mode": "real", "x": 50.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:04:46", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:04:46", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:04:46", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:04:46", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:04:56", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:04:56", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:04:56", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:04:56", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:04:56", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:04:56", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:04:56", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:04:56", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:04:56", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:04:56", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:04:56", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:04:56", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:04:59", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:04:59", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:04:59", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:05:02", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:06:59", "event": "connect", "mode": "real", "version": "01.01.1150", "sn": "3JKCK2R00304Q7"}
+{"ts": "2026-10-31T16:06:59", "event": "connect_ok", "mode": "real"}
+{"ts": "2026-10-31T16:07:08", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:07:09", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:07:09", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:07:10", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:07:10", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:07:30", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:07:30", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:07:31", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:07:31", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:07:32", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:07:33", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:07:33", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:07:34", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:07:35", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:07:35", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:07:36", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:07:41", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:08:23", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:08:23", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:08:24", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:08:24", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:08:24", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:08:25", "event": "arm", "mode": "real", "x": -4.0, "y": 0.0, "wait": false}
+{"ts": "2026-10-31T16:08:25", "event": "arm", "mode": "real", "x": -4.0, "y": 0.0, "wait": false}
+{"ts": "2026-10-31T16:08:25", "event": "arm", "mode": "real", "x": -4.0, "y": 0.0, "wait": false}
+{"ts": "2026-10-31T16:08:26", "event": "arm", "mode": "real", "x": -4.0, "y": 0.0, "wait": false}
+{"ts": "2026-10-31T16:08:26", "event": "arm", "mode": "real", "x": -4.0, "y": 0.0, "wait": false}
+{"ts": "2026-10-31T16:08:26", "event": "arm", "mode": "real", "x": -4.0, "y": 0.0, "wait": false}
+{"ts": "2026-10-31T16:08:26", "event": "arm", "mode": "real", "x": -4.0, "y": 0.0, "wait": false}
+{"ts": "2026-10-31T16:08:26", "event": "arm", "mode": "real", "x": -4.0, "y": 0.0, "wait": false}
+{"ts": "2026-10-31T16:08:26", "event": "arm", "mode": "real", "x": -4.0, "y": 0.0, "wait": false}
+{"ts": "2026-10-31T16:08:26", "event": "arm", "mode": "real", "x": -4.0, "y": 0.0, "wait": false}
+{"ts": "2026-10-31T16:09:41", "event": "connect", "mode": "real", "version": "01.01.1150", "sn": "3JKCK2R00304Q7"}
+{"ts": "2026-10-31T16:09:41", "event": "connect_ok", "mode": "real"}
+{"ts": "2026-10-31T16:13:08", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:13:09", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0}
+{"ts": "2026-10-31T16:13:10", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:13:10", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0}
+{"ts": "2026-10-31T16:13:10", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:13:14", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:13:17", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:13:24", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:13:27", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:13:28", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:13:28", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:13:28", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:13:28", "event": "drive_hold", "mode": "real", "x": -0.3, "y": -0.3, "z": 0.0}
+{"ts": "2026-10-31T16:13:28", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:13:28", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:13:28", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:13:29", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:13:29", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:13:29", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:13:29", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:13:29", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:13:29", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:13:29", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:13:29", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:13:29", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:13:29", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:13:29", "event": "drive_hold", "mode": "real", "x": -0.3, "y": -0.3, "z": 0.0}
+{"ts": "2026-10-31T16:13:29", "event": "drive_hold", "mode": "real", "x": 0.0, "y": -0.3, "z": 0.0}
+{"ts": "2026-10-31T16:13:29", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:13:31", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:14:09", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:14:10", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:14:10", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:14:11", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:14:18", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:14:19", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:14:19", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:14:19", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:14:19", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:14:19", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:14:19", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:14:20", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:14:20", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:14:20", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:14:20", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:14:20", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:14:20", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:14:20", "event": "drive_hold", "mode": "real", "x": -0.3, "y": -0.3, "z": 0.0}
+{"ts": "2026-10-31T16:14:20", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:14:20", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:14:20", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:14:20", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:14:20", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:14:20", "event": "drive_hold", "mode": "real", "x": -0.3, "y": -0.3, "z": 0.0}
+{"ts": "2026-10-31T16:14:20", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:14:20", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:14:20", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:14:20", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:14:20", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:14:25", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:16:33", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:16:33", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:16:34", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:16:35", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": 30.0}
+{"ts": "2026-10-31T16:16:35", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:16:37", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": 30.0}
+{"ts": "2026-10-31T16:16:37", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:16:37", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": 30.0}
+{"ts": "2026-10-31T16:16:37", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:16:37", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": 30.0}
+{"ts": "2026-10-31T16:16:38", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:16:38", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": 30.0}
+{"ts": "2026-10-31T16:16:38", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:16:38", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": 30.0}
+{"ts": "2026-10-31T16:16:38", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:16:38", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": 30.0}
+{"ts": "2026-10-31T16:16:38", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:16:39", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": 30.0}
+{"ts": "2026-10-31T16:16:39", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:16:39", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": 30.0}
+{"ts": "2026-10-31T16:16:39", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:16:39", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": 30.0}
+{"ts": "2026-10-31T16:16:39", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:16:42", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:16:42", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:16:42", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:16:43", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:16:43", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:16:43", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:16:45", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:16:46", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:16:46", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:16:46", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:16:46", "event": "drive_hold", "mode": "real", "x": 0.3, "y": -0.3, "z": 0.0}
+{"ts": "2026-10-31T16:16:46", "event": "drive_hold", "mode": "real", "x": 0.0, "y": -0.3, "z": 0.0}
+{"ts": "2026-10-31T16:16:46", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:16:46", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:16:58", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": 30.0}
+{"ts": "2026-10-31T16:16:59", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": 30.0}
+{"ts": "2026-10-31T16:16:59", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:16:59", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": 30.0}
+{"ts": "2026-10-31T16:16:59", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:16:59", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": 30.0}
+{"ts": "2026-10-31T16:16:59", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:17:00", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": 30.0}
+{"ts": "2026-10-31T16:17:00", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:17:00", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": 30.0}
+{"ts": "2026-10-31T16:17:00", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:17:02", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:17:08", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:17:09", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:17:09", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:17:10", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:17:10", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:17:10", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:17:10", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:17:11", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:17:21", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:18:04", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:18:05", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:18:05", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:18:06", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:18:22", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:18:23", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:18:23", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:18:24", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:18:53", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:18:54", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:18:54", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:19:47", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:19:47", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:19:48", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:19:48", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:19:48", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:19:48", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:19:49", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:19:49", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:19:49", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:19:49", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:19:50", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:19:50", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:19:50", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:19:53", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:19:54", "event": "arm", "mode": "real", "x": 0.0, "y": 6.0, "wait": true}
+{"ts": "2026-10-31T16:19:55", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0}
+{"ts": "2026-10-31T16:19:56", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:19:56", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": 30.0}
+{"ts": "2026-10-31T16:19:56", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:19:59", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": 30.0}
+{"ts": "2026-10-31T16:20:00", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:20:00", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0}
+{"ts": "2026-10-31T16:20:00", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:20:08", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": 30.0}
+{"ts": "2026-10-31T16:20:08", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:20:14", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:20:14", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:20:16", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:20:16", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:20:16", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:20:16", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:20:16", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:20:16", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:20:20", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:20:20", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:20:20", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:20:20", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:20:20", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:20:20", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:20:23", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:20:23", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:20:23", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:20:24", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:20:24", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:20:25", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:20:25", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:20:25", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:20:26", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:20:27", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:20:27", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:20:27", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:20:28", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:20:28", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:20:28", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:20:29", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:20:29", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:20:29", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:20:29", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:20:29", "event": "drive_hold", "mode": "real", "x": -0.3, "y": -0.3, "z": 0.0}
+{"ts": "2026-10-31T16:20:29", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:20:29", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:20:29", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:20:29", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:20:29", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:20:30", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:20:30", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:20:30", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:20:34", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:20:41", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:20:42", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:20:43", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:20:43", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:20:43", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:20:43", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:20:43", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:20:44", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:20:44", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:20:44", "event": "drive_hold", "mode": "real", "x": -0.3, "y": -0.3, "z": 0.0}
+{"ts": "2026-10-31T16:20:44", "event": "drive_hold", "mode": "real", "x": 0.0, "y": -0.3, "z": 0.0}
+{"ts": "2026-10-31T16:20:44", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:20:44", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:20:45", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:20:45", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:20:45", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:20:45", "event": "drive_hold", "mode": "real", "x": -0.3, "y": -0.3, "z": 0.0}
+{"ts": "2026-10-31T16:20:45", "event": "drive_hold", "mode": "real", "x": -0.3, "y": -0.3, "z": 0.0}
+{"ts": "2026-10-31T16:20:45", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:20:45", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:20:45", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:20:46", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:20:46", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:20:46", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:20:46", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:20:47", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:20:47", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:20:47", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:20:48", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:20:48", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:20:48", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:20:48", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:20:49", "event": "arm", "mode": "real", "x": 0.0, "y": 6.0, "wait": true}
+{"ts": "2026-10-31T16:20:50", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:20:50", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:20:50", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:20:50", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:20:56", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:22:59", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0, "wait": true}
+{"ts": "2026-10-31T16:23:34", "event": "connect", "mode": "real", "version": "01.01.1150", "sn": "3JKCK2R00304Q7"}
+{"ts": "2026-10-31T16:23:34", "event": "connect_ok", "mode": "real"}
+{"ts": "2026-10-31T16:23:37", "event": "move", "mode": "real", "x": 0.2, "y": 0.0, "z": 0.0, "wait": true}
+{"ts": "2026-10-31T16:23:40", "event": "move", "mode": "real", "x": -0.2, "y": 0.0, "z": 0.0, "wait": true}
+{"ts": "2026-10-31T16:24:06", "event": "connect", "mode": "real", "version": "01.01.1150", "sn": "3JKCK2R00304Q7"}
+{"ts": "2026-10-31T16:24:06", "event": "connect_ok", "mode": "real"}
+{"ts": "2026-10-31T16:24:09", "event": "move", "mode": "real", "x": 0.1, "y": 0.0, "z": 0.0, "wait": true}
+{"ts": "2026-10-31T16:24:10", "event": "move", "mode": "real", "x": -0.1, "y": 0.0, "z": 0.0, "wait": true}
+{"ts": "2026-10-31T16:24:22", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:24:22", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:24:23", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:24:23", "event": "drive_hold", "mode": "real", "x": 0.0, "y": -0.3, "z": 0.0}
+{"ts": "2026-10-31T16:24:24", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:24:24", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:24:24", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:24:24", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0}
+{"ts": "2026-10-31T16:24:25", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0}
+{"ts": "2026-10-31T16:24:25", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0}
+{"ts": "2026-10-31T16:24:25", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:24:26", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:24:26", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:24:26", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:24:27", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:24:27", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:24:27", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:24:27", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0}
+{"ts": "2026-10-31T16:24:28", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0}
+{"ts": "2026-10-31T16:24:28", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0}
+{"ts": "2026-10-31T16:24:29", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0}
+{"ts": "2026-10-31T16:24:29", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0}
+{"ts": "2026-10-31T16:24:29", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0}
+{"ts": "2026-10-31T16:24:30", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0}
+{"ts": "2026-10-31T16:24:30", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0}
+{"ts": "2026-10-31T16:24:31", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0}
+{"ts": "2026-10-31T16:24:31", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0}
+{"ts": "2026-10-31T16:24:31", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0}
+{"ts": "2026-10-31T16:24:31", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:24:33", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:24:33", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:24:33", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:24:35", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:24:36", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:24:36", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:24:37", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:24:38", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:24:38", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:24:39", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:24:40", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:24:40", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:24:41", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:24:41", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:24:42", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:24:43", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:24:43", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:24:43", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:24:45", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:24:45", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:24:46", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:24:48", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:24:50", "event": "arm", "mode": "real", "x": 0.0, "y": 6.0, "wait": true}
+{"ts": "2026-10-31T16:24:50", "event": "arm", "mode": "real", "x": 0.0, "y": 6.0, "wait": true}
+{"ts": "2026-10-31T16:24:52", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:24:53", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:24:55", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:24:56", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:24:57", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:24:57", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:24:57", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:24:57", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:24:57", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:24:58", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:24:59", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:25:00", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:25:02", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:25:05", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:25:05", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:05", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:25:07", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:25:10", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:25:12", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:12", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:12", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:25:15", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:15", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:15", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:25:15", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:25:15", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:15", "event": "drive_hold", "mode": "real", "x": 0.0, "y": -0.3, "z": 0.0}
+{"ts": "2026-10-31T16:25:15", "event": "drive_hold", "mode": "real", "x": 0.3, "y": -0.3, "z": 0.0}
+{"ts": "2026-10-31T16:25:15", "event": "drive_hold", "mode": "real", "x": 0.0, "y": -0.3, "z": 0.0}
+{"ts": "2026-10-31T16:25:15", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:25:18", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:18", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:25:20", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:25:20", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:25:20", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:20", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:20", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:25:20", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:20", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:20", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:25:20", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:20", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:25:20", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:20", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:20", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:25:23", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:25:23", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:25:23", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:23", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:25:23", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:23", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:23", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:23", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:25:23", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:25:23", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:23", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:25:23", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:25:26", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:25:26", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:25:26", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:27", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:27", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:28", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:28", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:28", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:29", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:25:30", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:30", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:30", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:25:31", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:32", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:32", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:32", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:25:34", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:25:37", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:25:40", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:25:41", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:25:41", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:25:41", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:25:41", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:25:41", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:25:41", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:25:42", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:25:42", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:25:42", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:25:42", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:25:42", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:25:43", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:25:43", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:25:43", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:25:43", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:25:43", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:25:43", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:25:44", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:25:44", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:25:44", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:25:44", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:25:44", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:25:45", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:25:45", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:25:45", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:25:45", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:25:45", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:25:45", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:25:46", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:25:46", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:25:46", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:25:46", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:25:46", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:25:47", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:25:47", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:25:47", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:25:47", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:25:47", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:25:48", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:25:48", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:25:48", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:25:48", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:25:48", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:25:48", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:25:49", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:25:49", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:25:49", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:25:49", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:25:49", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:25:50", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:25:50", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:25:50", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:25:50", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:25:50", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:25:50", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:25:51", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:25:51", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:25:51", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:25:51", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:25:51", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:51", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:25:51", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:51", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:51", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:25:52", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:25:52", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:25:52", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:25:53", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:25:53", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:25:53", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:25:53", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:54", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:54", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:25:54", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:54", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:55", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:55", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:56", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:56", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:56", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:57", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:57", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:58", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:58", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:58", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:59", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:25:59", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:25:59", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": 30.0}
+{"ts": "2026-10-31T16:26:00", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": 30.0}
+{"ts": "2026-10-31T16:26:00", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": 30.0}
+{"ts": "2026-10-31T16:26:00", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": 30.0}
+{"ts": "2026-10-31T16:26:01", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": 30.0}
+{"ts": "2026-10-31T16:26:01", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": 30.0}
+{"ts": "2026-10-31T16:26:02", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": 30.0}
+{"ts": "2026-10-31T16:26:02", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:26:02", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:02", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:03", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:03", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:04", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:04", "event": "drive_hold", "mode": "real", "x": 0.3, "y": -0.3, "z": 0.0}
+{"ts": "2026-10-31T16:26:04", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:04", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:04", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:05", "event": "drive_hold", "mode": "real", "x": 0.3, "y": -0.3, "z": 0.0}
+{"ts": "2026-10-31T16:26:05", "event": "drive_hold", "mode": "real", "x": 0.3, "y": -0.3, "z": 0.0}
+{"ts": "2026-10-31T16:26:05", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:05", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:06", "event": "drive_hold", "mode": "real", "x": 0.3, "y": -0.3, "z": 0.0}
+{"ts": "2026-10-31T16:26:06", "event": "drive_hold", "mode": "real", "x": 0.3, "y": -0.3, "z": 0.0}
+{"ts": "2026-10-31T16:26:06", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:06", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:06", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:06", "event": "drive_hold", "mode": "real", "x": 0.3, "y": -0.3, "z": 0.0}
+{"ts": "2026-10-31T16:26:07", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:07", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:07", "event": "drive_hold", "mode": "real", "x": 0.3, "y": -0.3, "z": 0.0}
+{"ts": "2026-10-31T16:26:07", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:07", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:07", "event": "drive_hold", "mode": "real", "x": 0.3, "y": -0.3, "z": 0.0}
+{"ts": "2026-10-31T16:26:08", "event": "drive_hold", "mode": "real", "x": 0.3, "y": -0.3, "z": 0.0}
+{"ts": "2026-10-31T16:26:08", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:08", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:08", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:09", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:09", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:10", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:10", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:26:10", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:10", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:10", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:11", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:26:11", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:11", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:11", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:26:12", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:12", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:26:15", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:15", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:15", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:26:18", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:18", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:18", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:19", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:26:19", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:19", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:26:36", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:36", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:37", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:37", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:38", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:38", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:26:39", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:40", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:40", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:40", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:26:40", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:41", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:26:41", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:42", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:42", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:26:42", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:43", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:43", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:26:43", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:43", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:43", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:26:56", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:57", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:57", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:26:57", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:58", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:58", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:26:58", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:59", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:59", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:26:59", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:27:01", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:27:01", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:27:01", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:27:02", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:27:02", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:27:02", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:27:02", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:27:02", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:27:02", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:27:02", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:27:02", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:27:02", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:27:03", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:27:03", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:27:03", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:27:03", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:27:19", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:27:19", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:27:19", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:27:19", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:27:19", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:27:20", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:27:20", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:27:24", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:27:30", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:31:59", "event": "connect", "mode": "real", "version": "01.01.1150", "sn": "3JKCK2R00304Q7"}
+{"ts": "2026-10-31T16:31:59", "event": "connect_ok", "mode": "real"}
+{"ts": "2026-10-31T16:32:03", "event": "move", "mode": "real", "x": 0.1, "y": 0.0, "z": 0.0, "wait": true}
+{"ts": "2026-10-31T16:32:43", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:32:43", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:32:44", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:32:44", "event": "arm", "mode": "real", "x": 0.0, "y": 6.0, "wait": true}
+{"ts": "2026-10-31T16:32:45", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:32:46", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:32:46", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:32:47", "event": "arm", "mode": "real", "x": 0.0, "y": 6.0, "wait": true}
+{"ts": "2026-10-31T16:32:48", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:32:48", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:32:48", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:32:48", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:32:49", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:32:49", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:32:50", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:32:50", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:32:50", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:32:51", "event": "arm", "mode": "real", "x": 0.0, "y": 6.0, "wait": true}
+{"ts": "2026-10-31T16:32:54", "event": "arm", "mode": "real", "x": 0.0, "y": 6.0, "wait": true}
+{"ts": "2026-10-31T16:32:55", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:32:56", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:32:57", "event": "arm", "mode": "real", "x": 0.0, "y": 6.0, "wait": true}
+{"ts": "2026-10-31T16:32:59", "event": "arm", "mode": "real", "x": 0.0, "y": 6.0, "wait": true}
+{"ts": "2026-10-31T16:33:52", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:33:52", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:33:52", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:33:53", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:33:53", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:33:53", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:33:53", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:33:54", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:33:55", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:33:55", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:33:55", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:33:55", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:33:55", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:33:55", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:33:56", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:33:56", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:33:56", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:33:56", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:33:56", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:33:56", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:33:57", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:33:57", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:33:57", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:33:57", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:33:57", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:34:00", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:34:02", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:34:15", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:34:25", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:34:29", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:34:36", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:34:43", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:34:44", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:34:45", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:34:45", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:34:46", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:34:47", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:34:47", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:34:48", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:34:49", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:34:50", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:34:50", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:34:51", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:34:52", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:34:53", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:34:53", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:34:54", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:34:55", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:34:55", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:34:57", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:34:59", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:34:59", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:35:00", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:35:00", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:35:01", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:35:02", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:35:02", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:35:03", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:35:04", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:35:05", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:35:05", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:35:06", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:35:07", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:35:07", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:35:08", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:35:10", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:35:10", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:35:10", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:35:12", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:35:13", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:35:17", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:35:55", "event": "arm", "mode": "real", "x": 0.0, "y": 6.0, "wait": true}
+{"ts": "2026-10-31T16:35:56", "event": "arm", "mode": "real", "x": -20.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:35:58", "event": "arm", "mode": "real", "x": 0.0, "y": 6.0, "wait": true}
+{"ts": "2026-10-31T16:36:26", "event": "connect", "mode": "real", "version": "01.01.1150", "sn": "3JKCK2R00304Q7"}
+{"ts": "2026-10-31T16:36:26", "event": "connect_ok", "mode": "real"}
+{"ts": "2026-10-31T16:36:29", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:36:31", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:36:48", "event": "arm", "mode": "real", "x": 0.0, "y": 6.0, "wait": true}
+{"ts": "2026-10-31T16:36:51", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:36:52", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:37:11", "event": "arm", "mode": "real", "x": 0.0, "y": 6.0, "wait": true}
+{"ts": "2026-10-31T16:37:15", "event": "arm", "mode": "real", "x": 0.0, "y": 6.0, "wait": true}
+{"ts": "2026-10-31T16:37:17", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:37:18", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:37:18", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:37:18", "event": "arm", "mode": "real", "x": 0.0, "y": 6.0, "wait": true}
+{"ts": "2026-10-31T16:37:21", "event": "arm", "mode": "real", "x": 0.0, "y": 6.0, "wait": true}
+{"ts": "2026-10-31T16:37:26", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:42:08", "event": "connect", "mode": "real", "version": "01.01.1150", "sn": "3JKCK2R00304Q7"}
+{"ts": "2026-10-31T16:42:08", "event": "connect_ok", "mode": "real"}
+{"ts": "2026-10-31T16:42:12", "event": "arm", "mode": "real", "x": 0.0, "y": -20.0, "wait": true}
+{"ts": "2026-10-31T16:42:13", "event": "arm", "mode": "real", "x": -20.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:42:28", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:42:29", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:42:31", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:42:32", "event": "arm", "mode": "real", "x": 0.0, "y": 6.0, "wait": true}
+{"ts": "2026-10-31T16:42:35", "event": "arm", "mode": "real", "x": 0.0, "y": 6.0, "wait": true}
+{"ts": "2026-10-31T16:42:36", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:42:38", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:42:38", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:42:44", "event": "arm", "mode": "real", "x": 0.0, "y": 6.0, "wait": true}
+{"ts": "2026-10-31T16:42:45", "event": "arm", "mode": "real", "x": 0.0, "y": 6.0, "wait": true}
+{"ts": "2026-10-31T16:42:46", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:42:48", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:42:54", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:43:14", "event": "arm", "mode": "real", "x": 0.0, "y": 20.0, "wait": true}
+{"ts": "2026-10-31T16:43:15", "event": "arm", "mode": "real", "x": 0.0, "y": 20.0, "wait": true}
+{"ts": "2026-10-31T16:43:18", "event": "arm", "mode": "real", "x": 0.0, "y": 20.0, "wait": true}
+{"ts": "2026-10-31T16:43:21", "event": "arm", "mode": "real", "x": 0.0, "y": -20.0, "wait": true}
+{"ts": "2026-10-31T16:43:23", "event": "arm", "mode": "real", "x": 0.0, "y": -20.0, "wait": true}
+{"ts": "2026-10-31T16:43:24", "event": "arm", "mode": "real", "x": 0.0, "y": -20.0, "wait": true}
+{"ts": "2026-10-31T16:43:51", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:43:52", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:43:52", "event": "arm", "mode": "real", "x": 0.0, "y": 6.0, "wait": true}
+{"ts": "2026-10-31T16:43:54", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:43:54", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:44:00", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:44:02", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:44:03", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:44:03", "event": "arm", "mode": "real", "x": 0.0, "y": 6.0, "wait": true}
+{"ts": "2026-10-31T16:44:04", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:44:13", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:44:14", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:44:17", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:44:18", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:44:20", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:44:23", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:44:24", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:44:24", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:44:25", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:44:26", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:44:26", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:44:27", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:44:28", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:44:28", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:44:29", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:44:30", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:44:30", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:44:31", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:44:32", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:44:33", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:44:33", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:44:35", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:45:05", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:52:58", "event": "connect", "mode": "real", "version": "01.01.1150", "sn": "3JKCK2R00304Q7"}
+{"ts": "2026-10-31T16:52:58", "event": "connect_ok", "mode": "real"}
+{"ts": "2026-10-31T16:53:00", "event": "arm", "mode": "real", "x": 0.0, "y": 20.0, "wait": true}
+{"ts": "2026-10-31T16:53:01", "event": "arm", "mode": "real", "x": -30.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:55:30", "event": "connect", "mode": "real", "version": "01.01.1150", "sn": "3JKCK2R00304Q7"}
+{"ts": "2026-10-31T16:55:30", "event": "connect_ok", "mode": "real"}
+{"ts": "2026-10-31T16:55:32", "event": "arm", "mode": "real", "x": 0.0, "y": -20.0, "wait": true}
+{"ts": "2026-10-31T16:55:33", "event": "arm", "mode": "real", "x": 20.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:56:28", "event": "move", "mode": "real", "x": 0.1, "y": 0.0, "z": 0.0, "wait": true}
+{"ts": "2026-10-31T16:56:29", "event": "move", "mode": "real", "x": -0.1, "y": 0.0, "z": 0.0, "wait": true}
+{"ts": "2026-10-31T16:56:31", "event": "arm", "mode": "real", "x": -20.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:56:43", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:56:44", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:56:44", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:56:45", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:56:47", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:57:10", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": 30.0}
+{"ts": "2026-10-31T16:57:10", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": 30.0}
+{"ts": "2026-10-31T16:57:10", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:57:12", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:57:12", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:57:13", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:57:14", "event": "arm", "mode": "real", "x": 0.0, "y": 6.0, "wait": true}
+{"ts": "2026-10-31T16:57:14", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:57:18", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:57:21", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:57:22", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:57:26", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:57:26", "event": "arm", "mode": "real", "x": 0.0, "y": 6.0, "wait": true}
+{"ts": "2026-10-31T16:57:29", "event": "arm", "mode": "real", "x": 0.0, "y": 6.0, "wait": true}
+{"ts": "2026-10-31T16:57:29", "event": "arm", "mode": "real", "x": 0.0, "y": 6.0, "wait": true}
+{"ts": "2026-10-31T16:57:30", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:57:32", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:57:39", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:58:02", "event": "arm", "mode": "real", "x": 0.0, "y": -6.0, "wait": true}
+{"ts": "2026-10-31T16:58:05", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T16:58:06", "event": "arm", "mode": "real", "x": 0.0, "y": -15.0, "wait": true}
+{"ts": "2026-10-31T16:58:35", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T16:58:36", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T16:58:36", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T16:58:37", "event": "arm", "mode": "real", "x": 0.0, "y": 10.0, "wait": true}
+{"ts": "2026-10-31T16:58:38", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T16:58:38", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T16:58:39", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T16:58:40", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T16:58:40", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T16:58:41", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T16:58:41", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T16:58:43", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:58:44", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:58:45", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:58:46", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T16:58:46", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T16:58:47", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T16:58:47", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T16:58:48", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T16:58:49", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T16:58:49", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T16:58:50", "event": "arm", "mode": "real", "x": 0.0, "y": 10.0, "wait": true}
+{"ts": "2026-10-31T16:58:51", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:58:52", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:58:53", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:58:53", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:58:54", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T16:58:55", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T16:58:56", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T16:58:57", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T16:58:57", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T16:58:58", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T16:58:59", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T16:58:59", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T16:59:18", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T16:59:18", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T16:59:20", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T16:59:23", "event": "arm", "mode": "real", "x": 0.0, "y": 10.0, "wait": true}
+{"ts": "2026-10-31T16:59:23", "event": "arm", "mode": "real", "x": 0.0, "y": 10.0, "wait": true}
+{"ts": "2026-10-31T16:59:24", "event": "arm", "mode": "real", "x": 0.0, "y": 10.0, "wait": true}
+{"ts": "2026-10-31T16:59:24", "event": "arm", "mode": "real", "x": 0.0, "y": 10.0, "wait": true}
+{"ts": "2026-10-31T16:59:25", "event": "arm", "mode": "real", "x": 0.0, "y": 10.0, "wait": true}
+{"ts": "2026-10-31T16:59:26", "event": "arm", "mode": "real", "x": 0.0, "y": 10.0, "wait": true}
+{"ts": "2026-10-31T16:59:27", "event": "arm", "mode": "real", "x": 0.0, "y": 10.0, "wait": true}
+{"ts": "2026-10-31T16:59:28", "event": "arm", "mode": "real", "x": 0.0, "y": 10.0, "wait": true}
+{"ts": "2026-10-31T16:59:28", "event": "arm", "mode": "real", "x": 0.0, "y": 10.0, "wait": true}
+{"ts": "2026-10-31T16:59:29", "event": "arm", "mode": "real", "x": 0.0, "y": 10.0, "wait": true}
+{"ts": "2026-10-31T16:59:30", "event": "arm", "mode": "real", "x": 0.0, "y": 10.0, "wait": true}
+{"ts": "2026-10-31T16:59:31", "event": "arm", "mode": "real", "x": 0.0, "y": 10.0, "wait": true}
+{"ts": "2026-10-31T16:59:32", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:59:32", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:59:33", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:59:34", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:59:35", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:59:35", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:59:36", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:59:37", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:59:37", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:59:38", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:59:39", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:59:40", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:59:40", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:59:41", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:59:42", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:59:43", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T16:59:47", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:59:48", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:59:49", "event": "drive_hold", "mode": "real", "x": 0.0, "y": -0.3, "z": 0.0}
+{"ts": "2026-10-31T16:59:49", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:59:49", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": 30.0}
+{"ts": "2026-10-31T16:59:50", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": 30.0}
+{"ts": "2026-10-31T16:59:50", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": 30.0}
+{"ts": "2026-10-31T16:59:50", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:59:51", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": 30.0}
+{"ts": "2026-10-31T16:59:51", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:59:52", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:59:53", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:59:53", "event": "drive_hold", "mode": "real", "x": 0.0, "y": -0.3, "z": 0.0}
+{"ts": "2026-10-31T16:59:53", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:59:54", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:59:54", "event": "drive_hold", "mode": "real", "x": 0.3, "y": -0.3, "z": 0.0}
+{"ts": "2026-10-31T16:59:54", "event": "drive_hold", "mode": "real", "x": 0.3, "y": -0.3, "z": 0.0}
+{"ts": "2026-10-31T16:59:55", "event": "drive_hold", "mode": "real", "x": 0.3, "y": -0.3, "z": 0.0}
+{"ts": "2026-10-31T16:59:55", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:59:55", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:59:55", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0}
+{"ts": "2026-10-31T16:59:55", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0}
+{"ts": "2026-10-31T16:59:56", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:59:56", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0}
+{"ts": "2026-10-31T16:59:56", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0}
+{"ts": "2026-10-31T16:59:56", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:59:57", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0}
+{"ts": "2026-10-31T16:59:57", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:59:57", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.0, "z": -30.0}
+{"ts": "2026-10-31T16:59:57", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:59:58", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:59:58", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:59:58", "event": "drive_hold", "mode": "real", "x": 0.0, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T16:59:58", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T16:59:59", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T16:59:59", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T17:00:00", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T17:00:00", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T17:00:00", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T17:00:00", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T17:00:00", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T17:00:01", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T17:00:01", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T17:00:01", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T17:00:01", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T17:00:02", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T17:00:02", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.3, "z": 0.0}
+{"ts": "2026-10-31T17:00:02", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T17:00:02", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T17:00:02", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T17:00:03", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T17:00:03", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T17:00:04", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T17:00:04", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T17:00:05", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T17:00:05", "event": "drive_hold", "mode": "real", "x": -0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T17:00:06", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T17:00:06", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T17:00:06", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T17:00:07", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T17:00:10", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:00:10", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:00:11", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:00:11", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:00:12", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:00:13", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:00:16", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:00:17", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T17:00:22", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T17:00:22", "event": "arm", "mode": "real", "x": 0.0, "y": 10.0, "wait": true}
+{"ts": "2026-10-31T17:00:24", "event": "arm", "mode": "real", "x": 0.0, "y": 10.0, "wait": true}
+{"ts": "2026-10-31T17:00:25", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:00:29", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:00:38", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T17:01:13", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T17:01:29", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:02:11", "event": "connect", "mode": "real", "version": "01.01.1150", "sn": "3JKCK2R00304Q7"}
+{"ts": "2026-10-31T17:02:12", "event": "connect_ok", "mode": "real"}
+{"ts": "2026-10-31T17:02:16", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:02:16", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:02:42", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:02:43", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:02:44", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:02:45", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:02:45", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:02:46", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:02:47", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:02:47", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:02:48", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:02:49", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:02:49", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:02:51", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T17:02:52", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T17:02:53", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T17:02:53", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T17:02:54", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T17:02:54", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T17:02:55", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T17:02:56", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T17:02:56", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T17:02:57", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T17:02:58", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T17:02:59", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T17:03:00", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T17:03:00", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T17:03:01", "event": "drive_hold", "mode": "real", "x": 0.3, "y": 0.0, "z": 0.0}
+{"ts": "2026-10-31T17:03:01", "event": "stop_drive", "mode": "real"}
+{"ts": "2026-10-31T17:03:07", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T17:03:11", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T17:03:14", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T17:03:17", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T17:03:25", "event": "grab", "mode": "real", "action": "close"}
+{"ts": "2026-10-31T17:03:28", "event": "arm", "mode": "real", "x": 0.0, "y": 10.0, "wait": true}
+{"ts": "2026-10-31T17:03:29", "event": "arm", "mode": "real", "x": 0.0, "y": 10.0, "wait": true}
+{"ts": "2026-10-31T17:03:29", "event": "arm", "mode": "real", "x": 0.0, "y": 10.0, "wait": true}
+{"ts": "2026-10-31T17:03:30", "event": "arm", "mode": "real", "x": 0.0, "y": 10.0, "wait": true}
+{"ts": "2026-10-31T17:03:31", "event": "arm", "mode": "real", "x": 0.0, "y": 10.0, "wait": true}
+{"ts": "2026-10-31T17:03:32", "event": "arm", "mode": "real", "x": 0.0, "y": 10.0, "wait": true}
+{"ts": "2026-10-31T17:03:32", "event": "arm", "mode": "real", "x": 0.0, "y": 10.0, "wait": true}
+{"ts": "2026-10-31T17:03:33", "event": "arm", "mode": "real", "x": 0.0, "y": 10.0, "wait": true}
+{"ts": "2026-10-31T17:03:34", "event": "arm", "mode": "real", "x": 0.0, "y": 10.0, "wait": true}
+{"ts": "2026-10-31T17:03:35", "event": "arm", "mode": "real", "x": 0.0, "y": 10.0, "wait": true}
+{"ts": "2026-10-31T17:03:36", "event": "arm", "mode": "real", "x": 0.0, "y": 10.0, "wait": true}
+{"ts": "2026-10-31T17:03:37", "event": "arm", "mode": "real", "x": 0.0, "y": 10.0, "wait": true}
+{"ts": "2026-10-31T17:03:37", "event": "arm", "mode": "real", "x": 0.0, "y": 10.0, "wait": true}
+{"ts": "2026-10-31T17:03:38", "event": "arm", "mode": "real", "x": 0.0, "y": 10.0, "wait": true}
+{"ts": "2026-10-31T17:03:39", "event": "arm", "mode": "real", "x": 0.0, "y": 10.0, "wait": true}
+{"ts": "2026-10-31T17:03:40", "event": "arm", "mode": "real", "x": 0.0, "y": 10.0, "wait": true}
+{"ts": "2026-10-31T17:03:41", "event": "arm", "mode": "real", "x": 0.0, "y": 10.0, "wait": true}
+{"ts": "2026-10-31T17:03:42", "event": "arm", "mode": "real", "x": 0.0, "y": 10.0, "wait": true}
+{"ts": "2026-10-31T17:03:43", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:03:44", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:03:45", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:03:45", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:03:46", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:03:47", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:03:48", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:03:48", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:03:49", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:03:50", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:03:50", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:03:51", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:03:52", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:03:52", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:03:53", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:03:53", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:03:56", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:03:56", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:03:57", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:03:57", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:03:58", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:03:59", "event": "arm", "mode": "real", "x": 10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:04:00", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:04:01", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:04:02", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:04:02", "event": "arm", "mode": "real", "x": -10.0, "y": 0.0, "wait": true}
+{"ts": "2026-10-31T17:04:03", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T17:04:04", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T17:04:04", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T17:04:05", "event": "arm", "mode": "real", "x": 0.0, "y": -10.0, "wait": true}
+{"ts": "2026-10-31T17:04:41", "event": "grab", "mode": "real", "action": "open"}
+{"ts": "2026-10-31T17:05:01", "event": "stop_drive", "mode": "real"}
