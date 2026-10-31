@@ -1,0 +1,41 @@
+{
+  "feature": "F1-ablation",
+  "paper_small": {
+    "abs_rel": 0.053,
+    "delta1": 0.973
+  },
+  "results": [
+    {
+      "config": "ViT-S",
+      "model": "depth-anything/Depth-Anything-V2-Small-hf",
+      "input_size": 518,
+      "n": 300,
+      "abs_rel": 0.0647,
+      "delta1": 0.9521
+    },
+    {
+      "config": "ViT-S-384",
+      "model": "depth-anything/Depth-Anything-V2-Small-hf",
+      "input_size": 384,
+      "n": 300,
+      "abs_rel": 0.0651,
+      "delta1": 0.952
+    },
+    {
+      "config": "ViT-S-672",
+      "model": "depth-anything/Depth-Anything-V2-Small-hf",
+      "input_size": 672,
+      "n": 300,
+      "abs_rel": 0.0648,
+      "delta1": 0.952
+    },
+    {
+      "config": "ViT-B",
+      "model": "models/depth-anything-v2-base",
+      "input_size": 518,
+      "n": 300,
+      "abs_rel": 0.0597,
+      "delta1": 0.9564
+    }
+  ]
+}

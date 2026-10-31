@@ -52,11 +52,28 @@ def main():
                 continue
             fn = f"{int(time.time())}_{k:03d}.jpg"
             open(os.path.join(args.out, "images", fn), "wb").write(frame)
-            obj = input("  物体名称（如 拖鞋/药盒）: ").strip() or "object"
-            dist = input("  到相机的距离（米，如 1.20）: ").strip() or "0"
+            spec = input("  物体与距离（如 水瓶:0.5,盒子:0.5,收纳包:0.5）: ").strip()
+            pairs = []
+            for part in spec.replace("，", ",").split(","):
+                part = part.strip()
+                if not part:
+                    continue
+                if ":" in part:
+                    o, d = part.split(":", 1)
+                elif "=" in part:
+                    o, d = part.split("=", 1)
+                else:
+                    o, d = part, "0"
+                pairs.append((o.strip(), d.strip()))
+            if not pairs:
+                o = input("  物体名称: ").strip() or "object"
+                d = input("  距离（米）: ").strip() or "0"
+                pairs = [(o, d)]
             surf = input(f"  地面 {SURFACES[0]}/{SURFACES[1]}/{SURFACES[2]}: ").strip() or SURFACES[0]
             light = input(f"  光照 {LIGHTS[0]}/{LIGHTS[1]}: ").strip() or LIGHTS[0]
-            w.writerow([fn, obj, dist, surf, light, time.strftime("%Y-%m-%dT%H:%M:%S")])
+            ts = time.strftime("%Y-%m-%dT%H:%M:%S")
+            for o, d in pairs:
+                w.writerow([fn, o, d, surf, light, ts])
             f.flush()
             k += 1
     print(f"已保存 {k} 条 → {csv_path}")
