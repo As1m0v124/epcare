@@ -141,6 +141,7 @@ class RealEPDriver(BaseDriver):
         self._drive = (0.0, 0.0, 0.0)
         self._drive_running = False
         self._drive_thread = None
+        self._drive_deadline = 0.0
 
     # ---------- 连接 ----------
     def connect(self):
@@ -176,14 +177,16 @@ class RealEPDriver(BaseDriver):
     def _video_loop(self, ip, port):
         import av
 
+        first = True
         while self._running:
             try:
-                # 每次（重）连接前都重新发一次开流命令，确保机器人恢复推流
-                try:
-                    self.ep.camera._stream_sdk(1, "360p")
-                    self.ep.camera._video_stream(1, "360p")
-                except Exception:
-                    pass
+                # 首次不重复开流（connect 里已发过）；重连时才补发，避免重复命令卡死
+                if not first:
+                    try:
+                        self.ep.camera._video_stream(1, "360p")
+                    except Exception:
+                        pass
+                first = False
                 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                 s.settimeout(5)
                 s.connect((ip, port))
@@ -261,8 +264,9 @@ class RealEPDriver(BaseDriver):
         return True
 
     def drive_hold(self, x, y, z):
-        """按住走：后台 10Hz 重发速度指令，直到 stop_drive。"""
+        """按住走：后台 10Hz 重发速度，1.5 秒没有新指令自动停（防失联）。"""
         self._drive = (x, y, z)
+        self._drive_deadline = time.time() + 1.5
         if self._drive_thread is None or not self._drive_thread.is_alive():
             self._drive_running = True
             self._drive_thread = threading.Thread(target=self._drive_loop, daemon=True)
@@ -271,6 +275,10 @@ class RealEPDriver(BaseDriver):
 
     def _drive_loop(self):
         while self._drive_running:
+            if time.time() > self._drive_deadline:
+                audit("drive_ttl_stop", mode="real")
+                self._hard_stop()
+                return
             dx, dy, dz = self._drive
             with self._lock:
                 try:
@@ -279,23 +287,26 @@ class RealEPDriver(BaseDriver):
                     pass
             time.sleep(0.1)
 
-    def stop_drive(self):
+    def _hard_stop(self):
         self._drive_running = False
         self._drive = (0.0, 0.0, 0.0)
+        t = self._drive_thread
+        if t and t.is_alive() and t is not threading.current_thread():
+            t.join(timeout=1.0)
+        with self._lock:
+            try:
+                self.ep.chassis.drive_speed(x=0.0, y=0.0, z=0.0)
+                self.ep.chassis.stop()
+            except Exception:
+                pass
+
+    def stop_drive(self):
         audit("stop_drive", mode="real")
-        try:
-            self.ep.chassis.stop()
-        except Exception:
-            pass
+        self._hard_stop()
 
     def stop(self):
         audit("stop", mode="real")
-        self._drive_running = False
-        self._drive = (0.0, 0.0, 0.0)
-        try:
-            self.ep.chassis.stop()
-        except Exception:
-            pass
+        self._hard_stop()
 
     def grab(self, action):
         audit("grab", mode="real", action=action)

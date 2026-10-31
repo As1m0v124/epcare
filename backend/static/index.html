@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-store">
 <title>EPCare · 居家地面巡检整理机器人</title>
 <style>
 :root{--bg:#0b1220;--panel:#121c30;--panel2:#182545;--line:#24365c;--text:#e7eefc;--muted:#8ea3c7;--acc:#4da3ff;--ok:#2ecc8f;--warn:#f2b53c;--bad:#ff5c6c}
@@ -303,6 +304,7 @@ async function estop(){
 }
 const pressed=new Set();
 let lastDrive='';
+let driveHb=null;
 function driveBody(){
   return {
     x:(pressed.has('w')?0.3:0)-(pressed.has('s')?0.3:0),
@@ -312,13 +314,19 @@ function driveBody(){
 }
 async function sendDrive(){
   const b=driveBody(); const key=JSON.stringify(b);
+  const moving=!!(b.x||b.y||b.z);
   if(key===lastDrive) return; lastDrive=key;
   try{
-    if(b.x||b.y||b.z) await api('/api/control/drive_hold',{method:'POST',body:JSON.stringify(b)});
-    else await api('/api/control/stop_drive',{method:'POST'});
+    if(moving){
+      await api('/api/control/drive_hold',{method:'POST',body:JSON.stringify(b)});
+      if(!driveHb) driveHb=setInterval(()=>{const nb=driveBody(); if(nb.x||nb.y||nb.z) api('/api/control/drive_hold',{method:'POST',body:JSON.stringify(nb)}).catch(()=>{});},400);
+    }else{
+      if(driveHb){clearInterval(driveHb);driveHb=null;}
+      await api('/api/control/stop_drive',{method:'POST'});
+    }
   }catch(err){toast('遥控失败：'+err.message)}
 }
-function stopAll(){ pressed.clear(); lastDrive=''; api('/api/control/stop_drive',{method:'POST'}).catch(()=>{}); }
+function stopAll(){ pressed.clear(); lastDrive=''; if(driveHb){clearInterval(driveHb);driveHb=null;} api('/api/control/stop_drive',{method:'POST'}).catch(()=>{}); }
 document.addEventListener('keydown',e=>{
   if(!$('#v-cockpit').classList.contains('on'))return;
   const k=e.key.toLowerCase();
