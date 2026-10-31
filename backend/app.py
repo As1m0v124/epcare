@@ -34,7 +34,9 @@ ZH2EN = {
     "拖鞋": "slippers", "纸箱": "cardboard box", "盒子": "box", "椅子": "chair",
     "水瓶": "water bottle", "水杯": "cup", "电线": "cable", "药盒": "pill box",
     "眼镜": "glasses", "遥控器": "remote control", "袜子": "socks", "玩具": "toy",
-    "书": "book", "包": "bag", "手机": "cell phone",
+    "书": "book", "包": "bag", "手机": "cell phone", "箱子": "box", "桶": "bin",
+    "垃圾箱": "trash can", "瓶子": "bottle", "鞋子": "shoe", "书包": "backpack",
+    "药": "medicine", "水果": "fruit", "牛奶": "milk", "零食": "snack",
 }
 
 app = FastAPI(title="EPCare Backend")
