@@ -113,6 +113,13 @@ th{color:var(--muted);font-weight:600}
           <button data-dir="q">↺ 左转</button><button data-dir="w">▲ 前进</button><button data-dir="e">右转 ↻</button>
           <button data-dir="a">◀ 左移</button><button data-dir="s">▼ 后退</button><button data-dir="d">右移 ▶</button>
         </div>
+        <div class="row" id="armpad">
+          <span class="small">机械臂</span>
+          <button data-arm="xm">◀ 后收</button><button data-arm="xp">前伸 ▶</button>
+          <button data-arm="ym">▼ 下降</button><button data-arm="yp">▲ 上升</button>
+          <span class="small">爪子</span>
+          <button data-grab="open">张开</button><button data-grab="close">闭合</button>
+        </div>
       </div>
       <div>
         <div class="panel"><h3>机器人状态</h3><div id="stateBox" class="small">…</div></div>
@@ -309,7 +316,7 @@ function driveBody(){
   return {
     x:(pressed.has('w')?0.3:0)-(pressed.has('s')?0.3:0),
     y:(pressed.has('d')?0.3:0)-(pressed.has('a')?0.3:0),
-    z:(pressed.has('q')?30:0)-(pressed.has('e')?30:0),
+    z:(pressed.has('e')?30:0)-(pressed.has('q')?30:0),
   };
 }
 async function sendDrive(){
@@ -347,6 +354,26 @@ function bindDpad(){
   });
 }
 bindDpad();
+function bindArm(){
+  const send=async(a)=>{
+    const body = a==='xp'?{x_mm:8,y_mm:0}:a==='xm'?{x_mm:-8,y_mm:0}:a==='yp'?{x_mm:0,y_mm:6}:{x_mm:0,y_mm:-6};
+    await api('/api/control/arm',{method:'POST',body:JSON.stringify(body)}).catch(e=>toast('机械臂失败：'+e.message));
+  };
+  $$('#armpad button[data-arm]').forEach(b=>{
+    let t=null;
+    const on=ev=>{ev.preventDefault(); if(t) return; send(b.dataset.arm); t=setInterval(()=>send(b.dataset.arm), 450);};
+    const off=ev=>{if(t){clearInterval(t);t=null;}};
+    b.addEventListener('pointerdown',on); b.addEventListener('pointerup',off);
+    b.addEventListener('pointerleave',off); b.addEventListener('pointercancel',off);
+  });
+  $$('#armpad button[data-grab]').forEach(b=>{
+    b.addEventListener('click',async()=>{
+      try{await api('/api/control/grab',{method:'POST',body:JSON.stringify({action:b.dataset.grab})});toast('爪子：'+(b.dataset.grab==='open'?'张开':'闭合'));}
+      catch(e){toast('爪子失败：'+e.message)}
+    });
+  });
+}
+bindArm();
 
 async function loadDashboard(){
   try{
