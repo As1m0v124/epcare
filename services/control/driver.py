@@ -302,6 +302,29 @@ class RealEPDriver(BaseDriver):
             self.ep.close()
         except Exception:
             pass
+        # 后台自动重连（最多 12 次，每次间隔 5 秒）
+        if not getattr(self, "_reconnecting", False):
+            self._reconnecting = True
+            threading.Thread(target=self._auto_reconnect, daemon=True).start()
+
+    def _auto_reconnect(self):
+        from robomaster import robot as rm_robot
+        for attempt in range(12):
+            time.sleep(5)
+            try:
+                ep = rm_robot.Robot()
+                ep.initialize(conn_type=os.environ.get("EP_CONN", "sta"))
+                self.ep = ep
+                self.connected = True
+                self.last_error = ""
+                audit("auto_reconnect_ok", attempt=attempt + 1)
+                self._start_video()
+                self._sub_battery()
+                self._sub_arm()
+                break
+            except Exception as e:
+                self.last_error = f"自动重连中（{attempt+1}/12）: {e!r}"
+        self._reconnecting = False
 
     def _hard_stop(self):
         self._drive_running = False
