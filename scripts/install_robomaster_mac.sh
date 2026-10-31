@@ -63,6 +63,10 @@ patch(os.path.join(base, 'robomaster', 'media.py'), [
      '            return False\n'
      '        try:\n'),
 ])
+patch(os.path.join(base, 'robomaster', 'robotic_arm.py'), [
+    ("        self._pos_x, self._pos_y = struct.unpack('<II', buf[1:])",
+     "        self._pos_x, self._pos_y = struct.unpack('<ii', buf[1:])  # 有符号解码：y 可为负"),
+])
 patch(os.path.join(base, 'robomaster', 'conn.py'), [
     ("if conn_type is CONNECTION_WIFI_AP:", "if conn_type == CONNECTION_WIFI_AP:"),
     ("elif conn_type is CONNECTION_WIFI_STA:", "elif conn_type == CONNECTION_WIFI_STA:"),
