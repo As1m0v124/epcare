@@ -110,6 +110,7 @@ th{color:var(--muted);font-weight:600}
         </div>
         <p class="small"><b>先在画面上点一下再按键</b>；键盘遥控（护理员/管理员）：按住 <span class="kbd">W/A/S/D</span> 前后左右（松手停）、<span class="kbd">Q/E</span> 转向；
 机械臂 <span class="kbd">PgUp/PgDn</span> 前后、<span class="kbd">↑/↓</span> 上下（小键盘 8/2 亦可）；爪子 <span class="kbd">Enter</span> 闭合、<span class="kbd">Backspace</span> 张开</p>
+        <div id="keyState" class="small" style="color:#7fd6a5">按键状态：等待输入（先点画面）</div>
         <div class="row" id="dpad" onclick="document.activeElement&&document.activeElement.blur()">
           <button data-dir="q">↺ 左转</button><button data-dir="w">▲ 前进</button><button data-dir="e">右转 ↻</button>
           <button data-dir="a">◀ 左移</button><button data-dir="s">▼ 后退</button><button data-dir="d">右移 ▶</button>
@@ -325,6 +326,8 @@ async function sendDrive(){
   const moving=!!(b.x||b.y||b.z);
   if(key===lastDrive) return; lastDrive=key;
   try{
+    const ks=document.querySelector('#keyState');
+    if(ks) ks.textContent='底盘：x='+b.x.toFixed(1)+' y='+b.y.toFixed(1)+' z='+b.z.toFixed(0)+(moving?'（按住中）':'（已停）');
     if(moving){
       await api('/api/control/drive_hold',{method:'POST',body:JSON.stringify(b)});
       if(!driveHb) driveHb=setInterval(()=>{const nb=driveBody(); if(nb.x||nb.y||nb.z) api('/api/control/drive_hold',{method:'POST',body:JSON.stringify(nb)}).catch(()=>{});},400);
@@ -332,7 +335,7 @@ async function sendDrive(){
       if(driveHb){clearInterval(driveHb);driveHb=null;}
       await api('/api/control/stop_drive',{method:'POST'});
     }
-  }catch(err){toast('遥控失败：'+err.message)}
+  }catch(err){toast('遥控失败：'+err.message); const ks=document.querySelector('#keyState'); if(ks) ks.textContent='遥控失败：'+err.message;}
 }
 function stopAll(){ pressed.clear(); lastDrive=''; if(driveHb){clearInterval(driveHb);driveHb=null;} api('/api/control/stop_drive',{method:'POST'}).catch(()=>{}); }
 document.addEventListener('keydown',e=>{
@@ -356,6 +359,9 @@ function bindDpad(){
 }
 bindDpad();
 async function armSend(a){
+  const ks=document.querySelector('#keyState');
+  const names={xp:'前伸',xm:'后收',yp:'上升',ym:'下降'};
+  if(ks) ks.textContent='机械臂：'+names[a]+'（按住中）';
   const body = a==='xp'?{x_mm:10,y_mm:0}:a==='xm'?{x_mm:-10,y_mm:0}
              : a==='yp'?{x_mm:0,y_mm:6}:{x_mm:0,y_mm:-6};
   await api('/api/control/arm',{method:'POST',body:JSON.stringify(body)}).catch(e=>toast('机械臂失败：'+e.message));
@@ -406,7 +412,10 @@ function armKeyAction(e){
 }
 document.addEventListener('keydown',e=>{
   if(!$('#v-cockpit').classList.contains('on'))return;
-  if(['INPUT','TEXTAREA','SELECT'].includes(e.target.tagName)) return;
+  if(['INPUT','TEXTAREA','SELECT'].includes(e.target.tagName)){
+    const ks=document.querySelector('#keyState'); if(ks) ks.textContent='输入框聚焦中：请先点一下画面区域';
+    return;
+  }
   const a=armKeyAction(e);
   if(a){ e.preventDefault(); if(!e.repeat) armStart(a); return; }
   if(e.key==='Enter'){ e.preventDefault(); grabAct('close'); }
