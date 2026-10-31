@@ -311,7 +311,7 @@ def task_find(request: Request, payload: dict = Body(...)):
 
 
 @app.post("/api/tasks/{task_id}/run")
-def run_task(request: Request, task_id: int):
+def run_task(request: Request, task_id: int, payload: dict | None = Body(default=None)):
     """执行巡检计划：replay 模式逐步发送移动指令（仅演练）；真机模式暂未开放。"""
     u = require(request, "caregiver")
     with db.conn() as c:
@@ -323,8 +323,12 @@ def run_task(request: Request, task_id: int):
     if task["status"] not in ("planned", "finished"):
         raise HTTPException(409, "任务状态不允许执行")
     st = ctrl_json("/state")
+    confirm = bool(payload.get("confirm_real")) if isinstance(payload, dict) else False
     if st.get("mode") != "replay":
-        raise HTTPException(409, "真机执行需现场确认（当前版本仅支持 replay 演练）")
+        if not confirm:
+            raise HTTPException(409, "真机执行需现场确认：请传 confirm_real=true（确保周围 1.5m 无障碍）")
+        if st.get("battery") is not None and st["battery"] < 25:
+            raise HTTPException(409, f"电量过低（{st['battery']}%），拒绝真机执行")
     plan = json.loads(task["payload"]).get("plan", [])
     steps, started = [], db.now()
     with db.conn() as c:
@@ -334,8 +338,9 @@ def run_task(request: Request, task_id: int):
         if st.get("estop"):
             steps.append({"landmark": name, "result": "aborted: estop"})
             break
-        ctrl_json("/move", "POST", {"x": 0.2, "y": 0.0, "z": 0.0})
-        steps.append({"landmark": name, "result": "replay move 0.2m"})
+        dist = 0.2
+        ctrl_json("/move", "POST", {"x": dist, "y": 0.0, "z": 0.0})
+        steps.append({"landmark": name, "result": f"{st.get('mode')} move {dist}m"})
     status = "finished"
     with db.conn() as c:
         c.execute("UPDATE tasks SET status=?, result=?, finished=? WHERE id=?",
@@ -353,8 +358,8 @@ def task_fetch(request: Request, payload: dict = Body(...)):
     if not query:
         raise HTTPException(400, "query 不能为空")
     st = ctrl_json("/state")
-    if st.get("mode") != "replay":
-        raise HTTPException(409, "真机取回需现场确认（当前版本仅支持 replay 演示）")
+    if st.get("mode") != "replay" and not payload.get("confirm_real"):
+        raise HTTPException(409, "真机取回需现场确认：请传 confirm_real=true")
     steps = []
     for ep, act in [("/arm", {"x_mm": 20, "y_mm": 0}), ("/grab", {"action": "open"}),
                     ("/arm", {"x_mm": 10, "y_mm": -5}), ("/grab", {"action": "close"}),
