@@ -363,7 +363,7 @@ async function armSend(a){
   const names={xp:'前伸',xm:'后收',yp:'上升',ym:'下降'};
   if(ks) ks.textContent='机械臂：'+names[a]+'（按住中）';
   const body = a==='xp'?{x_mm:10,y_mm:0}:a==='xm'?{x_mm:-10,y_mm:0}
-             : a==='yp'?{x_mm:0,y_mm:6}:{x_mm:0,y_mm:-6};
+             : a==='yp'?{x_mm:0,y_mm:10}:{x_mm:0,y_mm:-10};
   await api('/api/control/arm',{method:'POST',body:JSON.stringify(body)}).catch(e=>toast('机械臂失败：'+e.message));
 }
 async function armPos(){
