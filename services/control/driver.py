@@ -261,11 +261,15 @@ class RealEPDriver(BaseDriver):
     # ---------- 动作 ----------
     def move(self, x, y, z, wait=True):
         audit("move", mode="real", x=x, y=y, z=z, wait=wait)
-        with self._lock:
-            action = self.ep.chassis.move(x=x, y=y, z=z, xy_speed=0.5)
-            if wait:
-                action.wait_for_completed(timeout=30)
-        return True
+        try:
+            with self._lock:
+                action = self.ep.chassis.move(x=x, y=y, z=z, xy_speed=0.5)
+                if wait:
+                    action.wait_for_completed(timeout=12)
+            return True
+        except Exception:
+            self._mark_unhealthy("move 超时/失败，连接需重置")
+            raise
 
     def drive_hold(self, x, y, z):
         """按住走：后台 10Hz 重发速度，1.5 秒没有新指令自动停（防失联）。"""
@@ -290,6 +294,14 @@ class RealEPDriver(BaseDriver):
                 except Exception:
                     pass
             time.sleep(0.1)
+
+    def _mark_unhealthy(self, reason):
+        self.last_error = reason
+        self.connected = False
+        try:
+            self.ep.close()
+        except Exception:
+            pass
 
     def _hard_stop(self):
         self._drive_running = False
@@ -324,8 +336,12 @@ class RealEPDriver(BaseDriver):
 
     def arm_move(self, x_mm, y_mm, wait=True):
         audit("arm", mode="real", x=x_mm, y=y_mm, wait=wait)
-        with self._lock:
-            action = self.ep.robotic_arm.move(x=x_mm, y=y_mm)
-            if wait:
-                action.wait_for_completed(timeout=15)
-        return True
+        try:
+            with self._lock:
+                action = self.ep.robotic_arm.move(x=x_mm, y=y_mm)
+                if wait:
+                    action.wait_for_completed(timeout=8)
+            return True
+        except Exception:
+            self._mark_unhealthy("arm 超时/失败，连接需重置")
+            raise
