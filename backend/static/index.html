@@ -95,7 +95,7 @@ th{color:var(--muted);font-weight:600}
     <h2>实时驾驶舱 <span class="small" id="cockpitMode"></span></h2>
     <div class="grid g2">
       <div>
-        <div id="frameWrap">
+        <div id="frameWrap" onclick="document.activeElement&&document.activeElement.blur()">
           <img id="frame" src="" alt="等待画面">
           <canvas id="overlay"></canvas>
         </div>
@@ -108,13 +108,13 @@ th{color:var(--muted);font-weight:600}
           <input id="cq" placeholder="检测：拖鞋 水瓶…" style="flex:1">
           <button onclick="runDetect(false)">检测</button>
         </div>
-        <p class="small">键盘遥控（护理员/管理员）：按住 <span class="kbd">W/A/S/D</span> 前后左右（松手停）、<span class="kbd">Q/E</span> 转向；
+        <p class="small"><b>先在画面上点一下再按键</b>；键盘遥控（护理员/管理员）：按住 <span class="kbd">W/A/S/D</span> 前后左右（松手停）、<span class="kbd">Q/E</span> 转向；
 机械臂 <span class="kbd">PgUp/PgDn</span> 前后、<span class="kbd">↑/↓</span> 上下（小键盘 8/2 亦可）；爪子 <span class="kbd">Enter</span> 闭合、<span class="kbd">Backspace</span> 张开</p>
-        <div class="row" id="dpad">
+        <div class="row" id="dpad" onclick="document.activeElement&&document.activeElement.blur()">
           <button data-dir="q">↺ 左转</button><button data-dir="w">▲ 前进</button><button data-dir="e">右转 ↻</button>
           <button data-dir="a">◀ 左移</button><button data-dir="s">▼ 后退</button><button data-dir="d">右移 ▶</button>
         </div>
-        <div class="row" id="armpad">
+        <div class="row" id="armpad" onclick="document.activeElement&&document.activeElement.blur()">
           <span class="small">机械臂</span>
           <button data-arm="xm">◀ 后收</button><button data-arm="xp">前伸 ▶</button>
           <button data-arm="ym">▼ 下降</button><button data-arm="yp">▲ 上升</button>
@@ -295,7 +295,7 @@ async function runDetect(){
     $('#detBox').innerHTML = r.items.length
       ? `<div class="small">提示词：${r.prompt}</div>`+r.items.map(i=>`<div>${i.label} <b>${i.score}</b> ${i.dist_m?`≈${i.dist_m}m`:'距离—'} </div>`).join('')
       : '<div class="small">没有检测到。换个说法试试。</div>';
-    drawBoxes(r.items); toast('检测到 '+r.count+' 个');
+    drawBoxes(r.items); toast('检测到 '+r.count+' 个'); document.activeElement&&document.activeElement.blur();
   }catch(e){toast('检测失败：'+e.message)}
 }
 function drawBoxes(items){
@@ -471,7 +471,7 @@ async function taskFind(){
     const task=await api('/api/tasks/'+r.task_id); const shot=JSON.parse(task.result).shot;
     if(shot){$('#findShot').src='/files/'+shot;$('#findShot').style.display='block'}
     if(r.count){$('#findResult').innerHTML+=`<div class="row"><button class="btn-ok" onclick="fetchItem()">取回（replay 演示）</button></div>`;}
-    toast(r.count?`找到 ${r.count} 个`:'没有找到');
+    toast(r.count?`找到 ${r.count} 个`:'没有找到'); document.activeElement&&document.activeElement.blur();
   }catch(e){toast('找东西失败：'+e.message)}
 }
 async function loadRules(){
