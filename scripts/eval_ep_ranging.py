@@ -47,7 +47,8 @@ def fit_row_model(train):
     """Z = a/(v - y_h)：网格搜 y_h，闭式解 a。"""
     h = train[0]["h"]
     best = None
-    for yh in np.arange(h * 0.3, h * 1.6, 1.0):
+    # 相机下俯时地平线行可能在画面外（甚至为负），搜索范围放宽
+    for yh in np.arange(-3.0 * h, 2.0 * h, 1.0):
         if any(abs(p["v"] - yh) < 1e-6 for p in train):
             continue  # 该 y_h 会让某个点除零
         r = np.array([1.0 / (p["v"] - yh) for p in train])
@@ -148,7 +149,18 @@ def main():
             dv = v - h / 2.0
             p["z_fixed"] = f * CAM_H / dv if dv > 10 else None
 
-    test_files = set(files[:: args.test_every]) if len(files) >= 6 else set()
+    # 按真实距离分层切分：每个距离组各留约 1/test_every 张测试，保证测试覆盖近/中/远
+    from collections import defaultdict
+    groups = defaultdict(list)
+    for p in pts:
+        groups[(p.get("surface", ""), round(p["gt"], 1))].append(p["file"])
+    test_files = set()
+    for key, fs in groups.items():
+        if len(fs) >= 2:
+            test_files.update(set(fs[:: args.test_every]))
+    if not test_files and len(files) >= 6:
+        test_files = set(files[:: args.test_every])
+    test_files = {f for f in test_files if f in files}
     train = [p for p in pts if p["file"] not in test_files]
     test = [p for p in pts if p["file"] in test_files]
     calib = {"n_files": len(files), "n_points": len(pts), "test_files": len(test_files)}

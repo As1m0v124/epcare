@@ -29,11 +29,15 @@ def main():
     b = ev.get("B_ground_calibrated", {})
     c = ev.get("C_depth_calibrated", {})
     conclusion = ["", "**结论**："]
-    if b.get("absrel") is not None and a.get("absrel") is not None:
+    if a.get("absrel") is None or a.get("n", 0) == 0:
+        conclusion.append("A 固定针孔 0 个点可用（地面接触点都在画面中线以上，俯角 0 的假设不成立）；")
+    elif b.get("absrel") is not None:
         conclusion.append(f"B 地平面标定 AbsRel {b['absrel']}，A 固定针孔 {a['absrel']}；")
+    if b.get("absrel") is not None:
+        conclusion.append(f"B 地平面标定 AbsRel {b['absrel']}（RMSE {b.get('rmse_m')}m，δ1 {b.get('delta1')}）；")
     if c.get("absrel") is not None:
-        conclusion.append(f"C 深度标定 AbsRel {c['absrel']}；")
-    conclusion.append("pilot 只验证采集/评测管线，200 张采满后再定最终标定参数。")
+        conclusion.append(f"C 深度标定 AbsRel {c['absrel']}（RMSE {c.get('rmse_m')}m，δ1 {c.get('delta1')}）；")
+    conclusion.append("本次 pilot 9 张（时间限制），只验证采集/评测管线；200 张采满后再定最终标定参数。")
     block = "**采集/评测结果**：\n\n" + md + "\n\n" + "".join(conclusion)
     rep = re.sub(re.escape(START) + r".*?" + re.escape(END),
                  START + "\n" + block + "\n" + END, rep, flags=re.S)

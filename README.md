@@ -32,7 +32,7 @@
 - ✅ 2026-11-08 **指令堆积卡死已复现并消除**：旧版 36 并发 p50 7.51s、后续指令 10s 超时；改为有界队列（1 执行 + 1 排队，多余 429）后，33 条立即 429、探测指令 0.40s 返回（`results/pileup_before.json` / `pileup_after.json`，台账 #24）
 - ✅ 2026-11-08 **真机巡检一圈跑通**：4×0.3m + 4×90°，8 步全 ok、4 张角照片（任务 #22）；网页巡检页新增「跑真机一圈」按钮
 - ✅ 2026-11-08 **舵机连续步进稳定**：真机 20 步 ±10mm，20/20 执行，平均到位误差 1.55mm、最大 2mm（`results/servo_stability.json`）
-- ✅ 2026-10-31 真机驾驶舱已通（画面/按住走/机械臂/爪子/急停）；⏳ 待补：夹取-放下整条串联、完整巡检录屏、200 张测距图采集（当前 1/200；采集器+三方法评测脚本已就绪，协议见 `docs/ranging_capture_protocol.md`；仿真环境在台式机补）
+- ✅ 2026-10-31 真机驾驶舱已通（画面/按住走/机械臂/爪子/急停）；⏳ 待补：夹取-放下整条串联、完整巡检录屏、200 张测距图采集（当前完成 9 张 pilot：B 地平面标定 AbsRel 3.0%、C 深度 3.2%，仅验证管线；采集器+三方法评测脚本已就绪，协议见 `docs/ranging_capture_protocol.md`；仿真环境在台式机补）
 
 每日进展记录在 [docs/worklog.md](docs/worklog.md)，错例分析见 [docs/f1_error_analysis.md](docs/f1_error_analysis.md)，错题本见 [LESSONS.md](LESSONS.md)，检查点状态见 [docs/checkpoint_week3.md](docs/checkpoint_week3.md)。
 

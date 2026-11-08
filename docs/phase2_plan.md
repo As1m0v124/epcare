@@ -18,7 +18,7 @@
 
 | 数据 | 数量 | 工具 | 备注 |
 |---|---|---|---|
-| EP 居家测距图 | 200 张（3 种地面 × 2 种光照）**当前 1 张（不可评测）** | `scripts/collect_ranging_data.py`（地砖换算/断点续采/点击接触点）+ `scripts/eval_ep_ranging.py` | 每张记 3–5 个物体真实距离（卷尺/600mm 地砖）；协议见 `docs/ranging_capture_protocol.md` |
+| EP 居家测距图 | 200 张（3 种地面 × 2 种光照）**当前 9 张 pilot（B AbsRel 3.0%，仅验证管线）** | `scripts/collect_ranging_data.py`（地砖换算/断点续采/点击接触点）+ `scripts/eval_ep_ranging.py` | 每张记 3–5 个物体真实距离（卷尺/600mm 地砖）；协议见 `docs/ranging_capture_protocol.md` |
 | 居家地面标注图 | 300 张，30 类物品 | X-AnyLabeling（macOS 版） | 只拍物品和地面，不拍人脸 |
 | 中文找东西指令 | 100 条 | `data/zh_find_instructions.csv`（待建） | 颜色/位置/所属人描述 + 真值框 |
 | 中文收纳场景 | 40 个 | `data/zh_scenarios.yml` ✅ | 已写好，可直接跑 |
