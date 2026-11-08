@@ -29,7 +29,7 @@ sleep 3
 echo "==> 连接机器人模式: $MODE"
 curl -s -X POST http://127.0.0.1:8000/api/login -H 'Content-Type: application/json' \
   -d '{"username":"admin","password":"admin123"}' -c /tmp/epcare.cookie > /dev/null
-curl -s -b /tmp/epcare.cookie -X POST http://127.0.0.1:8001/connect \
+curl -s -m 30 -b /tmp/epcare.cookie -X POST http://127.0.0.1:8001/connect \
   -H 'Content-Type: application/json' -d "{\"mode\":\"$MODE\"}" || true
 
 open http://127.0.0.1:8000 2>/dev/null || true

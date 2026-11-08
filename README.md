@@ -53,6 +53,10 @@ bash start.sh real       # 真机模式（STA 组网；机器人需上电并加�
 页面：数据看板、实时驾驶舱（实时画面/深度图/检测/急停/键盘遥控）、巡检任务、找东西、
 家庭收纳习惯、房间与地标、告警中心、评测与数据、设备与安全、设置/审计、侧边栏助手。
 
+桌面演示入口：`EP旧版_卡死演示.command`（旧版并发堆积 + 卡死标注图）、
+`EP修复版_正常控制.command`（自动连机器人 + 打开网页 + 自由控制），说明见
+[docs/robot_start_scripts.md](docs/robot_start_scripts.md)。
+
 - 安全由控制服务强制：急停后拒绝一切动作（仅管理员可解除）、限速、单次位移与机械臂限幅、
   低电量拒动、全部动作写 `logs/control_audit.jsonl`；
 - CLI（ai312 环境）：`ai312/bin/python cli/epcare.py status | find "水瓶" | depth --image x.jpg --out d.png | patrol --room 客厅 --dry-run | tidy-rules --household f.txt | eval`；
