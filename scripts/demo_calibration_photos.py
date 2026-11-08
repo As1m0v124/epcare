@@ -79,8 +79,11 @@ def load_points(args):
                     rows.append({"img": p, "u": u, "v": v, "z": z,
                                  "object": r.get("object", ""), "file": r["file"]})
         if rows:
+            rows.sort(key=lambda x: x["file"])
+            if not args.all:
+                rows = rows[:9]  # 默认只用固定姿态的正式 9 张
             rows.sort(key=lambda x: (round(x["z"], 2), x["object"]))
-            return rows, "real", "真机 9 张 pilot 回放"
+            return rows, "real", f"真机 {len(rows)} 张 pilot 回放"
 
     # 合成：用一张 EP 实拍当背景，按地面模型生成 12 个点
     bg = os.path.join(ROOT, "results", "patrol", "loop_24_1.jpg")
@@ -177,6 +180,7 @@ def main():
     ap.add_argument("--out", default=os.path.join(ROOT, "results", "calibration_demo"))
     ap.add_argument("--synthetic", action="store_true")
     ap.add_argument("--open", action="store_true")
+    ap.add_argument("--all", action="store_true", help="使用 CSV 里全部照片（默认只用正式 9 张）")
     args = ap.parse_args()
     os.makedirs(args.out, exist_ok=True)
     rows, source, label = load_points(args)

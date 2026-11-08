@@ -37,3 +37,6 @@ results/*.png
 # 可由脚本再生成的中间 JSON（GT/检测原始输出）
 results/coco*_gt.json
 results/coco*_dets.json
+
+# 演示输出可由 scripts/demo_calibration_photos.py 重建；归档保留 MP4
+results/calibration_demo/
