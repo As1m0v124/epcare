@@ -1,0 +1,20 @@
+{
+  "tag": "after",
+  "burst_n": 36,
+  "burst_status": {
+    "200": 3,
+    "429": 33
+  },
+  "burst_latency_p50": 0.01,
+  "burst_latency_max": 1.219,
+  "state": {
+    "status": 200,
+    "sec": 0.003
+  },
+  "probe": {
+    "status": 200,
+    "sec": 0.402
+  },
+  "frozen": false,
+  "verdict": "✅ 未卡死：堆积被限流，状态与指令仍及时响应"
+}

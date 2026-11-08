@@ -1,0 +1,22 @@
+{
+  "tile_m": 0.6,
+  "camera_height_m": 0.25,
+  "camera_pitch_deg": 0.0,
+  "sessions": [
+    {
+      "ts": "2026-11-08T17:40:35",
+      "start_images": 0,
+      "target": 10
+    },
+    {
+      "ts": "2026-11-08T17:41:15",
+      "start_images": 0,
+      "target": 10
+    },
+    {
+      "ts": "2026-11-08T18:59:11",
+      "start_images": 9,
+      "target": 12
+    }
+  ]
+}
