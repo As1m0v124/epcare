@@ -22,6 +22,7 @@ import json
 import math
 import os
 import sys
+import time
 
 import numpy as np
 
@@ -195,7 +196,24 @@ def main():
 
     os.makedirs(os.path.dirname(args.out), exist_ok=True)
     json.dump(results, open(args.out, "w"), ensure_ascii=False, indent=2)
-    print(f"\n已保存 {args.out}")
+
+    # 同时输出可直接贴进周报的 Markdown 表
+    md = [f"# EP 居家测距集评测（{time.strftime('%Y-%m-%d')}）", "",
+          f"- 图片 {results['n_files']} 张 / 标注点 {results['n_points']} 条",
+          f"- 切分：训练 {results['split']['train_points']} 点，测试 {results['split']['test_points']} 点（每 {args.test_every} 张取 1 张测试）", ""]
+    rows_md = [("A 固定针孔（现有假设）", results["A_fixed_pinhole"])]
+    if "B_ground_calibrated" in results:
+        rows_md.append(("B 地平面标定", results["B_ground_calibrated"]))
+    if "C_depth_calibrated" in results:
+        rows_md.append(("C 深度标定", results["C_depth_calibrated"]))
+    md += ["| 方法 | 测试点 | AbsRel | RMSE(m) | δ1 |", "|---|---|---|---|---|"]
+    for name, r in rows_md:
+        md.append(f"| {name} | {r.get('n', 0)} | {r.get('absrel', '-')} | {r.get('rmse_m', '-')} | {r.get('delta1', '-')} |")
+    if results.get("note"):
+        md += ["", f"> {results['note']}"]
+    md_path = os.path.splitext(args.out)[0] + ".md"
+    open(md_path, "w", encoding="utf-8").write("\n".join(md) + "\n")
+    print(f"\n已保存 {args.out} 和 {md_path}")
 
 
 if __name__ == "__main__":
