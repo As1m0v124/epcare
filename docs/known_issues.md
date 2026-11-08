@@ -50,10 +50,10 @@
 
 | 版本 | 批量结果 | 请求延迟 p50 / max | 堆积期间 `/state` | 堆积期间新指令 | 判定 |
 |---|---|---|---|---|---|
-| 旧版（legacy 直接并发） | 36×200 全部接受 | 7.51s / 14.39s | 0.003s（缓存正常） | **10.0s 超时** | ❌ 卡死复现 |
+| 旧版（legacy 直接并发） | 两次：22×200+14 超时 / 33×200+3 超时 | 18.3/20.0s；12.5/20.0s | 0.001s（缓存正常） | **10.0s 超时** | ❌ 卡死复现 |
 | 修复版（有界队列） | 3×200 + 33×429 | 0.01s / 1.22s | 0.003s | **0.40s 返回 200** | ✅ 不再卡死 |
 
-证据：`results/pileup_before.json`、`results/pileup_after.json`、`logs/control_audit.jsonl`（含 `queue_full` 记录）。
+证据：`results/pileup_before.json`、`results/pileup_webdemo.json`、`results/pileup_after.json`、`results/web_freeze_annotated.png`（整页截图）、`results/pileup_before_annotated.jpg`、`logs/control_audit.jsonl`（含 `queue_full` 记录）。p50 随队列残余动作浮动，稳定判据是探测指令超时。
 
 **舵机连续步进（真机 20 步 ±10mm，工作区中部，逐步回读）**
 
