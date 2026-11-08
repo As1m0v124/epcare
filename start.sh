@@ -7,6 +7,16 @@ cd "$(dirname "$0")"
 MODE="${1:-replay}"
 mkdir -p logs
 
+# 先停掉占用 8000/8001 的旧实例：两个控制服务同时连机器人会互相踢下线
+for port in 8001 8000; do
+  pids=$(lsof -ti tcp:$port 2>/dev/null || true)
+  if [ -n "$pids" ]; then
+    echo "==> 停止端口 $port 上的旧实例: $pids"
+    kill $pids 2>/dev/null || true
+  fi
+done
+sleep 2
+
 echo "==> 启动控制服务 (:8001)"
 ( ep38/bin/python -m uvicorn services.control.server:app --host 127.0.0.1 --port 8001 \
     > logs/control.log 2>&1 & echo $! > logs/control.pid )
