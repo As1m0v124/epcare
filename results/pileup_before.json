@@ -1,20 +1,24 @@
 {
   "tag": "before",
+  "act": "arm",
   "burst_n": 36,
   "burst_status": {
-    "200": 36
+    "200": 22,
+    "timeout": 14
   },
-  "burst_latency_p50": 7.512,
-  "burst_latency_max": 14.391,
+  "burst_latency_p50": 18.268,
+  "burst_latency_max": 20.01,
   "state": {
     "status": 200,
-    "sec": 0.003
+    "sec": 0.001
   },
   "probe": {
     "status": "timeout",
-    "sec": 10.002,
+    "sec": 10.001,
     "err": "ReadTimeout"
   },
+  "frame_diff_pct": 1.15,
+  "frame_static": false,
   "frozen": true,
-  "verdict": "❌ 卡死已复现：堆积后指令/状态长时间无响应"
+  "verdict": "❌ 卡死已复现：堆积后新指令长时间无响应"
 }
