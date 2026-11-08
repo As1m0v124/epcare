@@ -57,8 +57,10 @@ bash start.sh real       # 真机模式（STA 组网；机器人需上电并加�
 `EP修复版_正常控制.command`（自动连机器人 + 打开网页 + 自由控制），说明见
 [docs/robot_start_scripts.md](docs/robot_start_scripts.md)。
 
-标定过程演示（合成数据，非真机结果）：`ai312/bin/python scripts/demo_calibration.py`
-→ `results/calibration_demo/calibration_demo.{png,gif,json}`，含“采样 1→200 张、误差收敛”动画。
+标定过程演示：
+- `ai312/bin/python scripts/demo_calibration_photos.py` → 逐张照片“拍照 → 点底部接触点 → 累计拟合”的过程动画（默认回放真机 9 张 pilot；`--synthetic` 为纯合成）；
+- `ai312/bin/python scripts/demo_calibration.py` → 合成数据的采样 1→200 张误差收敛动画；
+- 输出在 `results/calibration_demo/`，画面均标注“回放/合成，不是新采集”。
 
 - 安全由控制服务强制：急停后拒绝一切动作（仅管理员可解除）、限速、单次位移与机械臂限幅、
   低电量拒动、全部动作写 `logs/control_audit.jsonl`；
