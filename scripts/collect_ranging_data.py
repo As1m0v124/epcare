@@ -15,6 +15,8 @@ import argparse
 import csv
 import json
 import os
+import re
+import subprocess
 import sys
 import time
 
@@ -28,6 +30,41 @@ SURFACES = ["瓷砖", "木地板", "地毯"]
 LIGHTS = ["白天", "夜间开灯"]
 FIELDS = ["file", "object", "distance_m", "distance_tiles", "surface", "light",
           "u_px", "v_px", "note", "ts"]
+
+
+def _dialog(prompt, default="", buttons=("取消", "确定"), default_button="确定", extra=""):
+    """macOS 原生输入框：不依赖终端行编辑，方向键/中文输入正常。"""
+    if sys.platform != "darwin" or os.environ.get("EPCARE_TERMINAL_INPUT") == "1":
+        return None
+    esc = lambda x: str(x).replace("\\", "\\\\").replace('"', '\\"')
+    btn = "{" + ",".join(f'"{b}"' for b in buttons) + "}"
+    script = (f'display dialog "{esc(prompt)}" default answer "{esc(default)}" '
+              f'buttons {btn} default button "{esc(default_button)}" '
+              f'with title "EPCare 测距采集" {extra}')
+    try:
+        out = subprocess.run(["osascript", "-e", script], capture_output=True, text=True, timeout=650).stdout
+    except Exception:
+        return None
+    return out.strip()
+
+
+def ask_text(prompt, default=""):
+    out = _dialog(prompt, default)
+    if out is None:  # 非 macOS 或显式要求终端输入
+        return input(f"{prompt}（默认 {default}）: ").strip() or default
+    if "gave up:true" in out or "button returned:取消" in out:
+        return None
+    m = re.search(r"text returned:(.*?)(?:, gave up:true)?$", out)
+    return (m.group(1).strip() if m else "")
+
+
+def ask_continue(k, total):
+    out = _dialog(f"第 {k+1}/{total} 张：摆好物体后点「拍照」", buttons=("退出", "拍照"),
+                  default_button="拍照")
+    if out is None:
+        cmd = input(f"\n[{k+1}/{total}] 回车拍照（q 退出）: ").strip()
+        return cmd.lower() != "q"
+    return "button returned:拍照" in out and "gave up:true" not in out
 
 
 def parse_dist(s, tile_m):
@@ -79,9 +116,12 @@ def click_points(img_path, objects):
             cv2.circle(img, (x, y), 6, (0, 0, 255), -1)
             cv2.putText(img, state["cur"], (x + 8, y - 8),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1)
+            print(f"  {state['cur']} -> ({x}, {y})", flush=True)
 
     win = "click object-ground contact; ESC=skip"
-    cv2.namedWindow(win, cv2.WINDOW_NORMAL)
+    cv2.namedWindow(win, cv2.WINDOW_AUTOSIZE)
+    cv2.setWindowProperty(win, cv2.WND_PROP_TOPMOST, 1)
+    cv2.moveWindow(win, 120, 120)
     cv2.setMouseCallback(win, on_mouse)
     for obj in objects:
         state["cur"], state["done"] = obj, False
@@ -95,8 +135,11 @@ def click_points(img_path, objects):
                 cv2.destroyWindow(win)
                 print("  已跳过标注（这张图评测不可用）")
                 return pts
+            if cv2.getWindowProperty(win, cv2.WND_PROP_VISIBLE) < 1:
+                print("  标注窗口被关闭，跳过")
+                return pts
     cv2.imshow(win, img)
-    cv2.waitKey(500)
+    cv2.waitKey(1200)
     cv2.destroyWindow(win)
     return pts
 
@@ -143,9 +186,17 @@ def main():
     surface = args.surface
     light = args.light
     if surface is None:
-        surface = input(f"本次地面 {SURFACES[0]}/{SURFACES[1]}/{SURFACES[2]}（回车=瓷砖）: ").strip() or SURFACES[0]
+        surface = ask_text(f"本次地面：{' / '.join(SURFACES)}", SURFACES[0])
+        if surface is None:
+            print("已取消"); return
+        if surface not in SURFACES:
+            print(f"未知地面 {surface!r}，按 {SURFACES[0]} 记"); surface = SURFACES[0]
     if light is None:
-        light = input(f"本次光照 {LIGHTS[0]}/{LIGHTS[1]}（回车=白天）: ").strip() or LIGHTS[0]
+        light = ask_text(f"本次光照：{' / '.join(LIGHTS)}", LIGHTS[0])
+        if light is None:
+            print("已取消"); return
+        if light not in LIGHTS:
+            print(f"未知光照 {light!r}，按 {LIGHTS[0]} 记"); light = LIGHTS[0]
 
     new = not os.path.exists(csv_path) or os.path.getsize(csv_path) == 0
     k = done
@@ -154,8 +205,7 @@ def main():
         if new:
             w.writeheader()
         while k < args.n:
-            cmd = input(f"\n[{k+1}/{args.n}] 回车拍照（q 退出）: ").strip()
-            if cmd.lower() == "q":
+            if not ask_continue(k, args.n):
                 break
             try:
                 frame = s.get(API + "/api/control/frame.jpg", timeout=10).content
@@ -168,7 +218,11 @@ def main():
             path = os.path.join(img_dir, fn)
             open(path, "wb").write(frame)
 
-            spec = input("  物体:距离（如 水瓶:1.2 盒子:2t 收纳包:0.5）: ").strip()
+            spec = ask_text("物体:距离（如 水瓶:1.2 盒子:2t 收纳包:0.5）", "")
+            if spec is None:
+                print("已取消"); os.remove(path); break
+            if not spec:
+                print("空输入，删除本张"); os.remove(path); continue
             pairs = []
             for part in spec.replace("，", ",").split(","):
                 part = part.strip()
