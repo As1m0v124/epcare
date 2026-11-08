@@ -149,13 +149,15 @@ def main():
             p["z_fixed"] = f * CAM_H / dv if dv > 10 else None
 
     test_files = set(files[:: args.test_every]) if len(files) >= 6 else set()
-    train = [p for p in pts if p["file"] not in test_files and p["z_fixed"] is not None]
+    train = [p for p in pts if p["file"] not in test_files]
     test = [p for p in pts if p["file"] in test_files]
     calib = {"n_files": len(files), "n_points": len(pts), "test_files": len(test_files)}
 
     print("\n=== A. 固定针孔（系统当前假设）===")
     a_rows = [{"gt": p["gt"], "z": p["z_fixed"]} for p in pts if p["z_fixed"] is not None]
     a_test = [{"gt": p["gt"], "z": p["z_fixed"]} for p in test if p["z_fixed"] is not None]
+    if len(a_rows) < len(pts) * 0.5:
+        print(f"⚠️ 只有 {len(a_rows)}/{len(pts)} 个点在画面中线以下；相机俯角明显不为 0，A 的假设不成立。")
     res_a = metrics(a_test if test_files else a_rows)
     print(res_a)
 
@@ -183,6 +185,12 @@ def main():
         res_c = metrics(c_test)
         print("\n=== B. 地平面标定（row→distance）===")
         print(row_m, res_b)
+        print("  B 的测试点残差（>20% 重点检查距离标注/接触点）：")
+        for p in test:
+            z = predict_row(row_m, p["v"]) if row_m else None
+            if z:
+                print(f"    {p['file']} {p['object']}: gt={p['gt']:.2f}m v={p['v']} pred={z:.2f}m "
+                      f"err={abs(z-p['gt'])/p['gt']*100:.0f}%")
         print("\n=== C. 深度标定（1/Z = a*disp + b）===")
         print(depth_m, res_c)
         results["B_ground_calibrated"] = {**res_b, "params": row_m}
