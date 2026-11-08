@@ -392,6 +392,58 @@ def task_fetch(request: Request, payload: dict = Body(...)):
     return {"ok": True, "task_id": cur.lastrowid, "query": query, "steps": steps}
 
 
+@app.post("/api/tasks/patrol_loop")
+def patrol_loop(request: Request, payload: dict = Body(...)):
+    """真机巡检一圈（方形路线）：4×(前进 side_m + 右转 90°)，每角拍照留证。"""
+    u = require(request, "caregiver")
+    st = ctrl_json("/state")
+    if st.get("mode") != "real":
+        raise HTTPException(409, "仅真机模式可用")
+    if not payload.get("confirm_real"):
+        raise HTTPException(409, "需现场确认：传 confirm_real=true（周围 1.5m 无障碍）")
+    if st.get("battery") is not None and st["battery"] < 25:
+        raise HTTPException(409, f"电量过低（{st['battery']}%）")
+    side = float(payload.get("side_m", 0.3))
+    if not (0.1 <= side <= 0.6):
+        raise HTTPException(400, "side_m 需在 0.1–0.6 米之间")
+    shot_dir = os.path.join(ROOT, "results", "patrol")
+    os.makedirs(shot_dir, exist_ok=True)
+    steps, shots = [], []
+    with db.conn() as c:
+        cur = c.execute(
+            "INSERT INTO tasks(kind, payload, status, result, created_by, created) "
+            "VALUES(?,?,?,?,?,?)",
+            ("patrol", json.dumps({"side_m": side, "square": True}, ensure_ascii=False),
+             "running", "{}", u["username"], db.now()))
+        task_id = cur.lastrowid
+    try:
+        for corner in range(4):
+            if ctrl_json("/state").get("estop"):
+                steps.append({"corner": corner + 1, "result": "aborted: estop"})
+                break
+            ctrl_json("/move", "POST", {"x": side, "y": 0, "z": 0})
+            steps.append({"corner": corner + 1, "action": f"forward {side}m", "result": "ok"})
+            ctrl_json("/move", "POST", {"x": 0, "y": 0, "z": 90})
+            steps.append({"corner": corner + 1, "action": "turn 90°", "result": "ok"})
+            try:
+                jpg = ctrl("/frame.jpg")[0]
+                p = os.path.join(shot_dir, f"loop_{task_id}_{corner+1}.jpg")
+                open(p, "wb").write(jpg)
+                shots.append(os.path.relpath(p, ROOT))
+            except Exception:
+                pass
+        status = "finished" if len(steps) == 8 else "aborted"
+    except HTTPException as e:
+        status = "failed"
+        steps.append({"error": str(e.detail)})
+    with db.conn() as c:
+        c.execute("UPDATE tasks SET status=?, result=?, finished=? WHERE id=?",
+                  (status, json.dumps({"steps": steps, "shots": shots}, ensure_ascii=False),
+                   db.now(), task_id))
+    db.audit(u["username"], "patrol_loop", f"task {task_id} side={side}")
+    return {"task_id": task_id, "status": status, "steps": steps, "shots": shots}
+
+
 @app.get("/api/tasks/{task_id}")
 def get_task(request: Request, task_id: int):
     require(request)

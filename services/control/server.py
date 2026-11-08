@@ -14,6 +14,9 @@ import os
 
 from typing import Optional
 
+import concurrent.futures
+import queue as pyqueue
+import threading
 import time
 
 from fastapi import FastAPI, HTTPException, Response
@@ -29,7 +32,19 @@ BATTERY_FLOOR = int(os.environ.get("BATTERY_FLOOR", "15"))   # %
 
 app = FastAPI(title="EPCare Control Service")
 
-_arm_busy = __import__("threading").Lock()  # 机械臂指令串行化，忙则拒绝（429）
+
+@app.on_event("startup")
+def _startup():
+    start_worker()
+
+# ============ 动作队列：有界队列 + 单工作线程，根治指令堆积 ============
+# 所有会动硬件/机械臂的动作都进队列，由唯一 worker 顺序执行；
+# 队列满 -> 429；旧行为（直接并发调 SDK）可用 EP_CARE_LEGACY=1 复现卡死。
+QMAX = int(os.environ.get("ACTION_QUEUE_MAX", "2"))  # 1 执行 + 1 排队，其余立即 429
+ACTION_TIMEOUT = float(os.environ.get("ACTION_TIMEOUT", "12"))
+LEGACY = os.environ.get("EPCARE_LEGACY", "0") == "1"
+_action_q = pyqueue.Queue(maxsize=QMAX)
+_worker = {"thread": None}
 
 _state = {"driver": None, "estop": False, "speed_limit": SPEED_LIMIT,
           "max_move": MAX_MOVE, "arm_limit_mm": ARM_LIMIT_MM, "events": 0}
@@ -37,6 +52,55 @@ _state = {"driver": None, "estop": False, "speed_limit": SPEED_LIMIT,
 
 def driver():
     return _state["driver"]
+
+
+def _worker_loop():
+    while True:
+        job = _action_q.get()
+        if job is None:
+            break
+        fn, args, fut = job
+        if fut.set_running_or_notify_cancel() is False:
+            continue
+        try:
+            fut.set_result(fn(*args))
+        except Exception as e:
+            fut.set_exception(e)
+
+
+def start_worker():
+    if _worker["thread"] is None or not _worker["thread"].is_alive():
+        _worker["thread"] = threading.Thread(target=_worker_loop, daemon=True)
+        _worker["thread"].start()
+
+
+def submit_action(fn, *args, timeout=ACTION_TIMEOUT):
+    """有界队列提交动作，返回执行结果；队列满 429，超时 504。"""
+    if LEGACY:
+        return fn(*args)  # 旧版：直接并发调用（用于复现卡死）
+    fut = concurrent.futures.Future()
+    try:
+        _action_q.put_nowait((fn, args, fut))
+    except pyqueue.Full:
+        audit("queue_full", qsize=_action_q.qsize(), qmax=QMAX)
+        raise HTTPException(429, "动作队列已满（机器人正忙），请稍后重试")
+    try:
+        return fut.result(timeout=timeout)
+    except concurrent.futures.TimeoutError:
+        raise HTTPException(504, "动作执行超时：连接可能已失效，请重新连接")
+
+
+def drain_queue():
+    while True:
+        try:
+            job = _action_q.get_nowait()
+        except pyqueue.Empty:
+            break
+        if job is None:
+            continue
+        _, _, fut = job
+        if not fut.done():
+            fut.set_exception(RuntimeError("急停：动作已取消"))
 
 
 def require_driver():
@@ -103,6 +167,7 @@ def state():
           "arm_limit_mm": _state["arm_limit_mm"]}
     if d:
         st.update(d.state() if d.connected else {"mode": d.mode, "connected": d.connected})
+    st["queue"] = {"size": _action_q.qsize(), "max": QMAX, "legacy": LEGACY}
     return st
 
 
@@ -138,6 +203,7 @@ def disconnect():
 @app.post("/estop")
 def estop():
     _state["estop"] = True
+    drain_queue()
     d = driver()
     if d and d.connected:
         d.stop()
@@ -162,7 +228,9 @@ def move(req: MoveReq):
     if abs(req.z) > 180:
         raise HTTPException(400, "单次旋转超限（>180°）")
     try:
-        d.move(req.x, req.y, req.z, wait=req.wait)
+        submit_action(d.move, req.x, req.y, req.z, True if not LEGACY else req.wait)
+    except HTTPException:
+        raise
     except Exception as e:
         audit("move_error", error=repr(e))
         raise HTTPException(500, f"动作失败: {e!r}")
@@ -204,7 +272,7 @@ def grab(req: GrabReq):
     guard_motion(d)
     if req.action not in ("open", "close"):
         raise HTTPException(400, "action 只能是 open/close")
-    d.grab(req.action)
+    submit_action(d.grab, req.action)
     return {"ok": True}
 
 
@@ -214,12 +282,8 @@ def arm(req: ArmReq):
     guard_motion(d)
     if abs(req.x_mm) > _state["arm_limit_mm"] or abs(req.y_mm) > _state["arm_limit_mm"]:
         raise HTTPException(400, f"机械臂单次位移超限（>{_state['arm_limit_mm']}mm）")
-    if not _arm_busy.acquire(blocking=False):
-        raise HTTPException(429, "机械臂忙（上一条指令未完成）")
-    try:
-        d.arm_move(req.x_mm, req.y_mm, wait=req.wait)
-    finally:
-        _arm_busy.release()
+    # 队列模式下必须等动作完成再执行下一条，否则 SDK 报 already performing
+    submit_action(d.arm_move, req.x_mm, req.y_mm, True if not LEGACY else req.wait)
     return {"ok": True}
 
 

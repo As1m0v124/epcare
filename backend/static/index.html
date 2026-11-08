@@ -134,6 +134,12 @@ th{color:var(--muted);font-weight:600}
     <h2>巡检任务</h2>
     <div class="row"><select id="patrolRoom"></select><label class="small"><input type="checkbox" id="patrolRehearse"> replay 演练（仅流程，不动真机）</label><button class="btn-acc" onclick="makePatrol()">生成计划</button></div>
     <div class="panel" id="patrolResult" class="small">还没有计划</div>
+    <h3>真机巡检一圈</h3>
+    <div class="row">
+      <span class="small">每边</span><input id="loopSide" type="number" value="0.3" step="0.1" min="0.1" max="0.6" style="width:90px"><span class="small">米</span>
+      <button class="btn-acc" onclick="runPatrolLoop()">跑真机一圈（4 边 + 4 个 90°）</button>
+    </div>
+    <div class="panel small" id="loopResult">未运行。开始前请确认机器人周围 1.5m 无障碍、电量 &gt;25%。</div>
     <h3>历史任务</h3><div class="panel"><table id="taskTable"><thead><tr><th>ID</th><th>类型</th><th>状态</th><th>创建人</th><th>时间</th></tr></thead><tbody></tbody></table></div>
   </section>
 
@@ -466,6 +472,18 @@ async function loadPatrol(){
   const sel=$('#patrolRoom');sel.innerHTML=rooms.map(r=>`<option value="${r.id}">${r.name}</option>`).join('');
   const tasks=await api('/api/tasks');
   $('#taskTable tbody').innerHTML=tasks.map(t=>`<tr><td>${t.id}</td><td>${t.kind}</td><td>${t.status}</td><td>${t.created_by}</td><td>${t.created}</td><td>${t.kind==='patrol'&&t.status!=='running'?`<button onclick="runTask(${t.id})">执行(replay)</button>`:''}</td></tr>`).join('');
+}
+async function runPatrolLoop(){
+  const side=parseFloat($('#loopSide').value||'0.3');
+  if(!confirm(`开始真机巡检：每边 ${side}m、右转 90°×4。\n请确认周围 1.5m 无障碍、电量>25%。`)) return;
+  const box=$('#loopResult');box.textContent='运行中：机器人正在走第 1 边…请勿触碰，急停随时可用。';
+  try{
+    const r=await api('/api/tasks/patrol_loop',{method:'POST',body:JSON.stringify({side_m:side,confirm_real:true})});
+    box.innerHTML=`<div>任务 #${r.task_id} <span class="chip ${r.status==='finished'?'ok':'warn'}">${r.status}</span></div>`+
+      r.steps.map(s=>`<div class="small">第 ${s.corner||'-'} 角：${s.action||s.error||''} ${s.result||''}</div>`).join('')+
+      (r.shots||[]).map(p=>`<div class="small"><img src="/files/${p}" style="width:180px;border-radius:6px;margin:4px"></div>`).join('');
+    toast('巡检结束：'+r.status);
+  }catch(e){box.textContent='失败：'+e.message;toast('巡检失败：'+e.message)}
 }
 async function makePatrol(){
   try{
