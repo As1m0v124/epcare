@@ -113,3 +113,8 @@ submission/2026-10-27/          首次对齐提交材料（进度报告、提纲
 ## 许可说明
 
 本项目代码许可见 LICENSE（待补）。所用第三方论文代码与数据集（Depth Anything V2、Grounding DINO、TidyBot、NYU Depth V2、COCO、RefCOCO 等）的许可与引用要求将在 REPRO.md 中逐个列明；项目仅用于教学与研究。
+
+
+## Agent 对话记录
+
+按老师要求，每周把本项目的 AI 编程对话导出到 `agent-sessions/YYYY-MM-DD/`（仅本项目，不含其它课程/私人项目）。ZCode 导出脚本：`scripts/export_zcode_session.py`。

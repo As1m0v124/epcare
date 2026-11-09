@@ -1,0 +1,20 @@
+{
+  "session_id": "sess_87ed69ab-f6fb-4b1c-abaa-4bdcbeb6bce8",
+  "title": "RoboMaster EP 巡检机器人项目步骤梳理",
+  "date": "2026-11-09",
+  "directory": "/Users/asimov/.zcode/workspace/default",
+  "source": "/Users/asimov/.zcode/cli/db/db.sqlite",
+  "messages": 1594,
+  "user_turns": 138,
+  "assistant_texts": 617,
+  "tool_calls": 1195,
+  "tool_errors": 21,
+  "excluded": [
+    "reasoning",
+    "system",
+    "memory",
+    "step",
+    "timeline",
+    "tool outputs (non-error)"
+  ]
+}
